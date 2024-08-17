@@ -1,11 +1,10 @@
 import "./App.css";
-import { Button } from "@/components/ui/button";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h1>23min</h1>
-      <Button>Click Me</Button>
+      <Outlet />
     </>
   );
 }
