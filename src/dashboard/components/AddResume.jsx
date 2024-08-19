@@ -18,11 +18,19 @@ const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const [loading, setLoading] = useState(false);
-  const { user } = useUser();
+  const { user } = useUser(); // Destructuring user from userUser hook
 
+  /**
+   * Asynchronous function to handle the creation of a new resume
+   */
   const handleCreate = async () => {
+    // Set loading state to true to indicate that the process is ongoing
     setLoading(true);
+
+    // Generate a unique identifier (UUID) for the new resume
     const uuid = uuidv4();
+
+    // Prepare the data to be sent in the API request
     const data = {
       data: {
         title: resumeTitle,
@@ -32,15 +40,17 @@ const AddResume = () => {
       },
     };
 
+    // Make an API request to create the new resume using the GlobalApi's CreateNewResume function
     GlobalApi.CreateNewResume(data).then(
       (res) => {
-        console.log(res);
+        console.log(res); // Log the response from the API
         if (res) {
-          setLoading(false);
+          setLoading(false); // Set loading state to false once the resume is successfully created
         }
       },
       (error) => {
-        setLoading(false);
+        setLoading(false); // Set loading state to false in case of an error
+        // Additional error handling can be done here if needed
       }
     );
   };
@@ -73,7 +83,10 @@ const AddResume = () => {
                 Cancel
               </Button>
               {/* If resume title is not exist, button will be disabled */}
-              <Button onClick={handleCreate} disabled={!resumeTitle || loading}>
+              <Button
+                onClick={() => handleCreate()}
+                disabled={!resumeTitle || loading}
+              >
                 {loading ? <Loader2 className="animate-spin" /> : "Create"}
               </Button>
             </div>
