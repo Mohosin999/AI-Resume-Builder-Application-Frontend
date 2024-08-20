@@ -31,15 +31,13 @@ const axiosClient = axios.create({
   },
 });
 
-/**
- * Function to create a new resume by sending a POST request to the '/user-resumes' endpoint.
- *
- * @param {Object} data - The resume data to be sent in the request body.
- * @returns {Promise} - The Axios promise representing the POST request.
- */
 const CreateNewResume = (data) => axiosClient.post("/user-resumes", data);
+
+const GetUserResumes = (userEmail) =>
+  axiosClient.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);
 
 // Export the CreateNewResume function as part of the default export.
 export default {
   CreateNewResume,
+  GetUserResumes,
 };
