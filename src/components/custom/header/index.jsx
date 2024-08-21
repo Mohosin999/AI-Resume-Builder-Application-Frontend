@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
 import { UserButton, useUser } from "@clerk/clerk-react";
+import { Button } from "../../ui/button";
 
 const Header = () => {
   const { user, isSignedIn } = useUser();
@@ -15,6 +15,7 @@ const Header = () => {
           <Link to={"/dashboard"}>
             <Button variant="outline">Dashboard</Button>
           </Link>
+          {/* User profile */}
           <UserButton />
         </div>
       ) : (

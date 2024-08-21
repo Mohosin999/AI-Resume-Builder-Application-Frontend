@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 import SignInPage from "./auth/sign-in/index.jsx";
-import Home from "./home/index.jsx";
+import Home from "../src/components/custom/home";
 import Dashboard from "./dashboard/index.jsx";
 import EditResume from "./dashboard/resume/[resumeId]/edit/index.jsx";
 
