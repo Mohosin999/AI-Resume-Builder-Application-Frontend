@@ -1,40 +1,30 @@
-// import axios from "axios";
-
-// const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
-
-// const axiosClient = axios.create({
-//   baseURL: "http://localhost:1337/api/",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${API_KEY}`,
-//   },
-// });
-
-// const CreateNewResume = (data) => axiosClient.post("/user-resumes", data);
-
-// export default {
-//   CreateNewResume,
-// };
-
 // Import the Axios library for making HTTP requests.
 import axios from "axios";
 
-// Retrieve the API key from environment variables (e.g., from a .env.local file).
+// API key from environment variables (e.g., from a .env.local file).
 const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
 
-// Create an Axios instance with default configuration for making requests to the Strapi API.
+/**
+ * ===================
+ * Create Axios Client
+ * ===================
+ */
 const axiosClient = axios.create({
-  baseURL: "http://localhost:1337/api/", // Set the base URL for the API.
+  // URL from strapi
+  baseURL: "http://localhost:1337/api/",
   headers: {
-    "Content-Type": "application/json", // Specify that the content type of requests is JSON.
-    Authorization: `Bearer ${API_KEY}`, // Include the API key as a Bearer token in the Authorization header.
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${API_KEY}`,
   },
 });
 
+// Function to create new resume
 const CreateNewResume = (data) => axiosClient.post("/user-resumes", data);
 
+// Function to get all user resume by user_email
 const GetUserResumes = (userEmail) =>
-  axiosClient.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);
+  // axiosClient.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);
+  axiosClient.get(`/user-resumes?filters[userEmail][$eq]=${userEmail}`);
 
 // Export the CreateNewResume function as part of the default export.
 export default {
