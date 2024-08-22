@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useUser } from "@clerk/clerk-react";
+import { v4 as uuidv4 } from "uuid";
 import { Loader2, PlusSquare } from "lucide-react";
 import {
   Dialog,
@@ -6,19 +8,19 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { v4 as uuidv4 } from "uuid";
-import { useUser } from "@clerk/clerk-react";
-import GlobalApi from "./../../../service/GlobalApi";
+import GlobalApi from "../../../service/GlobalApi";
 
 const AddResume = () => {
+  // Destructuring user from userUser hook
+  const { user } = useUser();
+
+  // States
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const [loading, setLoading] = useState(false);
-  const { user } = useUser(); // Destructuring user from userUser hook
 
   /**
    * Asynchronous function to handle the creation of a new resume
@@ -30,7 +32,12 @@ const AddResume = () => {
     // Generate a unique identifier (UUID) for the new resume
     const uuid = uuidv4();
 
-    // Prepare the data to be sent in the API request
+    /**
+     * Prepare the data to be sent in the API request
+     * Why the data format like this?
+     * Some APIs expect the payload to be wrapped inside a specific property,
+     * like data.
+     */
     const data = {
       data: {
         title: resumeTitle,
@@ -40,23 +47,29 @@ const AddResume = () => {
       },
     };
 
-    // Make an API request to create the new resume using the GlobalApi's CreateNewResume function
+    // Create new resume
     GlobalApi.CreateNewResume(data).then(
       (res) => {
-        console.log(res); // Log the response from the API
+        // Set loading state to false once the resume is successfully created
         if (res) {
-          setLoading(false); // Set loading state to false once the resume is successfully created
+          setLoading(false);
         }
       },
       (error) => {
-        setLoading(false); // Set loading state to false in case of an error
-        // Additional error handling can be done here if needed
+        setLoading(false);
       }
     );
   };
 
   return (
     <div>
+      {/*
+       * ==============================================
+       * Plus Square box
+       *
+       * When click on this box, dialog will be opened.
+       * ==============================================
+       */}
       <div
         onClick={() => setOpenDialog(true)}
         className="p-14 py-24 border flex justify-center items-center bg-secondary rounded-lg h-[280px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
@@ -64,6 +77,13 @@ const AddResume = () => {
         <PlusSquare />
       </div>
 
+      {/*
+       * =============================================
+       * Dialog box
+       *
+       * Here you can add information for your resume.
+       * =============================================
+       */}
       <Dialog open={openDialog}>
         <DialogContent>
           <DialogHeader>
