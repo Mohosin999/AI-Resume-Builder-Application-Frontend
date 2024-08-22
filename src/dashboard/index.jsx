@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AddResume from "./components/AddResume";
 import { useUser } from "@clerk/clerk-react";
+import AddResume from "./add-resume";
 import GlobalApi from "../../service/GlobalApi";
 
 const Dashboard = () => {

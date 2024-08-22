@@ -4,9 +4,16 @@ import { Navigate, Outlet } from "react-router-dom";
 import Header from "../src/components/custom/header";
 
 function App() {
+  /**
+   * The isLoaded is a boolean value that indicates whether the user
+   * data has been fully loaded or not.
+   */
   const { user, isLoaded, isSignedIn } = useUser();
 
-  // If user is not authenticated, then navigate the user in sign-in page
+  /**
+   * If the user is not authenticated and all user data is fully loaded,
+   * navigate the user to the sign-in page.
+   */
   if (!isSignedIn && isLoaded) {
     return <Navigate to={"/auth/sign-in"} />;
   }
