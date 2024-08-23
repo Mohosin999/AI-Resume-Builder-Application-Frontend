@@ -28,20 +28,28 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
       {/* Phone & Email */}
       <div className="flex justify-between">
         <h2
-          className="font-normal text-xs style={{
-          color: resumeInfo?.themeColor,
-        }}"
+          className="font-normal text-xs"
+          style={{
+            color: resumeInfo?.themeColor,
+          }}
         >
           {resumeInfo?.phone}
         </h2>
         <h2
-          className="font-normal text-xs style={{
-          color: resumeInfo?.themeColor,
-        }}"
+          className="font-normal text-xs"
+          style={{
+            color: resumeInfo?.themeColor,
+          }}
         >
           {resumeInfo?.email}
         </h2>
       </div>
+
+      {/* Horizontal line */}
+      <hr
+        className="border-[1.5px] my-2"
+        style={{ borderColor: resumeInfo?.themeColor }}
+      />
     </div>
   );
 };
