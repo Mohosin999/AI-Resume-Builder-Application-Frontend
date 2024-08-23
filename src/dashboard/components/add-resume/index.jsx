@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { v4 as uuidv4 } from "uuid";
 import { Loader2, PlusSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -11,16 +12,18 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import GlobalApi from "../../../service/GlobalApi";
+import GlobalApi from "../../../../service/GlobalApi";
 
 const AddResume = () => {
-  // Destructuring user from userUser hook
-  const { user } = useUser();
-
   // States
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const [loading, setLoading] = useState(false);
+
+  // Destructuring user from userUser hook
+  const { user } = useUser();
+  // Navigation variable from useNavigate hook to go to another page
+  const navigation = useNavigate();
 
   /**
    * Asynchronous function to handle the creation of a new resume
@@ -53,6 +56,9 @@ const AddResume = () => {
         // Set loading state to false once the resume is successfully created
         if (res) {
           setLoading(false);
+          navigation(
+            `/dashboard/resume/${res.data.data.attributes.resumeId}/edit`
+          );
         }
       },
       (error) => {

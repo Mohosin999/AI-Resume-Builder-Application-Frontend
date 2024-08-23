@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 function Header() {
   const { user, isSignedIn } = useUser();

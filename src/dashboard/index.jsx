@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
-import AddResume from "./add-resume";
 import GlobalApi from "../../service/GlobalApi";
+import AddResume from "./components/add-resume";
+import ResumeCardItem from "./components/resume-card-item";
 
 const Dashboard = () => {
-  // Destructuring user from userUser hook
-  const { user } = useUser();
-
   // States
   const [resumeList, setResumeList] = useState([]);
 
+  // Destructuring user from userUser hook
+  const { user } = useUser();
+
   /**
-   * Hook is triggered whenever the user changes.
+   * Hook is triggered whenever the user information changes.
    * GetResumesList function is defined below.
    */
   useEffect(() => {
-    // If the user is available, fetch the resume list
+    // If the user information is available, fetch the resume list
     user && GetResumesList();
   }, [user]);
 
@@ -43,10 +44,14 @@ const Dashboard = () => {
        * This section handles adding a new resume and displaying the list of
        * existing resumes.
        */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10">
         <AddResume />
 
-        {/* Map resume list */}
+        {/* Map the resume list to see the list of existing resumes */}
+        {resumeList.length > 0 &&
+          resumeList.map((resume, index) => (
+            <ResumeCardItem resume={resume} key={index} />
+          ))}
       </div>
     </div>
   );
