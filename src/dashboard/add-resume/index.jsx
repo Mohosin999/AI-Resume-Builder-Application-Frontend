@@ -67,7 +67,7 @@ const AddResume = () => {
        * ==============================================
        * Plus Square box
        *
-       * When click on this box, dialog will be opened.
+       * Clicking this box will open a dialog.
        * ==============================================
        */}
       <div
@@ -88,6 +88,8 @@ const AddResume = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Create New Resume</DialogTitle>
+
+            {/* Input box */}
             <DialogDescription>
               <p>Add a title for your new resume</p>
               <Input
@@ -97,7 +99,7 @@ const AddResume = () => {
               />
             </DialogDescription>
 
-            {/* Buttons */}
+            {/* Dialog buttons (cancel and create) */}
             <div className="flex justify-end gap-5">
               <Button onClick={() => setOpenDialog(false)} variant="ghost">
                 Cancel
