@@ -55,7 +55,7 @@ const FormSection = () => {
       {activeFormIndex === 1 ? (
         <PersonalDetail setEnableNext={setEnableNext} />
       ) : activeFormIndex === 2 ? (
-        <Summery />
+        <Summery setEnableNext={setEnableNext} />
       ) : null}
 
       {/* Summery */}
