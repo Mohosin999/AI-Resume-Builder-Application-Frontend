@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
  */
 const ResumeCardItem = ({ resume }) => {
   return (
-    <Link to={`/dashboard/resume/${resume.attributes.resumeId}/edit`}>
+    <Link to={`/dashboard/resume/${resume.id}/edit`}>
       {/*
        * =======================================================
        * Notebook Square box

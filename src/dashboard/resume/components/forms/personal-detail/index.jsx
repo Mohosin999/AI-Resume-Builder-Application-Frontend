@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
-import { LoaderCircle } from "lucide-react";
 
 const PersonalDetail = ({ setEnableNext }) => {
   // States
@@ -17,6 +18,11 @@ const PersonalDetail = ({ setEnableNext }) => {
   // Get the resume id from url
   const params = useParams();
 
+  /**
+   * =========================================================
+   * Function to handle the input changes in the resume form.
+   * =========================================================
+   */
   const handleInputChange = (e) => {
     // Next button will be disabled at the time of editing information
     setEnableNext(false);
@@ -36,6 +42,11 @@ const PersonalDetail = ({ setEnableNext }) => {
     });
   };
 
+  /**
+   * =====================================================
+   * Function to handle the saving of the resume details.
+   * =====================================================
+   */
   const handleSave = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -45,11 +56,11 @@ const PersonalDetail = ({ setEnableNext }) => {
       data: formData,
     };
 
-    // Update the resume
     GlobalApi.updateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setEnableNext(true);
         setLoading(false);
+        toast("Resume Update Successfully!");
       },
       (error) => {
         setLoading(false);
@@ -69,32 +80,62 @@ const PersonalDetail = ({ setEnableNext }) => {
           {/* First Name */}
           <div>
             <label className="text-sm">First Name</label>
-            <Input name="firstName" required onChange={handleInputChange} />
+            <Input
+              name="firstName"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.firstName}
+            />
           </div>
           {/* Last Name */}
           <div>
             <label className="text-sm">Last Name</label>
-            <Input name="lastName" required onChange={handleInputChange} />
+            <Input
+              name="lastName"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.lastName}
+            />
           </div>
           {/* Job Title */}
           <div className="col-span-2">
             <label className="text-sm">Job Title</label>
-            <Input name="jobTitle" required onChange={handleInputChange} />
+            <Input
+              name="jobTitle"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.jobTitle}
+            />
           </div>
           {/* Address */}
           <div className="col-span-2">
             <label className="text-sm">Address</label>
-            <Input name="address" required onChange={handleInputChange} />
+            <Input
+              name="address"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.address}
+            />
           </div>
           {/* Phone */}
           <div>
             <label className="text-sm">Phone</label>
-            <Input name="phone" required onChange={handleInputChange} />
+            <Input
+              name="phone"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.phone}
+            />
           </div>
           {/* Email */}
           <div>
             <label className="text-sm">Email</label>
-            <Input name="email" required onChange={handleInputChange} />
+            <Input
+              name="email"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.email}
+            />
           </div>
         </div>
 

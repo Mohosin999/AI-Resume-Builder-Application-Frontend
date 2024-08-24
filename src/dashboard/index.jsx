@@ -27,7 +27,7 @@ const Dashboard = () => {
   const GetResumesList = () => {
     GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(
       (res) => {
-        setResumeList(res.data.data);
+        setResumeList(res?.data?.data);
       }
     );
   };

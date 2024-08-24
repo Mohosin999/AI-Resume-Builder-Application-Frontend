@@ -2,6 +2,7 @@ import "./App.css";
 import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "../src/components/custom/header";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   /**
@@ -22,6 +23,7 @@ function App() {
     <>
       <Header />
       <Outlet />
+      <Toaster />
     </>
   );
 }

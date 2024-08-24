@@ -55,10 +55,10 @@ const AddResume = () => {
       (res) => {
         // Set loading state to false once the resume is successfully created
         if (res) {
+          console.log(res);
+
           setLoading(false);
-          navigation(
-            `/dashboard/resume/${res.data.data.attributes.resumeId}/edit`
-          );
+          navigation(`/dashboard/resume/${res?.data?.data.id}/edit`);
         }
       },
       (error) => {
