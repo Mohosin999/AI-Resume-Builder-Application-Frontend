@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 const FormSection = () => {
   // Define index to move next or previous portion
   const [activeFormIndex, setActiveFormIndex] = useState(2);
+  const [enableNext, setEnableNext] = useState(false);
 
   return (
     <div>
@@ -34,6 +35,7 @@ const FormSection = () => {
 
           <Button
             onClick={() => setActiveFormIndex(activeFormIndex + 1)}
+            disabled={!enableNext}
             className="flex gap-2"
             size="sm"
           >
@@ -48,7 +50,10 @@ const FormSection = () => {
        * ==========================================================
        */}
       {/* Personal Detail */}
-      {activeFormIndex === 1 ? <PersonalDetail /> : null}
+      {/* {activeFormIndex === 1 ? <PersonalDetail /> : null} */}
+      {activeFormIndex === 1 ? (
+        <PersonalDetail setEnableNext={setEnableNext} />
+      ) : null}
 
       {/* Summery */}
 
