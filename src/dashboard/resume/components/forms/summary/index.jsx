@@ -23,6 +23,7 @@ const Summary = ({ setEnableNext }) => {
   const [summary, setSummary] = useState();
   const [loading, setLoading] = useState(false);
   const [aiGeneratedSummaryList, setAiGeneratedSummaryList] = useState();
+  console.log(aiGeneratedSummaryList);
 
   // Destructuring resume information from useContext
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -39,11 +40,6 @@ const Summary = ({ setEnableNext }) => {
       });
   }, [summary]);
 
-  // Next button will be disabled on first visit to this page
-  useEffect(() => {
-    setEnableNext(false);
-  }, []);
-
   /**
    * ================================================
    * Asynchronous function to create summary from AI
@@ -58,6 +54,7 @@ const Summary = ({ setEnableNext }) => {
     const result = await AIChatSession.sendMessage(PROMPT);
     // Get the actual text from the result
     const responseData = await result.response.text();
+    console.log(responseData);
 
     try {
       /**
@@ -168,6 +165,8 @@ const Summary = ({ setEnableNext }) => {
             <div key={index} className="my-4">
               <h3 className="font-bold">{item.experienceLevel}</h3>
               <p className="text-sm">{item.summary}</p>
+              {/* <h3 className="font-bold">{item["Experience Level"]}</h3>
+              <p className="text-sm">{item.Summary}</p> */}
             </div>
           ))}
         </div>
