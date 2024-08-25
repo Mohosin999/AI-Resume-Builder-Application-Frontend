@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import PersonalDetail from "../forms/personal-detail";
 import { Button } from "../../../../components/ui/button";
-import Summery from "../forms/summery";
+import Summary from "../forms/summary";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -55,7 +55,7 @@ const FormSection = () => {
       {activeFormIndex === 1 ? (
         <PersonalDetail setEnableNext={setEnableNext} />
       ) : activeFormIndex === 2 ? (
-        <Summery setEnableNext={setEnableNext} />
+        <Summary setEnableNext={setEnableNext} />
       ) : null}
 
       {/* Summery */}

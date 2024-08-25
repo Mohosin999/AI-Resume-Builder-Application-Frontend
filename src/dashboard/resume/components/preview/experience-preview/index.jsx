@@ -34,8 +34,8 @@ const ExperiencePreview = ({ resumeInfo }) => {
             </span>
           </h2>
 
-          {/* Work summery */}
-          <p className="text-xs my-2">{experience?.workSummery}</p>
+          {/* Work summary */}
+          <p className="text-xs my-2">{experience?.workSummary}</p>
         </div>
       ))}
     </div>
