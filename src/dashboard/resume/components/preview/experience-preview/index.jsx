@@ -35,7 +35,8 @@ const ExperiencePreview = ({ resumeInfo }) => {
           </h2>
 
           {/* Work summary */}
-          <p className="text-xs my-2">{experience?.workSummary}</p>
+          {/* <p className="text-xs my-2">{experience?.workSummary}</p> */}
+          <div dangerouslySetInnerHTML={{ __html: experience?.workSummary }} />
         </div>
       ))}
     </div>

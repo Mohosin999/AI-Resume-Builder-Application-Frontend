@@ -24,7 +24,7 @@ import { Button } from "../../../../components/ui/button";
 
 // Prompt to create summary from AI
 const PROMPT =
-  "position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags";
+  "position title: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experience level and No JSON array), give me result in HTML tags";
 
 /**
  * Rich Text Editor Component
@@ -46,25 +46,35 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
    * ================================================
    */
   const GenerateSummaryFromAI = async () => {
-    if (!resumeInfo?.Experience[index]?.title) {
+    // Check if there is no experience title, add it first
+    if (!resumeInfo?.experience[index]?.title) {
       toast("Please Add Position Title");
       return;
     }
+
+    // If title exist, now start your work
     setLoading(true);
+
     const prompt = PROMPT.replace(
       "{positionTitle}",
-      resumeInfo.Experience[index].title
+      resumeInfo.experience[index].title
     );
 
     const result = await AIChatSession.sendMessage(prompt);
-    console.log(result.response.text());
-    const resp = result.response.text();
-    setValue(resp.replace("[", "").replace("]", ""));
+    // const res = JSON.parse(result.response.text());
+    const res = result.response.text();
+
+    setValue(res.replace("[", "").replace("]", ""));
     setLoading(false);
   };
 
   return (
     <div>
+      {/*
+       * ===============================================
+       *           Label and Button
+       * ===============================================
+       */}
       <div className="flex justify-between my-2">
         <label className="text-xs">Summary</label>
         <Button
@@ -84,6 +94,11 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
         </Button>
       </div>
 
+      {/*
+       * ===============================================
+       *          Rich Text Functionalities
+       * ===============================================
+       */}
       <EditorProvider>
         <Editor
           value={value}

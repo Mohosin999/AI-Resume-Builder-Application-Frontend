@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
@@ -15,14 +15,12 @@ const formField = {
   state: "",
   startDate: "",
   endDate: "",
-  workSummery: "",
+  workSummary: "",
 };
 
 const Experience = () => {
   // States
   const [experienceList, setExperienceList] = useState([formField]);
-  console.log(experienceList);
-
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume information from context
@@ -30,6 +28,14 @@ const Experience = () => {
 
   // Get the specific id
   const params = useParams();
+
+  // Effect to update resumeInfo while experienceList will changes
+  useEffect(() => {
+    setResumeInfo({
+      ...resumeInfo,
+      experience: experienceList,
+    });
+  }, [experienceList]);
 
   /**
    * =====================================
@@ -43,7 +49,6 @@ const Experience = () => {
     const newEntries = experienceList.slice();
     // Set the value of the specified index
     newEntries[index][name] = value;
-
     // Set newEntries inside experience list
     setExperienceList(newEntries);
   };
@@ -53,7 +58,7 @@ const Experience = () => {
    * Function to add new experience
    * ===============================
    */
-  const AddNewExperience = () => {
+  const handleAddExperience = () => {
     setExperienceList([...experienceList, formField]);
   };
 
@@ -62,7 +67,7 @@ const Experience = () => {
    * Function to remove experience
    * ==============================
    */
-  const RemoveExperience = () => {
+  const handleRemoveExperience = () => {
     // setExperienceList((experienceList) => experienceList.slice(0, -1));
     setExperienceList((prev) => prev.slice(0, -1));
   };
@@ -90,6 +95,19 @@ const Experience = () => {
         setLoading(false);
       }
     );
+  };
+
+  /**
+   * ====================================
+   * Function to handle rich text editor
+   * ====================================
+   */
+  const handleRichTextEditor = (e, name, index) => {
+    // Create a shallow copy of the `experienceList` array
+    const newEntries = experienceList.slice();
+    newEntries[index][name] = e.target.value;
+    // Set newEntries inside experience list
+    setExperienceList(newEntries);
   };
 
   return (
@@ -166,7 +184,12 @@ const Experience = () => {
                 </div>
                 <div className="col-span-2">
                   {/* Work Summary */}
-                  <RichTextEditor />
+                  <RichTextEditor
+                    index={index}
+                    onRichTextEditorChange={(event) =>
+                      handleRichTextEditor(event, "workSummary", index)
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -183,7 +206,7 @@ const Experience = () => {
           <div className="flex gap-2">
             <Button
               variant="outline"
-              onClick={AddNewExperience}
+              onClick={handleAddExperience}
               className="text-primary"
             >
               {" "}
@@ -191,7 +214,7 @@ const Experience = () => {
             </Button>
             <Button
               variant="outline"
-              onClick={RemoveExperience}
+              onClick={handleRemoveExperience}
               className="text-primary"
             >
               {" "}
