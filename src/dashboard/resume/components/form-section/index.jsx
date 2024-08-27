@@ -5,10 +5,11 @@ import { Button } from "../../../../components/ui/button";
 import Summary from "../forms/summary";
 import Experience from "../forms/experience";
 import Education from "../forms/education";
+import Skills from "../forms/skills";
 
 const FormSection = () => {
   // Define index to move next or previous portion
-  const [activeFormIndex, setActiveFormIndex] = useState(4);
+  const [activeFormIndex, setActiveFormIndex] = useState(5);
   const [enableNext, setEnableNext] = useState(false);
 
   return (
@@ -62,6 +63,8 @@ const FormSection = () => {
         <Experience setEnableNext={setEnableNext} />
       ) : activeFormIndex === 4 ? (
         <Education setEnableNext={setEnableNext} />
+      ) : activeFormIndex === 5 ? (
+        <Skills setEnableNext={setEnableNext} />
       ) : null}
 
       {/* Summery */}

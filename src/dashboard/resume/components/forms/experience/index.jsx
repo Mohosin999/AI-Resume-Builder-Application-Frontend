@@ -6,6 +6,7 @@ import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import RichTextEditor from "../../rich-text-editor";
 import GlobalApi from "../../../../../../service/GlobalApi";
+import { toast } from "sonner";
 
 // Initialize an object
 const formField = {
@@ -29,7 +30,7 @@ const Experience = () => {
   // Get the specific id
   const params = useParams();
 
-  // Effect to update resumeInfo while experienceList will changes
+  // Effect of updating resumeInfo while experienceList will changes
   useEffect(() => {
     setResumeInfo({
       ...resumeInfo,
@@ -81,7 +82,7 @@ const Experience = () => {
     setLoading(true);
     const data = {
       data: {
-        Experience: experienceList.map(({ id, ...rest }) => rest),
+        experience: experienceList,
       },
     };
 

@@ -1,13 +1,18 @@
 export default {
-  firstName: "James",
-  lastName: "Carter",
-  jobTitle: "full stack developer",
-  address: "525 N tryon Street, NC 28117",
-  phone: "(123)-456-7890",
-  email: "exmaple@gmail.com",
+  // firstName: "James",
+  // lastName: "Carter",
+  // jobTitle: "full stack developer",
+  // address: "525 N tryon Street, NC 28117",
+  // phone: "(123)-456-7890",
+  // email: "exmaple@gmail.com",
+  firstName: "",
+  lastName: "",
+  jobTitle: "",
+  address: "",
+  phone: "",
+  email: "",
   themeColor: "#ff6666",
-  summary:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  summary: "",
   experience: [
     {
       id: 1,
@@ -18,13 +23,13 @@ export default {
       startDate: "Jan 2021",
       endDate: "",
       currentlyWorking: true,
-      workSummary:
-        " Designed, developed, and maintained full-stack applications using React and Node.js.\n" +
-        "• Implemented responsive user interfaces with React, ensuring seamless user experiences across\n" +
-        "various devices and browsers.\n" +
-        "• Maintaining the React Native in-house organization application." +
-        "• CreatedRESTfulAPIs withNode.js and Express,facilitating data communicationbetween the front-end" +
-        "and back-end systems.",
+      workSummary: "",
+      // " Designed, developed, and maintained full-stack applications using React and Node.js.\n" +
+      // "• Implemented responsive user interfaces with React, ensuring seamless user experiences across\n" +
+      // "various devices and browsers.\n" +
+      // "• Maintaining the React Native in-house organization application." +
+      // "• CreatedRESTfulAPIs withNode.js and Express,facilitating data communicationbetween the front-end" +
+      // "and back-end systems.",
     },
     {
       id: 2,
@@ -35,13 +40,13 @@ export default {
       startDate: "May 2019",
       endDate: "Jan 2021",
       currentlyWorking: false,
-      workSummary:
-        " Designed, developed, and maintained full-stack applications using React and Node.js." +
-        "• Implemented responsive user interfaces with React, ensuring seamless user experiences across" +
-        "various devices and browsers." +
-        "• Maintaining the React Native in-house organization application." +
-        "• CreatedRESTfulAPIs withNode.js and Express,facilitating data communicationbetween the front-end" +
-        "and back-end systems.",
+      workSummary: "",
+      // " Designed, developed, and maintained full-stack applications using React and Node.js." +
+      // "• Implemented responsive user interfaces with React, ensuring seamless user experiences across" +
+      // "various devices and browsers." +
+      // "• Maintaining the React Native in-house organization application." +
+      // "• CreatedRESTfulAPIs withNode.js and Express,facilitating data communicationbetween the front-end" +
+      // "and back-end systems.",
     },
   ],
   education: [
@@ -52,8 +57,7 @@ export default {
       endDate: "Dec:2019",
       degree: "Master",
       major: "Computer Science",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+      description: "",
     },
     {
       id: 2,
@@ -62,8 +66,7 @@ export default {
       endDate: "Dec:2019",
       degree: "Master",
       major: "Computer Science",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+      description: "",
     },
   ],
   skills: [
