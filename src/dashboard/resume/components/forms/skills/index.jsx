@@ -8,6 +8,7 @@ import { FileSpreadsheet, LoaderCircle } from "lucide-react";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 const Skills = () => {
   // States
@@ -86,7 +87,6 @@ const Skills = () => {
     GlobalApi.updateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setLoading(false);
-        setEnableNext(true);
         toast("Education Details Updated Successfully !");
       },
       (error) => {
