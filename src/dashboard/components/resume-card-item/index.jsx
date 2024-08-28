@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element}
  */
 const ResumeCardItem = ({ resume }) => {
-  console.log(resume);
+  // Get the theme color
+  const themeColor = resume?.attributes?.themeColor;
 
   return (
     <Link to={`/dashboard/resume/${resume.id}/edit`}>
@@ -22,9 +23,8 @@ const ResumeCardItem = ({ resume }) => {
        * =======================================================
        */}
       <div
-        className="p-14 bg-gradient-to-r from-teal-400 to-blue-500 flex items-center justify-center 
-      h-[280px] border-t-4 rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
-        style={{ borderColor: "green" }}
+        className="p-14 flex items-center justify-center h-[280px] border rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
+        style={{ backgroundColor: themeColor }}
       >
         <Notebook />
       </div>

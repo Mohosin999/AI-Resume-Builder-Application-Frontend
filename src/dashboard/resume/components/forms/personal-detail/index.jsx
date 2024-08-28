@@ -15,6 +15,9 @@ const PersonalDetail = ({ setEnableNext }) => {
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
+  console.log("resume info -> ", resumeInfo);
+  console.log("resume info -> ", resumeInfo?.firstName);
+
   // Get the resume id from url
   const params = useParams();
 
@@ -84,7 +87,7 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="firstName"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.firstName}
+              defaultValue={resumeInfo?.attributes?.firstName}
             />
           </div>
           {/* Last Name */}
@@ -94,7 +97,7 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="lastName"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.lastName}
+              defaultValue={resumeInfo?.attributes?.lastName}
             />
           </div>
           {/* Job Title */}
@@ -104,7 +107,7 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="jobTitle"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.jobTitle}
+              defaultValue={resumeInfo?.attributes?.jobTitle}
             />
           </div>
           {/* Address */}
@@ -114,7 +117,7 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="address"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.address}
+              defaultValue={resumeInfo?.attributes?.address}
             />
           </div>
           {/* Phone */}
@@ -124,7 +127,7 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="phone"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.phone}
+              defaultValue={resumeInfo?.attributes?.phone}
             />
           </div>
           {/* Email */}
@@ -134,7 +137,17 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="email"
               required
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.email}
+              defaultValue={resumeInfo?.attributes?.email}
+            />
+          </div>
+          {/* Theme Default */}
+          <div className="col-span-2">
+            <label className="text-sm">Theme Color</label>
+            <Input
+              name="themeColor"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.attributes?.themeColor}
             />
           </div>
         </div>

@@ -7,48 +7,48 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
       <h2
         className="font-bold text-xl text-center"
         style={{
-          color: resumeInfo?.themeColor,
+          color: resumeInfo?.attributes?.themeColor,
         }}
       >
-        {resumeInfo?.firstName} {resumeInfo?.lastName}
+        {resumeInfo?.attributes?.firstName} {resumeInfo?.attributes?.lastName}
       </h2>
       {/* Job title */}
       <h2 className="font-medium text-sm text-center">
-        {resumeInfo?.jobTitle}
+        {resumeInfo?.attributes?.jobTitle}
       </h2>
       {/* Address */}
       <h2
         className="font-normal text-xs text-center"
         style={{
-          color: resumeInfo?.themeColor,
+          color: resumeInfo?.attributes?.themeColor,
         }}
       >
-        {resumeInfo?.address}
+        {resumeInfo?.attributes?.address}
       </h2>
       {/* Phone & Email */}
       <div className="flex justify-between">
         <h2
           className="font-normal text-xs"
           style={{
-            color: resumeInfo?.themeColor,
+            color: resumeInfo?.attributes?.themeColor,
           }}
         >
-          {resumeInfo?.phone}
+          {resumeInfo?.attributes?.phone}
         </h2>
         <h2
           className="font-normal text-xs"
           style={{
-            color: resumeInfo?.themeColor,
+            color: resumeInfo?.attributes?.themeColor,
           }}
         >
-          {resumeInfo?.email}
+          {resumeInfo?.attributes?.email}
         </h2>
       </div>
 
       {/* Horizontal line */}
       <hr
         className="border-[1.5px] my-2"
-        style={{ borderColor: resumeInfo?.themeColor }}
+        style={{ borderColor: resumeInfo?.attributes?.themeColor }}
       />
     </div>
   );

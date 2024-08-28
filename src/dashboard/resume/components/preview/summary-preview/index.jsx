@@ -1,7 +1,7 @@
 import React from "react";
 
 const SummaryPreview = ({ resumeInfo }) => {
-  return <p className="text-xs">{resumeInfo?.summary}</p>;
+  return <p className="text-xs">{resumeInfo?.attributes?.summary}</p>;
 };
 
 export default SummaryPreview;

@@ -1,42 +1,46 @@
 import React from "react";
 
 const ExperiencePreview = ({ resumeInfo }) => {
+  console.log(resumeInfo);
   return (
     <div className="my-6">
       {/* Heading */}
       <h1
         className="font-bold text-sm text-center"
-        style={{ color: resumeInfo?.themeColor }}
+        style={{ color: resumeInfo?.attributes?.themeColor }}
       >
         Professional Experience
       </h1>
       {/* Horizontal line */}
-      <hr className="mt-1" style={{ borderColor: resumeInfo?.themeColor }} />
+      <hr
+        className="mt-1"
+        style={{ borderColor: resumeInfo?.attributes?.themeColor }}
+      />
 
       {/* Map the resumeInfo */}
-      {resumeInfo?.experience.map((experience, index) => (
+      {resumeInfo?.attributes?.experience?.map((item, index) => (
         <div key={index} className="my-5">
           {/* Title */}
           <h2
             className="font-bold text-sm"
-            style={{ color: resumeInfo?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor }}
           >
-            {experience?.title}
+            {item?.title}
           </h2>
 
           {/* Company location */}
           <h2 className="text-xs flex justify-between">
-            {experience?.companyName} {experience?.city} {experience?.state}
+            {item?.companyName} {item?.city} {item?.state}
             {/* Start and end date or present situation */}
             <span>
-              {experience?.startDate}{" "}
-              {experience?.currentlyWorking ? "Present" : experience?.endDate}
+              {item?.startDate}{" "}
+              {item?.currentlyWorking ? "Present" : item?.endDate}
             </span>
           </h2>
 
           {/* Work summary */}
           {/* <p className="text-xs my-2">{experience?.workSummary}</p> */}
-          <div dangerouslySetInnerHTML={{ __html: experience?.workSummary }} />
+          <div dangerouslySetInnerHTML={{ __html: item?.workSummary }} />
         </div>
       ))}
     </div>

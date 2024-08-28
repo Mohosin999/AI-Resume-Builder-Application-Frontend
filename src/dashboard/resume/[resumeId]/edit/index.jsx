@@ -11,13 +11,15 @@ const EditResume = () => {
   const params = useParams();
 
   useEffect(() => {
-    setResumeInfo(dummy);
     GetResumeInfo();
   }, []);
 
+  /**
+   * Function to get specific resume information
+   */
   const GetResumeInfo = () => {
     GlobalApi.GetResumeById(params?.resumeId).then((res) => {
-      console.log(res.data.data);
+      setResumeInfo(res?.data?.data);
     });
   };
 

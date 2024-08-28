@@ -23,6 +23,7 @@ const Summary = ({ setEnableNext }) => {
   const [summary, setSummary] = useState();
   const [loading, setLoading] = useState(false);
   const [aiGeneratedSummaryList, setAiGeneratedSummaryList] = useState();
+
   console.log("state ->", aiGeneratedSummaryList);
 
   // Destructuring resume information from useContext
@@ -33,10 +34,16 @@ const Summary = ({ setEnableNext }) => {
 
   // Effect to update the resumeInfo when summary will change
   useEffect(() => {
+    console.log("summary ", summary);
+    console.log("resume sum Info ", resumeInfo);
+
     summary &&
       setResumeInfo({
         ...resumeInfo,
-        summary: summary,
+        attributes: {
+          ...resumeInfo?.attributes,
+          summary: summary,
+        },
       });
   }, [summary]);
 
@@ -136,7 +143,7 @@ const Summary = ({ setEnableNext }) => {
           <Textarea
             className="mt-5"
             required
-            defaultValue={resumeInfo?.summary}
+            defaultValue={resumeInfo?.attributes?.summary}
             // onChange={(e) => setSummary(e.target.value)}
             onChange={(e) => {
               setEnableNext(false);

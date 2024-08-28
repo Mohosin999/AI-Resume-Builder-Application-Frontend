@@ -11,7 +11,8 @@ export default {
   address: "",
   phone: "",
   email: "",
-  themeColor: "#ff6666",
+  // themeColor: "#ff6666",
+  themeColor: "",
   summary: "",
   experience: [
     {

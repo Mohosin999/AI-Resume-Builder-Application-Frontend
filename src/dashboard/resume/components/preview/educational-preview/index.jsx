@@ -14,26 +14,26 @@ const EducationalPreview = ({ resumeInfo }) => {
       <hr className="mt-1" style={{ borderColor: resumeInfo?.themeColor }} />
 
       {/* Map the resumeInfo */}
-      {resumeInfo?.education.map((education, index) => (
+      {resumeInfo?.education?.map((item, index) => (
         <div key={index} className="my-5">
           {/* University name */}
           <h2
             className="font-bold text-sm"
             style={{ color: resumeInfo?.themeColor }}
           >
-            {education?.universityName}
+            {item?.universityName}
           </h2>
 
           {/* Degree name */}
           <h2 className="text-xs flex justify-between">
-            {education?.degree} in {education?.major}
+            {item?.degree} in {item?.major}
             <span>
-              {education?.startDate} - {education?.endDate}
+              {item?.startDate} - {item?.endDate}
             </span>
           </h2>
 
           {/* Education description */}
-          <p className="text-xs my-2">{education?.description}</p>
+          <p className="text-xs my-2">{item?.description}</p>
         </div>
       ))}
     </div>
