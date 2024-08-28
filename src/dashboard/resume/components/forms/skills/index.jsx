@@ -84,7 +84,7 @@ const Skills = () => {
       },
     };
 
-    GlobalApi.updateResumeDetails(params?.resumeId, data).then(
+    GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setLoading(false);
         toast("Education Details Updated Successfully !");

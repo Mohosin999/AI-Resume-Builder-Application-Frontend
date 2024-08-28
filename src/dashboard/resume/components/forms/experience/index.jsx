@@ -8,20 +8,21 @@ import RichTextEditor from "../../rich-text-editor";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { toast } from "sonner";
 
-// Initialize an object
-const formField = {
-  title: "",
-  companyName: "",
-  city: "",
-  state: "",
-  startDate: "",
-  endDate: "",
-  workSummary: "",
-};
-
 const Experience = () => {
   // States
-  const [experienceList, setExperienceList] = useState([formField]);
+  const [experienceList, setExperienceList] = useState([
+    {
+      title: "",
+      companyName: "",
+      city: "",
+      state: "",
+      startDate: "",
+      endDate: "",
+      workSummary: "",
+    },
+  ]);
+
+  console.log(experienceList);
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume information from context
@@ -60,7 +61,18 @@ const Experience = () => {
    * ===============================
    */
   const handleAddExperience = () => {
-    setExperienceList([...experienceList, formField]);
+    setExperienceList([
+      ...experienceList,
+      {
+        title: "",
+        companyName: "",
+        city: "",
+        state: "",
+        startDate: "",
+        endDate: "",
+        workSummary: "",
+      },
+    ]);
   };
 
   /**
@@ -86,9 +98,8 @@ const Experience = () => {
       },
     };
 
-    GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
+    GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
-        console.log(res);
         setLoading(false);
         toast("Details updated !");
       },

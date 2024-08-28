@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element}
  */
 const ResumeCardItem = ({ resume }) => {
+  console.log(resume);
+
   return (
     <Link to={`/dashboard/resume/${resume.id}/edit`}>
       {/*
@@ -20,8 +22,9 @@ const ResumeCardItem = ({ resume }) => {
        * =======================================================
        */}
       <div
-        className="p-14 bg-secondary flex items-center justify-center 
-      h-[280px] border border-primary rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
+        className="p-14 bg-gradient-to-r from-teal-400 to-blue-500 flex items-center justify-center 
+      h-[280px] border-t-4 rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
+        style={{ borderColor: "green" }}
       >
         <Notebook />
       </div>

@@ -92,7 +92,7 @@ const Education = ({ setEnableNext }) => {
       },
     };
 
-    GlobalApi.updateResumeDetails(params?.resumeId, data).then(
+    GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setLoading(false);
         setEnableNext(true);

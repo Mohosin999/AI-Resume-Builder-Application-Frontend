@@ -56,7 +56,7 @@ const PersonalDetail = ({ setEnableNext }) => {
       data: formData,
     };
 
-    GlobalApi.updateResumeDetails(params?.resumeId, data).then(
+    GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setEnableNext(true);
         setLoading(false);

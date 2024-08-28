@@ -27,12 +27,16 @@ const GetUserResumes = (userEmail) =>
   axiosClient.get(`/user-resumes?filters[userEmail][$eq]=${userEmail}`);
 
 // Function to update the resume information
-const updateResumeDetails = (id, data) =>
+const UpdateResumeDetails = (id, data) =>
   axiosClient.put(`/user-resumes/${id}`, data);
+
+// Function to get user resume by Id
+const GetResumeById = (id) => axiosClient.get(`/user-resumes/${id}`);
 
 // Export the CreateNewResume function as part of the default export.
 export default {
   CreateNewResume,
   GetUserResumes,
-  updateResumeDetails,
+  UpdateResumeDetails,
+  GetResumeById,
 };

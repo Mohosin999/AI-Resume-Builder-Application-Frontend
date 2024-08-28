@@ -32,9 +32,9 @@ const PROMPT =
  * @param {*} param0
  * @returns
  */
-const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
+const RichTextEditor = ({ onRichTextEditorChange, index }) => {
   // States
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume related information from context
@@ -47,7 +47,7 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
    */
   const GenerateSummaryFromAI = async () => {
     // Check if there is no experience title, add it first
-    if (!resumeInfo?.experience[index]?.title) {
+    if (!resumeInfo?.experience[index].title) {
       toast("Please Add Position Title");
       return;
     }
@@ -57,7 +57,7 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
 
     const prompt = PROMPT.replace(
       "{positionTitle}",
-      resumeInfo.experience[index].title
+      resumeInfo?.experience[index].title
     );
 
     const result = await AIChatSession.sendMessage(prompt);
