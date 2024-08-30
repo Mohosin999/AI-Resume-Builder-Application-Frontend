@@ -6,20 +6,23 @@ const EducationalPreview = ({ resumeInfo }) => {
       {/* Heading */}
       <h1
         className="font-bold text-sm text-center"
-        style={{ color: resumeInfo?.themeColor }}
+        style={{ color: resumeInfo?.attributes?.themeColor }}
       >
         Education
       </h1>
       {/* Horizontal line */}
-      <hr className="mt-1" style={{ borderColor: resumeInfo?.themeColor }} />
+      <hr
+        className="mt-1"
+        style={{ borderColor: resumeInfo?.attributes?.themeColor }}
+      />
 
       {/* Map the resumeInfo */}
-      {resumeInfo?.education?.map((item, index) => (
+      {resumeInfo?.attributes?.education?.map((item, index) => (
         <div key={index} className="my-5">
           {/* University name */}
           <h2
             className="font-bold text-sm"
-            style={{ color: resumeInfo?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor }}
           >
             {item?.universityName}
           </h2>

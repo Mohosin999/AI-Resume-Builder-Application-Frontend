@@ -30,11 +30,10 @@ const Education = ({ setEnableNext }) => {
 
   // Effect of updating resumeInfo while educationalList will changes
   useEffect(() => {
-    setResumeInfo({
-      ...resumeInfo,
-      education: educationalList,
-    });
-  }, [educationalList]);
+    if (resumeInfo?.attributes?.education?.length) {
+      setEducationalList(resumeInfo.attributes.education);
+    }
+  }, [resumeInfo]);
 
   /**
    * ==========================================================
@@ -53,8 +52,17 @@ const Education = ({ setEnableNext }) => {
     const newEntries = educationalList.slice();
     // Set the value of the specified index
     newEntries[index][name] = value;
-    // Set newEntries inside experience list
+    // Update the state
     setEducationalList(newEntries);
+
+    // Update resumeInfo context
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        education: newEntries,
+      },
+    });
   };
 
   /**
@@ -132,6 +140,7 @@ const Education = ({ setEnableNext }) => {
                   <Input
                     name="universityName"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.universityName}
                   />
                 </div>
                 {/* Degree */}
@@ -140,6 +149,7 @@ const Education = ({ setEnableNext }) => {
                   <Input
                     name="degree"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.degree}
                   />
                 </div>
                 {/* Major */}
@@ -148,6 +158,7 @@ const Education = ({ setEnableNext }) => {
                   <Input
                     name="major"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.major}
                   />
                 </div>
                 {/* Start Date */}
@@ -157,6 +168,7 @@ const Education = ({ setEnableNext }) => {
                     name="startDate"
                     type="date"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.startDate}
                   />
                 </div>
                 {/* End Date */}
@@ -166,6 +178,7 @@ const Education = ({ setEnableNext }) => {
                     name="endDate"
                     type="date"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.endDate}
                   />
                 </div>
                 {/* Description */}
@@ -174,6 +187,7 @@ const Education = ({ setEnableNext }) => {
                   <Textarea
                     name="description"
                     onChange={(event) => handleChange(event, index)}
+                    defaultValue={item?.description}
                   />
                 </div>
               </div>
