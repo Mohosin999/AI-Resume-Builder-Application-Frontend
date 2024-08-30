@@ -39,7 +39,10 @@ const PersonalDetail = ({ setEnableNext }) => {
     // Update the resume information
     setResumeInfo({
       ...resumeInfo,
-      [name]: value,
+      attributes: {
+        ...resumeInfo?.attributes,
+        [name]: value,
+      },
     });
   };
 
