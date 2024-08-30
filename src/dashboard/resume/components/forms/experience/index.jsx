@@ -21,8 +21,6 @@ const Experience = () => {
       workSummary: "",
     },
   ]);
-
-  console.log(experienceList);
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume information from context
@@ -31,13 +29,12 @@ const Experience = () => {
   // Get the specific id
   const params = useParams();
 
-  // Effect of updating resumeInfo while experienceList will changes
+  // Load existing experience data into form fields
   useEffect(() => {
-    setResumeInfo({
-      ...resumeInfo,
-      experience: experienceList,
-    });
-  }, [experienceList]);
+    if (resumeInfo?.attributes?.experience?.length) {
+      setExperienceList(resumeInfo.attributes.experience);
+    }
+  }, [resumeInfo]);
 
   /**
    * =====================================
@@ -52,7 +49,18 @@ const Experience = () => {
     // Set the value of the specified index
     newEntries[index][name] = value;
     // Set newEntries inside experience list
+
+    // Update the state
     setExperienceList(newEntries);
+
+    // Update resumeInfo context
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        experience: newEntries,
+      },
+    });
   };
 
   /**

@@ -1,7 +1,8 @@
 import React from "react";
 
 const ExperiencePreview = ({ resumeInfo }) => {
-  console.log(resumeInfo);
+  console.log("resumeInfo", resumeInfo?.attributes?.experience);
+
   return (
     <div className="my-6">
       {/* Heading */}

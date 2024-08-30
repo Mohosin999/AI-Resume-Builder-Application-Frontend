@@ -11,7 +11,6 @@ const PersonalDetail = ({ setEnableNext }) => {
   // States
   const [formData, setFormData] = useState();
   const [loading, setLoading] = useState(false);
-  console.log(formData, "k");
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
