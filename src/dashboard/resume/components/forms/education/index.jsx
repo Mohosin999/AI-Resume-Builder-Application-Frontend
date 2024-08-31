@@ -28,7 +28,7 @@ const Education = ({ setEnableNext }) => {
   // Get the specific id
   const params = useParams();
 
-  // Effect of updating resumeInfo while educationalList will changes
+  // Load existing experience data into form fields
   useEffect(() => {
     if (resumeInfo?.attributes?.education?.length) {
       setEducationalList(resumeInfo.attributes.education);

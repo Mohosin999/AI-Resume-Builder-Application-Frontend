@@ -12,6 +12,14 @@
   list-style: decimal;
   padding-left: 2em;
 }
+
+ol,
+ul,
+menu {
+  list-style: disc;
+  margin: 0;
+  padding: 0;
+}
 /* Apply Reach Text Bullet Point Style - End */
 
 @layer base {

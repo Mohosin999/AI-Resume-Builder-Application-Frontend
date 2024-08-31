@@ -128,6 +128,15 @@ const Experience = () => {
     newEntries[index][name] = e.target.value;
     // Set newEntries inside experience list
     setExperienceList(newEntries);
+
+    // Update resumeInfo context when I update rich_text_editor
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        experience: newEntries,
+      },
+    });
   };
 
   return (
@@ -206,6 +215,7 @@ const Experience = () => {
                   {/* Work Summary */}
                   <RichTextEditor
                     index={index}
+                    defaultValue={item?.workSummary}
                     onRichTextEditorChange={(event) =>
                       handleRichTextEditor(event, "workSummary", index)
                     }

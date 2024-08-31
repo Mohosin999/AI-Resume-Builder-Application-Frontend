@@ -1,8 +1,6 @@
 import React from "react";
 
 const ExperiencePreview = ({ resumeInfo }) => {
-  console.log("resumeInfo", resumeInfo?.attributes?.experience);
-
   return (
     <div className="my-6">
       {/* Heading */}
@@ -41,7 +39,10 @@ const ExperiencePreview = ({ resumeInfo }) => {
 
           {/* Work summary */}
           {/* <p className="text-xs my-2">{experience?.workSummary}</p> */}
-          <div dangerouslySetInnerHTML={{ __html: item?.workSummary }} />
+          <div
+            className="text-xs"
+            dangerouslySetInnerHTML={{ __html: item?.workSummary }}
+          />
         </div>
       ))}
     </div>

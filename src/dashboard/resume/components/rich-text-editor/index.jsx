@@ -32,9 +32,11 @@ const PROMPT =
  * @param {*} param0
  * @returns
  */
-const RichTextEditor = ({ onRichTextEditorChange, index }) => {
+const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
   // States
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(defaultValue);
+  console.log("value -> ", value)
+  console.log("defaultValue -> ", defaultValue)
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume related information from context

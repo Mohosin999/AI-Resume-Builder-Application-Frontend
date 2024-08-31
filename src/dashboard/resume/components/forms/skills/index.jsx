@@ -27,13 +27,12 @@ const Skills = () => {
   // Get the specific id
   const params = useParams();
 
-  // Effect of updating resumeInfo while skillsList will changes
+  // Load existing experience data into form fields
   useEffect(() => {
-    setResumeInfo({
-      ...resumeInfo,
-      skills: skillsList,
-    });
-  }, [skillsList]);
+    if (resumeInfo?.attributes?.skills?.length) {
+      setSkillsList(resumeInfo.attributes.skills);
+    }
+  }, [resumeInfo]);
 
   /**
    * ==========================================================
@@ -49,8 +48,17 @@ const Skills = () => {
     const newEntries = skillsList.slice();
     // Set the value of the specified index
     newEntries[index][name] = value;
-    // Set newEntries inside experience list
+    // Update the state
     setSkillsList(newEntries);
+
+    // Update resumeInfo context
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        skills: newEntries,
+      },
+    });
   };
 
   /**
@@ -114,7 +122,7 @@ const Skills = () => {
          * ===============================================
          */}
         <div>
-          {skillsList.map((item, index) => (
+          {skillsList?.map((item, index) => (
             <div
               key={index}
               className="flex justify-between border rounded-lg p-3 mb-2"
@@ -124,6 +132,7 @@ const Skills = () => {
                 <Input
                   onChange={(e) => handleChange(index, "name", e.target.value)}
                   className="w-full"
+                  defaultValue={item?.name}
                 />
               </div>
 
