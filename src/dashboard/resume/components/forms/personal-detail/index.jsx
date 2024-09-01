@@ -14,9 +14,17 @@ const PersonalDetail = ({ setEnableNext }) => {
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  console.log("pd ", resumeInfo);
+  console.log("pd ", resumeInfo?.attributes?.socialLink);
 
   // Get the resume id from url
   const params = useParams();
+
+  const extractDomain = (url) => {
+    // Remove the protocol (http, https, etc.) and 'www.' prefix
+    let domain = url.replace(/^(https?:\/\/)?(www\.)?/, "");
+    return domain;
+  };
 
   /**
    * =========================================================
@@ -29,10 +37,13 @@ const PersonalDetail = ({ setEnableNext }) => {
 
     const { name, value } = e.target;
 
+    // Check if the input field is for the social link
+    const processedValue = name === "socialLink" ? extractDomain(value) : value;
+
     // Update the form data only
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: processedValue,
     });
 
     // Update the resume information
@@ -40,7 +51,7 @@ const PersonalDetail = ({ setEnableNext }) => {
       ...resumeInfo,
       attributes: {
         ...resumeInfo?.attributes,
-        [name]: value,
+        [name]: processedValue,
       },
     });
   };
@@ -82,7 +93,7 @@ const PersonalDetail = ({ setEnableNext }) => {
         <div className="grid grid-cols-2 mt-5 gap-3">
           {/* First Name */}
           <div>
-            <label className="text-sm">First Name</label>
+            <label className="text-sm">First Name*</label>
             <Input
               name="firstName"
               required
@@ -92,7 +103,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Last Name */}
           <div>
-            <label className="text-sm">Last Name</label>
+            <label className="text-sm">Last Name*</label>
             <Input
               name="lastName"
               required
@@ -102,37 +113,18 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Job Title */}
           <div className="col-span-2">
-            <label className="text-sm">Job Title</label>
+            <label className="text-sm">Job Title*</label>
             <Input
               name="jobTitle"
               required
               onChange={handleInputChange}
+              placeholder="E. g. Frontend Developer"
               defaultValue={resumeInfo?.attributes?.jobTitle}
-            />
-          </div>
-          {/* Address */}
-          <div className="col-span-2">
-            <label className="text-sm">Address</label>
-            <Input
-              name="address"
-              required
-              onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.address}
-            />
-          </div>
-          {/* Phone */}
-          <div>
-            <label className="text-sm">Phone</label>
-            <Input
-              name="phone"
-              required
-              onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.phone}
             />
           </div>
           {/* Email */}
           <div>
-            <label className="text-sm">Email</label>
+            <label className="text-sm">Email*</label>
             <Input
               name="email"
               required
@@ -140,12 +132,33 @@ const PersonalDetail = ({ setEnableNext }) => {
               defaultValue={resumeInfo?.attributes?.email}
             />
           </div>
+          {/* Social Link */}
+          <div>
+            <label className="text-sm">Social Link*</label>
+            <Input
+              name="socialLink"
+              placeholder="E. g. twitter.com/mohosinh99"
+              required
+              onChange={handleInputChange}
+              defaultValue={resumeInfo?.attributes?.socialLink}
+            />
+          </div>
+          {/* Address */}
+          <div className="col-span-2">
+            <label className="text-sm">Address*</label>
+            <Input
+              name="address"
+              required
+              onChange={handleInputChange}
+              placeholder="Division, Country"
+              defaultValue={resumeInfo?.attributes?.address}
+            />
+          </div>
           {/* Theme Default */}
           <div className="col-span-2">
             <label className="text-sm">Theme Color</label>
             <Input
               name="themeColor"
-              required
               onChange={handleInputChange}
               defaultValue={resumeInfo?.attributes?.themeColor}
             />
