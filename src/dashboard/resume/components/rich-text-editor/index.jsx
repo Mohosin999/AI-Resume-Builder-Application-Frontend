@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Brain, LoaderCircle } from "lucide-react";
 import {
@@ -35,12 +35,15 @@ const PROMPT =
 const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
   // States
   const [value, setValue] = useState(defaultValue);
-  console.log("value -> ", value)
-  console.log("defaultValue -> ", defaultValue)
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+
+  // Set value when `defaultValue` value changes
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   /**
    * ================================================
