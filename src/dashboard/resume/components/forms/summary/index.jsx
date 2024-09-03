@@ -78,7 +78,10 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           <Button
             size="sm"
             variant="outline"
-            onClick={() => setActiveFormIndex(activeFormIndex + 1)}
+            onClick={() => {
+              setActiveFormIndex(activeFormIndex + 1);
+              setEnableNext(true);
+            }}
           >
             Skip
           </Button>

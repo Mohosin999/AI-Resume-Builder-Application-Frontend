@@ -14,12 +14,20 @@ const PersonalDetail = ({ setEnableNext }) => {
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  console.log("pd ", resumeInfo);
-  console.log("pd ", resumeInfo?.attributes?.socialLink);
+  console.log("resumeInfo -> ", resumeInfo?.attributes?.["firstName"]);
 
   // Get the resume id from url
   const params = useParams();
 
+  /**
+   * =========================================================
+   *        Functions & Handler Functions - Start
+   * =========================================================
+   */
+
+  /**
+   * Function to remove `http or https` and `www.` from a link
+   */
   const extractDomain = (url) => {
     // Remove the protocol (http, https, etc.) and 'www.' prefix
     let domain = url.replace(/^(https?:\/\/)?(www\.)?/, "");
@@ -27,9 +35,7 @@ const PersonalDetail = ({ setEnableNext }) => {
   };
 
   /**
-   * =========================================================
    * Function to handle the input changes in the resume form.
-   * =========================================================
    */
   const handleInputChange = (e) => {
     // Next button will be disabled at the time of editing information
@@ -57,9 +63,7 @@ const PersonalDetail = ({ setEnableNext }) => {
   };
 
   /**
-   * =====================================================
    * Function to handle the saving of the resume details.
-   * =====================================================
    */
   const handleSave = (e) => {
     e.preventDefault();
@@ -81,6 +85,11 @@ const PersonalDetail = ({ setEnableNext }) => {
       }
     );
   };
+  /**
+   * =========================================================
+   *          Functions & Handler Functions - End
+   * =========================================================
+   */
 
   return (
     <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
@@ -97,8 +106,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Input
               name="firstName"
               required
+              value={resumeInfo?.attributes?.firstName}
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.firstName}
             />
           </div>
           {/* Last Name */}
@@ -107,8 +116,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Input
               name="lastName"
               required
+              value={resumeInfo?.attributes?.lastName}
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.lastName}
             />
           </div>
           {/* Job Title */}
@@ -118,8 +127,8 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="jobTitle"
               required
               onChange={handleInputChange}
+              value={resumeInfo?.attributes?.jobTitle}
               placeholder="E. g. Frontend Developer"
-              defaultValue={resumeInfo?.attributes?.jobTitle}
             />
           </div>
           {/* Email */}
@@ -128,8 +137,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Input
               name="email"
               required
+              value={resumeInfo?.attributes?.email}
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.email}
             />
           </div>
           {/* Social Link */}
@@ -139,8 +148,8 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="socialLink"
               placeholder="E. g. twitter.com/mohosinh99"
               required
+              value={resumeInfo?.attributes?.socialLink}
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.socialLink}
             />
           </div>
           {/* Address */}
@@ -150,8 +159,8 @@ const PersonalDetail = ({ setEnableNext }) => {
               name="address"
               required
               onChange={handleInputChange}
+              value={resumeInfo?.attributes?.address}
               placeholder="Division, Country"
-              defaultValue={resumeInfo?.attributes?.address}
             />
           </div>
           {/* Theme Default */}
@@ -159,8 +168,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             <label className="text-sm">Theme Color</label>
             <Input
               name="themeColor"
+              value={resumeInfo?.attributes?.themeColor}
               onChange={handleInputChange}
-              defaultValue={resumeInfo?.attributes?.themeColor}
             />
           </div>
         </div>

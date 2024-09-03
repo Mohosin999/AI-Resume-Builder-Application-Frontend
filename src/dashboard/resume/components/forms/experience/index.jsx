@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
-import RichTextEditor from "../../rich-text-editor";
 import GlobalApi from "../../../../../../service/GlobalApi";
-import { toast } from "sonner";
+import RichTextEditor from "../../rich-text-editor";
 
-const Experience = () => {
+const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
   const [experienceList, setExperienceList] = useState([
     {
@@ -22,7 +22,6 @@ const Experience = () => {
     },
   ]);
   const [loading, setLoading] = useState(false);
-  console.log("exl ", experienceList);
 
   // Destructuring resume information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -44,6 +43,7 @@ const Experience = () => {
    */
   const handleChange = (index, event) => {
     const { name, value } = event.target;
+    setEnableNext(false);
 
     // Create a shallow copy of the `experienceList` array
     const newEntries = experienceList.slice();
@@ -85,16 +85,10 @@ const Experience = () => {
   };
 
   /**
-   * ==============================
-   * Function to remove experience
-   * ==============================
+   * =========================================
+   * Function to remove a specific experience
+   * =========================================
    */
-  // const handleRemoveExperience = () => {
-  //   // setExperienceList((experienceList) => experienceList.slice(0, -1));
-  //   setExperienceList((prev) => prev.slice(0, -1));
-  // };
-
-  // Function to remove a specific experience
   const handleRemoveExperience = (indexToRemove) => {
     const newEntries = experienceList.filter(
       (_, index) => index !== indexToRemove
@@ -140,10 +134,10 @@ const Experience = () => {
    * Function to handle rich text editor
    * ====================================
    */
-  const handleRichTextEditor = (e, name, index) => {
+  const handleRichTextEditor = (newContent, name, index) => {
     // Create a shallow copy of the `experienceList` array
     const newEntries = experienceList.slice();
-    newEntries[index][name] = e.target.value;
+    newEntries[index][name] = newContent;
     // Set newEntries inside experience list
     setExperienceList(newEntries);
 
@@ -160,8 +154,21 @@ const Experience = () => {
   return (
     <div>
       <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
-        {/* Heading */}
-        <h2 className="font-bold text-lg">Experience</h2>
+        {/* Heading and Skip Button */}
+        <div className="flex justify-between">
+          <h2 className="font-bold text-lg">Experience</h2>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              setActiveFormIndex(activeFormIndex + 1);
+              setEnableNext(true);
+            }}
+          >
+            Skip
+          </Button>
+        </div>
+        {/* Sub Heading */}
         <p>Add your previous work experience</p>
 
         {/*
@@ -254,8 +261,8 @@ const Experience = () => {
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}
-                      onRichTextEditorChange={(event) =>
-                        handleRichTextEditor(event, "workSummary", index)
+                      onRichTextEditorChange={(newContent) =>
+                        handleRichTextEditor(newContent, "workSummary", index)
                       }
                     />
                   </div>
