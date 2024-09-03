@@ -9,7 +9,7 @@ import Skills from "../forms/skills";
 
 const FormSection = () => {
   // Define index to move next or previous portion
-  const [activeFormIndex, setActiveFormIndex] = useState(1);
+  const [activeFormIndex, setActiveFormIndex] = useState(2);
   const [enableNext, setEnableNext] = useState(true);
 
   return (
@@ -24,6 +24,7 @@ const FormSection = () => {
         <Button variant="outline" className="flex gap-2" size="sm">
           <LayoutGrid /> Theme
         </Button>
+
         {/* Previous & Next buttons */}
         <div className="flex gap-2">
           {/* If index is greater than 1, only then show the previous button */}
@@ -58,11 +59,23 @@ const FormSection = () => {
       {activeFormIndex === 1 ? (
         <PersonalDetail setEnableNext={setEnableNext} />
       ) : activeFormIndex === 2 ? (
-        <Summary setEnableNext={setEnableNext} />
+        <Summary
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
       ) : activeFormIndex === 3 ? (
-        <Experience setEnableNext={setEnableNext} />
+        <Experience
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
       ) : activeFormIndex === 4 ? (
-        <Education setEnableNext={setEnableNext} />
+        <Education
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
       ) : activeFormIndex === 5 ? (
         <Skills setEnableNext={setEnableNext} />
       ) : null}

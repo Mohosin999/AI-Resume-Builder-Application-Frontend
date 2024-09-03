@@ -50,7 +50,7 @@ import React from "react";
 const EducationalPreview = ({ resumeInfo }) => {
   return (
     <>
-      {resumeInfo && (
+      {resumeInfo?.attributes?.education?.length > 0 && (
         <div className="my-6">
           {/* Heading */}
           <h1
