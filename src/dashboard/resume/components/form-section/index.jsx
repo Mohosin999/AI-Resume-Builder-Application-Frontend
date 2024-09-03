@@ -9,7 +9,7 @@ import Skills from "../forms/skills";
 
 const FormSection = () => {
   // Define index to move next or previous portion
-  const [activeFormIndex, setActiveFormIndex] = useState(2);
+  const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(true);
 
   return (
