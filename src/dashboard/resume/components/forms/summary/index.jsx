@@ -99,7 +99,7 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           {/* Textarea */}
           <Textarea
             className="mt-5"
-            defaultValue={resumeInfo?.attributes?.summary}
+            value={resumeInfo?.attributes?.summary}
             // onChange={(e) => setSummary(e.target.value)}
             onChange={(e) => {
               setEnableNext(false);

@@ -4,16 +4,11 @@ import { Brain, LoaderCircle } from "lucide-react";
 import {
   BtnBold,
   BtnBulletList,
-  BtnClearFormatting,
   BtnItalic,
   BtnLink,
-  BtnNumberedList,
-  BtnStrikeThrough,
-  BtnStyles,
   BtnUnderline,
   Editor,
   EditorProvider,
-  HtmlButton,
   Separator,
   Toolbar,
 } from "react-simple-wysiwyg";
@@ -32,9 +27,9 @@ const PROMPT =
  * @param {*} param0
  * @returns
  */
-const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
+const RichTextEditor = ({ onRichTextEditorChange, index, value }) => {
   // States
-  const [value, setValue] = useState(defaultValue);
+  const [textValue, setTextValue] = useState(value);
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume related information from context
@@ -42,8 +37,8 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
 
   // Set value when `defaultValue` value changes
   useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue]);
+    setTextValue(value);
+  }, [value]);
 
   /**
    * ================================================
@@ -69,7 +64,7 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
     // const res = JSON.parse(result.response.text());
     const res = result.response.text();
 
-    setValue(res.replace("[", "").replace("]", ""));
+    setTextValue(res.replace("[", "").replace("]", ""));
     setLoading(false);
   };
 
@@ -106,9 +101,9 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
        */}
       <EditorProvider>
         <Editor
-          value={value}
+          value={textValue}
           onChange={(e) => {
-            setValue(e.target.value);
+            setTextValue(e.target.value);
             onRichTextEditorChange(e);
           }}
         >
@@ -116,12 +111,9 @@ const RichTextEditor = ({ onRichTextEditorChange, index, defaultValue }) => {
             <BtnBold />
             <BtnItalic />
             <BtnUnderline />
-            <BtnStrikeThrough />
-            <Separator />
-            <BtnNumberedList />
-            <BtnBulletList />
-            <Separator />
             <BtnLink />
+            <Separator />
+            <BtnBulletList />
           </Toolbar>
         </Editor>
       </EditorProvider>
