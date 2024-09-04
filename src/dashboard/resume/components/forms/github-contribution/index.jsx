@@ -8,9 +8,13 @@ import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 
-const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+const GithubContribution = ({
+  setEnableNext,
+  activeFormIndex,
+  setActiveFormIndex,
+}) => {
   // States
-  const [projectsList, setProjectsList] = useState([
+  const [contributionList, setContributionList] = useState([
     {
       projectsName: "",
       workSummary: "",
@@ -27,7 +31,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // Load existing experience data within form fields
   useEffect(() => {
     if (resumeInfo?.attributes?.projects?.length) {
-      setProjectsList(resumeInfo?.attributes?.projects);
+      setContributionList(resumeInfo?.attributes?.projects);
     }
   }, [resumeInfo]);
 
@@ -41,18 +45,18 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
     setEnableNext(false);
 
     // Create a shallow copy of the `projectsList` array
-    const newEntries = projectsList.slice();
+    const newEntries = contributionList.slice();
     // Set the value of the specified index
     newEntries[index][name] = value;
     // Update the state
-    setProjectsList(newEntries);
+    setContributionList(newEntries);
 
     // Update resumeInfo context
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        projects: newEntries,
+        githubContribution: newEntries,
       },
     });
   };
@@ -63,8 +67,8 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * ===============================
    */
   const handleAddProjects = () => {
-    setProjectsList([
-      ...projectsList,
+    setContributionList([
+      ...contributionList,
       {
         projectsName: "",
         workSummary: "",
@@ -78,17 +82,17 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * =========================================
    */
   const handleRemoveProjects = (indexToRemove) => {
-    const newEntries = projectsList.filter(
+    const newEntries = contributionList.filter(
       (_, index) => index !== indexToRemove
     );
-    setProjectsList(newEntries);
+    setContributionList(newEntries);
 
     // Update resumeInfo context
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        projects: newEntries,
+        githubContribution: newEntries,
       },
     });
   };
@@ -102,7 +106,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
     setLoading(true);
     const data = {
       data: {
-        projects: projectsList,
+        projects: contributionList,
       },
     };
 
@@ -126,17 +130,17 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   const handleRichTextEditor = (newContent, name, index) => {
     setEnableNext(false);
     // Create a shallow copy of the `projectsList` array
-    const newEntries = projectsList.slice();
+    const newEntries = contributionList.slice();
     newEntries[index][name] = newContent;
     // Set newEntries inside experience list
-    setProjectsList(newEntries);
+    setContributionList(newEntries);
 
     // Update resumeInfo context when I update rich_text_editor
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        projects: newEntries,
+        githubContribution: newEntries,
       },
     });
   };
@@ -146,7 +150,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
       <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
         {/* Heading and Skip Button */}
         <div className="flex justify-between">
-          <h2 className="font-bold text-lg">Projects</h2>
+          <h2 className="font-bold text-lg">GitHub Contribution</h2>
           <Button
             size="sm"
             variant="outline"
@@ -159,7 +163,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your existing projects</p>
+        <p>Add your project where you contributed</p>
 
         {/*
          * ===============================================
@@ -167,12 +171,14 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          * ===============================================
          */}
         <div>
-          {projectsList.map((item, index) => (
+          {contributionList.map((item, index) => (
             <div key={index}>
               <div className="border p-3 my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">Project Form</h2>
+                  <h2 className="font-semibold text-blue-700">
+                    GitHub Contribution Form
+                  </h2>
                   {/* Remove Button */}
                   <Button
                     size="sm"
@@ -244,4 +250,4 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   );
 };
 
-export default Projects;
+export default GithubContribution;

@@ -7,6 +7,7 @@ import Experience from "../forms/experience";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
 import Projects from "../forms/projects";
+import GithubContribution from "../forms/github-contribution";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -73,6 +74,12 @@ const FormSection = () => {
         />
       ) : activeFormIndex === 4 ? (
         <Projects
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
+      ) : activeFormIndex === 5 ? (
+        <GithubContribution
           setEnableNext={setEnableNext}
           activeFormIndex={activeFormIndex}
           setActiveFormIndex={setActiveFormIndex}

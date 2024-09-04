@@ -3,9 +3,10 @@ import { ResumeInfoContext } from "../../../../context/ResumeInfoContext";
 import PersonalDetailsPreview from "../preview/personal-details-preview";
 import SummaryPreview from "../preview/summary-preview";
 import ExperiencePreview from "../preview/experience-preview";
+import ProjectsPreview from "../preview/projects-preview";
+import GithubContributionPreview from "../preview/github-contribution-preview";
 import EducationalPreview from "../preview/educational-preview";
 import SkillsPreview from "../preview/skills-preview";
-import ProjectsPreview from "../preview/projects-preview";
 
 const ResumePreview = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -26,6 +27,9 @@ const ResumePreview = () => {
 
       {/* Projects */}
       <ProjectsPreview resumeInfo={resumeInfo} />
+
+      {/* Github Contribution */}
+      <GithubContributionPreview resumeInfo={resumeInfo} />
 
       {/* Educational Details */}
       <EducationalPreview resumeInfo={resumeInfo} />
