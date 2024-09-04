@@ -14,7 +14,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
           </h1>
           {/* Horizontal line */}
           <hr
-            className="mt-1"
+            className="mt-1 mb-3"
             style={{ borderColor: resumeInfo?.attributes?.themeColor }}
           />
 
@@ -23,7 +23,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
             ?.slice() // Create a shallow copy of the array
             .reverse() // Reverse the order of the array
             .map((item, index) => (
-              <div key={index} className="my-5">
+              <div key={index}>
                 {/* Company Name and Location */}
                 <h2
                   className="font-bold text-sm flex justify-between items-center"

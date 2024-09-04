@@ -61,13 +61,13 @@ const EducationalPreview = ({ resumeInfo }) => {
           </h1>
           {/* Horizontal line */}
           <hr
-            className="mt-1"
+            className="mt-1 mb-3"
             style={{ borderColor: resumeInfo?.attributes?.themeColor }}
           />
 
           {/* Map the resumeInfo */}
           {resumeInfo?.attributes?.education?.map((item, index) => (
-            <div key={index} className="my-5">
+            <div key={index}>
               {/* University name */}
               <h2
                 className="font-bold text-sm"

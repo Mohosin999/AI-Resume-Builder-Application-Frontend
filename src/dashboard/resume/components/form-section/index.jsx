@@ -6,6 +6,7 @@ import Summary from "../forms/summary";
 import Experience from "../forms/experience";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
+import Projects from "../forms/projects";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -71,12 +72,18 @@ const FormSection = () => {
           setActiveFormIndex={setActiveFormIndex}
         />
       ) : activeFormIndex === 4 ? (
+        <Projects
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
+      ) : activeFormIndex === 6 ? (
         <Education
           setEnableNext={setEnableNext}
           activeFormIndex={activeFormIndex}
           setActiveFormIndex={setActiveFormIndex}
         />
-      ) : activeFormIndex === 5 ? (
+      ) : activeFormIndex === 7 ? (
         <Skills setEnableNext={setEnableNext} />
       ) : null}
 

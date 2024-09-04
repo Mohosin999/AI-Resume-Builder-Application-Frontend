@@ -8,16 +8,11 @@ import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 
-const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
-  const [experienceList, setExperienceList] = useState([
+  const [projectsList, setProjectsList] = useState([
     {
-      companyName: "",
-      title: "",
-      city: "",
-      state: "",
-      startDate: "",
-      endDate: "",
+      projectsName: "",
       workSummary: "",
     },
   ]);
@@ -25,15 +20,14 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   // Destructuring resume information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  console.log("akash -> ", resumeInfo);
 
   // Get the specific id
   const params = useParams();
 
   // Load existing experience data into form fields
   useEffect(() => {
-    if (resumeInfo?.attributes?.experience?.length) {
-      setExperienceList(resumeInfo?.attributes?.experience);
+    if (resumeInfo?.attributes?.projects?.length) {
+      setProjectsList(resumeInfo?.attributes?.projects);
     }
   }, [resumeInfo]);
 
@@ -46,19 +40,19 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
     const { name, value } = event.target;
     setEnableNext(false);
 
-    // Create a shallow copy of the `experienceList` array
-    const newEntries = experienceList.slice();
+    // Create a shallow copy of the `projectsList` array
+    const newEntries = projectsList.slice();
     // Set the value of the specified index
     newEntries[index][name] = value;
     // Update the state
-    setExperienceList(newEntries);
+    setProjectsList(newEntries);
 
     // Update resumeInfo context
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        experience: newEntries,
+        projects: newEntries,
       },
     });
   };
@@ -68,16 +62,11 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * Function to add new experience
    * ===============================
    */
-  const handleAddExperience = () => {
-    setExperienceList([
-      ...experienceList,
+  const handleAddProjects = () => {
+    setProjectsList([
+      ...projectsList,
       {
-        companyName: "",
-        title: "",
-        city: "",
-        state: "",
-        startDate: "",
-        endDate: "",
+        projectsName: "",
         workSummary: "",
       },
     ]);
@@ -88,18 +77,18 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * Function to remove a specific experience
    * =========================================
    */
-  const handleRemoveExperience = (indexToRemove) => {
-    const newEntries = experienceList.filter(
+  const handleRemoveProjects = (indexToRemove) => {
+    const newEntries = projectsList.filter(
       (_, index) => index !== indexToRemove
     );
-    setExperienceList(newEntries);
+    setProjectsList(newEntries);
 
     // Update resumeInfo context
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        experience: newEntries,
+        projects: newEntries,
       },
     });
   };
@@ -113,7 +102,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
     setLoading(true);
     const data = {
       data: {
-        experience: experienceList,
+        projects: projectsList,
       },
     };
 
@@ -135,19 +124,19 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * ====================================
    */
   const handleRichTextEditor = (newContent, name, index) => {
-    setEnableNext(false)
-    // Create a shallow copy of the `experienceList` array
-    const newEntries = experienceList.slice();
+    setEnableNext(false);
+    // Create a shallow copy of the `projectsList` array
+    const newEntries = projectsList.slice();
     newEntries[index][name] = newContent;
     // Set newEntries inside experience list
-    setExperienceList(newEntries);
+    setProjectsList(newEntries);
 
     // Update resumeInfo context when I update rich_text_editor
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        experience: newEntries,
+        projects: newEntries,
       },
     });
   };
@@ -157,7 +146,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
       <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
         {/* Heading and Skip Button */}
         <div className="flex justify-between">
-          <h2 className="font-bold text-lg">Experience</h2>
+          <h2 className="font-bold text-lg">Projects</h2>
           <Button
             size="sm"
             variant="outline"
@@ -170,7 +159,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your previous work experience</p>
+        <p>Add your existing projects</p>
 
         {/*
          * ===============================================
@@ -178,19 +167,17 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          * ===============================================
          */}
         <div>
-          {experienceList.map((item, index) => (
+          {projectsList.map((item, index) => (
             <div key={index}>
               <div className="border p-3 my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">
-                    Experience Form
-                  </h2>
+                  <h2 className="font-semibold text-blue-700">Project Form</h2>
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => handleRemoveExperience(index)}
+                    onClick={() => handleRemoveProjects(index)}
                     className="text-primary"
                   >
                     - Remove
@@ -202,63 +189,19 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                  *           Information Fields
                  * ========================================
                  */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <label className="text-xs">Company Name</label>
+                    <label className="text-xs">Project Name</label>
                     <Input
-                      name="companyName"
-                      value={item?.companyName}
+                      name="projectsName"
+                      value={item?.projectsName}
                       onChange={(event) => handleChange(index, event)}
                     />
                   </div>
-                  {/* Title of the Position */}
+
+                  {/* Work Summary */}
                   <div>
-                    <label className="text-xs">Position Title</label>
-                    <Input
-                      name="title"
-                      value={item?.title}
-                      onChange={(event) => handleChange(index, event)}
-                    />
-                  </div>
-                  {/* City */}
-                  <div>
-                    <label className="text-xs">City</label>
-                    <Input
-                      name="city"
-                      value={item?.city}
-                      onChange={(event) => handleChange(index, event)}
-                    />
-                  </div>
-                  {/* State */}
-                  <div>
-                    <label className="text-xs">State</label>
-                    <Input
-                      name="state"
-                      value={item?.state}
-                      onChange={(event) => handleChange(index, event)}
-                    />
-                  </div>
-                  {/* Start Date */}
-                  <div>
-                    <label className="text-xs">Start Date</label>
-                    <Input
-                      name="startDate"
-                      value={item?.startDate}
-                      onChange={(event) => handleChange(index, event)}
-                    />
-                  </div>
-                  {/* End Date */}
-                  <div>
-                    <label className="text-xs">End Date</label>
-                    <Input
-                      name="endDate"
-                      value={item?.endDate}
-                      onChange={(event) => handleChange(index, event)}
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    {/* Work Summary */}
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}
@@ -283,20 +226,12 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           <div className="flex gap-2">
             <Button
               variant="outline"
-              onClick={handleAddExperience}
+              onClick={handleAddProjects}
               className="text-primary"
             >
               {" "}
-              + Add More Experience
+              + Add More Projects
             </Button>
-            {/* <Button
-              variant="outline"
-              onClick={handleRemoveExperience}
-              className="text-primary"
-            >
-              {" "}
-              - Remove
-            </Button> */}
           </div>
 
           {/* Button to Save Experience */}
@@ -309,4 +244,4 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   );
 };
 
-export default Experience;
+export default Projects;
