@@ -7,6 +7,7 @@ import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
+import Quill from "../../quill";
 
 const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -25,7 +26,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   // Destructuring resume information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  console.log("akash -> ", resumeInfo);
+  console.log("experience list -> ", experienceList);
 
   // Get the specific id
   const params = useParams();
@@ -135,7 +136,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
    * ====================================
    */
   const handleRichTextEditor = (newContent, name, index) => {
-    setEnableNext(false)
+    setEnableNext(false);
     // Create a shallow copy of the `experienceList` array
     const newEntries = experienceList.slice();
     newEntries[index][name] = newContent;
@@ -259,8 +260,17 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                   </div>
                   <div className="col-span-2">
                     {/* Work Summary */}
-                    <RichTextEditor
+                    {/* <RichTextEditor
                       index={index}
+                      value={item?.workSummary}
+                      onRichTextEditorChange={(newContent) =>
+                        handleRichTextEditor(newContent, "workSummary", index)
+                      }
+                    /> */}
+                    <label className="text-xs">
+                      Add Your Experience Details
+                    </label>
+                    <Quill
                       value={item?.workSummary}
                       onRichTextEditorChange={(newContent) =>
                         handleRichTextEditor(newContent, "workSummary", index)
