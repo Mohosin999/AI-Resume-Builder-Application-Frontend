@@ -162,6 +162,28 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
             size="sm"
             variant="outline"
             onClick={() => {
+              // Clear the experience list
+              setExperienceList([
+                {
+                  companyName: "",
+                  title: "",
+                  city: "",
+                  state: "",
+                  startDate: "",
+                  endDate: "",
+                  workSummary: "",
+                },
+              ]);
+
+              // Update resumeInfo with empty experience data
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  experience: [], // Clear experience in resumeInfo
+                },
+              });
+
               setActiveFormIndex(activeFormIndex + 1);
               setEnableNext(true);
             }}

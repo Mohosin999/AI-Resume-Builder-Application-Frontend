@@ -176,13 +176,6 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
     );
     const result = await AIChatSession.sendMessage(prompt);
 
-    console.log("prompt -> ", prompt);
-    console.log("result -> ", result.response.text());
-    console.log(
-      "json parse -> ",
-      Object.values(JSON.parse(result.response.text()))
-    );
-
     setAiGenerateSummeryList(Object.values(JSON.parse(result.response.text())));
     setLoading(false);
   };
@@ -225,6 +218,16 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
             size="sm"
             variant="outline"
             onClick={() => {
+              // Clear the summary and update the resumeInfo to reflect the change
+              setSummary(""); // Clear the summary state
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  summary: "", // Clear the summary in resumeInfo
+                },
+              });
+
               setActiveFormIndex(activeFormIndex + 1);
               setEnableNext(true);
             }}
