@@ -1,7 +1,7 @@
 import "./App.css";
 import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
-import Header from "../src/components/custom/header";
+import Header from "./components/header";
 import { Toaster } from "./components/ui/sonner";
 
 function App() {
