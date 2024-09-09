@@ -7,7 +7,6 @@ import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
-import Quill from "../../quill";
 
 const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -258,19 +257,14 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                       onChange={(event) => handleChange(index, event)}
                     />
                   </div>
+                  {/* Work Summary */}
                   <div className="col-span-2">
-                    {/* Work Summary */}
-                    {/* <RichTextEditor
-                      index={index}
-                      value={item?.workSummary}
-                      onRichTextEditorChange={(newContent) =>
-                        handleRichTextEditor(newContent, "workSummary", index)
-                      }
-                    /> */}
+                    {/* Label */}
                     <label className="text-xs">
                       Add Your Experience Details
                     </label>
-                    <Quill
+                    {/* Text Editor */}
+                    <RichTextEditor
                       value={item?.workSummary}
                       onRichTextEditorChange={(newContent) =>
                         handleRichTextEditor(newContent, "workSummary", index)
