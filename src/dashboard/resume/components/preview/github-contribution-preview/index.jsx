@@ -10,7 +10,7 @@ const GithubContributionPreview = ({ resumeInfo }) => {
             className="font-bold text-sm text-center"
             style={{ color: resumeInfo?.attributes?.themeColor }}
           >
-            Projects
+            GitHub Contribution
           </h1>
           {/* Horizontal line */}
           <hr

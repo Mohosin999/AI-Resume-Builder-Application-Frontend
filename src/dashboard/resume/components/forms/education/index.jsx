@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { toast } from "sonner";
 
-const Education = ({ setEnableNext }) => {
+const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
   const [educationalList, setEducationalList] = useState([
     {
@@ -122,7 +122,41 @@ const Education = ({ setEnableNext }) => {
     <div>
       <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
         {/* Heading */}
-        <h2 className="font-bold text-lg">Education</h2>
+        <div className="flex justify-between">
+          <h2 className="font-bold text-lg">Education</h2>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              // Clear the educational list
+              setEducationalList([
+                {
+                  universityName: "",
+                  degree: "",
+                  major: "",
+                  startDate: "",
+                  endDate: "",
+                  description: "",
+                },
+              ]);
+
+              // Update resumeInfo with empty education data
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  education: [], // Clear education in resumeInfo
+                },
+              });
+
+              setActiveFormIndex(activeFormIndex + 1);
+              setEnableNext(true);
+            }}
+          >
+            Skip
+          </Button>
+        </div>
+        {/* Sub Heading */}
         <p>Add your educational details</p>
 
         {/*

@@ -151,6 +151,23 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
             size="sm"
             variant="outline"
             onClick={() => {
+              // Clear the project list
+              setProjectsList([
+                {
+                  projectsName: "",
+                  workSummary: "",
+                },
+              ]);
+
+              // Update resumeInfo with empty experience data
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  projects: [], // Clear projects in resumeInfo
+                },
+              });
+
               setActiveFormIndex(activeFormIndex + 1);
               setEnableNext(true);
             }}

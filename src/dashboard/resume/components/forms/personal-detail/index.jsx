@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
+import { Label } from "../../../../../components/ui/label";
 import { Button } from "../../../../../components/ui/button";
 
 const PersonalDetail = ({ setEnableNext }) => {
@@ -102,7 +103,7 @@ const PersonalDetail = ({ setEnableNext }) => {
         <div className="grid grid-cols-2 mt-5 gap-3">
           {/* First Name */}
           <div>
-            <label className="text-sm">First Name*</label>
+            <Label className="text-sm">First Name*</Label>
             <Input
               name="firstName"
               required

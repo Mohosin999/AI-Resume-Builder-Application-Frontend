@@ -155,6 +155,23 @@ const GithubContribution = ({
             size="sm"
             variant="outline"
             onClick={() => {
+              // Clear the github contribution list
+              setContributionList([
+                {
+                  projectsName: "",
+                  workSummary: "",
+                },
+              ]);
+
+              // Update resumeInfo with empty experience data
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  githubContribution: [], // Clear projects in resumeInfo
+                },
+              });
+
               setActiveFormIndex(activeFormIndex + 1);
               setEnableNext(true);
             }}
