@@ -1,6 +1,7 @@
 import React from "react";
 
 const AchievementsPreview = ({ resumeInfo }) => {
+  console.log("AchievementsPreview", resumeInfo);
   return (
     <>
       {resumeInfo?.attributes?.achievements?.length > 0 && (
@@ -27,7 +28,7 @@ const AchievementsPreview = ({ resumeInfo }) => {
                 {/* Achievement summary */}
                 <div
                   className="text-xs mt-1 leading-5"
-                  dangerouslySetInnerHTML={{ __html: item?.achievements }}
+                  dangerouslySetInnerHTML={{ __html: item?.achievementSummary }}
                 />
               </div>
             ))}

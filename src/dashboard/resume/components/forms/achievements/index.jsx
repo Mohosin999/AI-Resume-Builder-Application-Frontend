@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
-import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
@@ -23,6 +22,7 @@ const Achievements = ({
 
   // Destructuring resume information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  console.log("akash -> ", resumeInfo);
 
   // Get the specific id
   const params = useParams();
@@ -46,6 +46,9 @@ const Achievements = ({
         achievements: achievementList,
       },
     };
+
+    console.log("Resume ID: ", params?.resumeId); // Check if the resumeId exists
+    console.log("Data to save: ", data); // Check the data being sent
 
     GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
