@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
-import PersonalDetail from "../forms/personal-detail";
 import { Button } from "../../../../components/ui/button";
+import PersonalDetail from "../forms/personal-detail";
 import Summary from "../forms/summary";
 import Experience from "../forms/experience";
-import Education from "../forms/education";
-import Skills from "../forms/skills";
 import Projects from "../forms/projects";
 import GithubContribution from "../forms/github-contribution";
+import Achievements from "../forms/achievements";
+import Education from "../forms/education";
+import Skills from "../forms/skills";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -85,22 +86,20 @@ const FormSection = () => {
           setActiveFormIndex={setActiveFormIndex}
         />
       ) : activeFormIndex === 6 ? (
-        <Education
+        <Achievements
           setEnableNext={setEnableNext}
           activeFormIndex={activeFormIndex}
           setActiveFormIndex={setActiveFormIndex}
         />
       ) : activeFormIndex === 7 ? (
-        <Skills setEnableNext={setEnableNext} />
+        <Education
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
+      ) : activeFormIndex === 8 ? (
+        <Skills />
       ) : null}
-
-      {/* Summery */}
-
-      {/* Experience */}
-
-      {/* Educational Detail */}
-
-      {/* Skills */}
     </div>
   );
 };

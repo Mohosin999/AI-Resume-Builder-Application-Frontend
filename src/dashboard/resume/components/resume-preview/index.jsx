@@ -5,6 +5,7 @@ import SummaryPreview from "../preview/summary-preview";
 import ExperiencePreview from "../preview/experience-preview";
 import ProjectsPreview from "../preview/projects-preview";
 import GithubContributionPreview from "../preview/github-contribution-preview";
+import AchievementsPreview from "../preview/achievements-preview";
 import EducationalPreview from "../preview/educational-preview";
 import SkillsPreview from "../preview/skills-preview";
 
@@ -30,6 +31,9 @@ const ResumePreview = () => {
 
       {/* Github Contribution */}
       <GithubContributionPreview resumeInfo={resumeInfo} />
+
+      {/* Achievements */}
+      <AchievementsPreview resumeInfo={resumeInfo} />
 
       {/* Educational Details */}
       <EducationalPreview resumeInfo={resumeInfo} />
