@@ -20,18 +20,16 @@ const AchievementsPreview = ({ resumeInfo }) => {
           />
 
           {/* Map the resumeInfo */}
-          {resumeInfo?.attributes?.achievements
-            ?.slice() // Create a shallow copy of the array
-            .reverse() // Reverse the order of the array
-            .map((item, index) => (
-              <div key={index}>
-                {/* Achievement summary */}
-                <div
-                  className="text-xs mt-1 leading-5"
-                  dangerouslySetInnerHTML={{ __html: item?.achievementSummary }}
-                />
-              </div>
-            ))}
+
+          <div>
+            {/* Achievement summary */}
+            <div
+              className="text-xs mt-1 leading-5"
+              dangerouslySetInnerHTML={{
+                __html: resumeInfo?.attributes?.achievements,
+              }}
+            />
+          </div>
         </div>
       )}
     </>

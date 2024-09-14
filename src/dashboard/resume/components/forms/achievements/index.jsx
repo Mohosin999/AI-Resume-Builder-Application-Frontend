@@ -12,54 +12,51 @@ const Achievements = ({
   activeFormIndex,
   setActiveFormIndex,
 }) => {
-  // States
-  const [achievementList, setAchievementList] = useState([
-    {
-      achievementSummary: "",
-    },
-  ]);
+  // Initialize achievementList as a string
+  const [achievementList, setAchievementList] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Destructuring resume information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  console.log("akash -> ", resumeInfo);
 
   // Get the specific id
   const params = useParams();
 
-  // Load existing experience data within form fields
+  // Load existing achievements data within form fields
   useEffect(() => {
-    if (resumeInfo?.attributes?.achievements?.length) {
-      setAchievementList(resumeInfo?.attributes?.achievements);
+    if (resumeInfo?.attributes?.achievements) {
+      setAchievementList(resumeInfo.attributes.achievements);
     }
   }, [resumeInfo]);
 
   /**
    * ================================================
-   * Function to handle the saving of the experience
+   * Function to handle the saving of the achievements
    * ================================================
    */
   const handleSave = () => {
     setLoading(true);
+
+    // Prepare the data for the update
     const data = {
       data: {
-        achievements: achievementList,
+        achievements: achievementList, // Save as a string
       },
     };
 
     console.log("Resume ID: ", params?.resumeId); // Check if the resumeId exists
     console.log("Data to save: ", data); // Check the data being sent
 
-    GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
-      (res) => {
+    GlobalApi.UpdateResumeDetails(params?.resumeId, data)
+      .then((res) => {
         setLoading(false);
         setEnableNext(true);
         toast("Details updated !");
-      },
-      (error) => {
+      })
+      .catch((error) => {
         setLoading(false);
-      }
-    );
+        console.error("Error response data: ", error.response.data);
+      });
   };
 
   /**
@@ -67,20 +64,16 @@ const Achievements = ({
    * Function to handle rich text editor
    * ====================================
    */
-  const handleRichTextEditor = (newContent, name, index) => {
+  const handleRichTextEditor = (newContent) => {
     setEnableNext(false);
-    // Create a shallow copy of the `projectsList` array
-    const newEntries = achievementList.slice();
-    newEntries[index][name] = newContent;
-    // Set newEntries inside experience list
-    setAchievementList(newEntries);
+    setAchievementList(newContent);
 
-    // Update resumeInfo context when I update rich_text_editor
+    // Update resumeInfo context when updating rich_text_editor
     setResumeInfo({
       ...resumeInfo,
       attributes: {
         ...resumeInfo.attributes,
-        achievements: newEntries,
+        achievements: newContent, // Update the string content in resumeInfo
       },
     });
   };
@@ -95,19 +88,15 @@ const Achievements = ({
             size="sm"
             variant="outline"
             onClick={() => {
-              // Clear the github contribution list
-              setAchievementList([
-                {
-                  achievementSummary: "",
-                },
-              ]);
+              // Clear the achievement list (as a string)
+              setAchievementList("");
 
-              // Update resumeInfo with empty experience data
+              // Update resumeInfo with empty achievements
               setResumeInfo({
                 ...resumeInfo,
                 attributes: {
                   ...resumeInfo?.attributes,
-                  achievements: [], // Clear projects in resumeInfo
+                  achievements: "", // Clear achievements in resumeInfo
                 },
               });
 
@@ -121,47 +110,15 @@ const Achievements = ({
         {/* Sub Heading */}
         <p>Add your achievements</p>
 
-        {/*
-         * ===============================================
-         *          Map the experience list
-         * ===============================================
-         */}
-        <div>
-          {achievementList.map((item, index) => (
-            <div key={index}>
-              <div className="my-5">
-                {/* <div className="border p-3 my-5 rounded-lg"> */}
-                {/*
-                 * ========================================
-                 *           Information Fields
-                 * ========================================
-                 */}
-                <div className="grid grid-cols-1 gap-3">
-                  {/* Work Summary */}
-                  <div>
-                    <RichTextEditor
-                      index={index}
-                      value={item?.achievementSummary}
-                      onRichTextEditorChange={(newContent) =>
-                        handleRichTextEditor(
-                          newContent,
-                          "achievementSummary",
-                          index
-                        )
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Rich Text Editor for achievements */}
+        <div className="my-5">
+          <RichTextEditor
+            value={achievementList} // Bind string value
+            onRichTextEditorChange={handleRichTextEditor}
+          />
         </div>
 
-        {/*
-         * ===============================================
-         *                  Save Button
-         * ===============================================
-         */}
+        {/* Save Button */}
         <div className="flex justify-end">
           <Button disabled={loading} onClick={() => handleSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
