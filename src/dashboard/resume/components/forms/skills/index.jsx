@@ -10,7 +10,7 @@ import GlobalApi from "../../../../../../service/GlobalApi";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 
-const Skills = () => {
+const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
   const [skillsList, setSkillsList] = useState([
     {
@@ -44,6 +44,7 @@ const Skills = () => {
    * Function to handle all changes
    */
   const handleChange = (index, name, value) => {
+    setEnableNext(false);
     // Create a shallow copy of the `skillsList` array
     const newEntries = skillsList.slice();
     // Set the value of the specified index
@@ -95,6 +96,7 @@ const Skills = () => {
     GlobalApi.UpdateResumeDetails(params?.resumeId, data).then(
       (res) => {
         setLoading(false);
+        setEnableNext(true);
         toast("Education Details Updated Successfully !");
       },
       (error) => {
@@ -113,7 +115,37 @@ const Skills = () => {
     <div>
       <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
         {/* Heading */}
-        <h2 className="font-bold text-lg">Skills</h2>
+        <div className="flex justify-between">
+          <h2 className="font-bold text-lg">Skills</h2>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              // Clear the educational list
+              setSkillsList([
+                {
+                  name: "",
+                  rating: 0,
+                },
+              ]);
+
+              // Update resumeInfo
+              setResumeInfo({
+                ...resumeInfo,
+                attributes: {
+                  ...resumeInfo?.attributes,
+                  skills: [],
+                },
+              });
+
+              setActiveFormIndex(activeFormIndex + 1);
+              setEnableNext(true);
+            }}
+          >
+            Skip
+          </Button>
+        </div>
+        {/* Sub Heading */}
         <p>Add your skills</p>
 
         {/*
@@ -159,7 +191,7 @@ const Skills = () => {
               onClick={handleAddSkills}
               className="text-primary"
             >
-              + Add More Education
+              + Add More Skills
             </Button>
             <Button
               variant="outline"

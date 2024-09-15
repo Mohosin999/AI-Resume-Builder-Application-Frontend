@@ -10,6 +10,7 @@ import GithubContribution from "../forms/github-contribution";
 import Achievements from "../forms/achievements";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
+import ViewResume from "../../../../my-resume/[resumeId]/view";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -108,7 +109,13 @@ const FormSection = () => {
           setActiveFormIndex={setActiveFormIndex}
         />
       ) : activeFormIndex === 8 ? (
-        <Skills />
+        <Skills
+          setEnableNext={setEnableNext}
+          activeFormIndex={activeFormIndex}
+          setActiveFormIndex={setActiveFormIndex}
+        />
+      ) : activeFormIndex === 9 ? (
+        <ViewResume />
       ) : null}
     </div>
   );

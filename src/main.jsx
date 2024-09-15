@@ -9,6 +9,7 @@ import SignInPage from "./auth/sign-in/index.jsx";
 import Home from "./home";
 import Dashboard from "./dashboard";
 import EditResume from "./dashboard/resume/[resumeId]/edit/index.jsx";
+import ViewResume from "./my-resume/[resumeId]/view/index.jsx";
 
 /**
  * PUBLISHABLE_KEY from .env file
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
+  },
+  {
+    path: "/my-resume/:resumeId/view",
+    element: <ViewResume />,
   },
 ]);
 
