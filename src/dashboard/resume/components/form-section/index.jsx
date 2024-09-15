@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import PersonalDetail from "../forms/personal-detail";
 import Summary from "../forms/summary";
@@ -23,10 +24,19 @@ const FormSection = () => {
        * ==========================================================
        */}
       <div className="flex items-center justify-between">
-        {/* Layout button */}
-        <Button variant="outline" className="flex gap-2" size="sm">
-          <LayoutGrid /> Theme
-        </Button>
+        {/* Icon Buttons */}
+        <div className="flex gap-5">
+          {/* Home Button */}
+          <Link to={"/dashboard"}>
+            <Button size="sm">
+              <Home />
+            </Button>
+          </Link>
+          {/* Theme Button */}
+          <Button variant="outline" className="flex gap-2" size="sm">
+            <LayoutGrid /> Theme
+          </Button>
+        </div>
 
         {/* Previous & Next buttons */}
         <div className="flex gap-2">
