@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import PersonalDetail from "../forms/personal-detail";
@@ -16,6 +16,7 @@ const FormSection = () => {
   // Define index to move next or previous portion
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(true);
+  const { resumeId } = useParams();
 
   return (
     <div>
@@ -115,7 +116,7 @@ const FormSection = () => {
           setActiveFormIndex={setActiveFormIndex}
         />
       ) : activeFormIndex === 9 ? (
-        <ViewResume />
+        <Navigate to={`/my-resume/${resumeId}/view`} />
       ) : null}
     </div>
   );
