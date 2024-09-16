@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * Start
+ * This media is for when we want to download resume, then skip some area
+ */
+@media print {
+  #no-print {
+    display: none;
+  }
+
+  #print-area {
+    display: block;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 0mm;
+}
+/* 
+ * End
+ * This media is for when we want to download resume, then skip some area
+ */
+
 /* Apply Reach Text Bullet Point Style - Start */
 ul {
   list-style: disc; /* Disc for unordered lists (bullet points) */
