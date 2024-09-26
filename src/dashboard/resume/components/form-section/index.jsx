@@ -11,6 +11,7 @@ import Achievements from "../forms/achievements";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
 import ViewResume from "../../../../my-resume/[resumeId]/view";
+import ThemeColor from "../theme-color";
 
 const FormSection = () => {
   // Define index to move next or previous portion
@@ -34,10 +35,8 @@ const FormSection = () => {
               <Home />
             </Button>
           </Link>
-          {/* Theme Button */}
-          <Button variant="outline" className="flex gap-2" size="sm">
-            <LayoutGrid /> Theme
-          </Button>
+          {/* Theme color component */}
+          <ThemeColor />
         </div>
 
         {/* Previous & Next buttons */}

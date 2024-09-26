@@ -15,7 +15,6 @@ const PersonalDetail = ({ setEnableNext }) => {
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  console.log("resumeInfo -> ", resumeInfo?.attributes?.["firstName"]);
 
   // Get the resume id from url
   const params = useParams();
@@ -162,15 +161,6 @@ const PersonalDetail = ({ setEnableNext }) => {
               onChange={handleInputChange}
               value={resumeInfo?.attributes?.address}
               placeholder="Division, Country"
-            />
-          </div>
-          {/* Theme Default */}
-          <div className="col-span-2">
-            <label className="text-sm">Theme Color</label>
-            <Input
-              name="themeColor"
-              value={resumeInfo?.attributes?.themeColor}
-              onChange={handleInputChange}
             />
           </div>
         </div>
