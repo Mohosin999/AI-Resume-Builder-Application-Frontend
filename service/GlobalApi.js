@@ -33,10 +33,15 @@ const UpdateResumeDetails = (id, data) =>
 // Function to get user resume by Id
 const GetResumeById = (id) => axiosClient.get(`/user-resumes/${id}?populate=*`);
 
+// Function to delete user resume by Id
+const DeleteResumeById = (id) =>
+  axiosClient.delete(`/user-resumes/${id}?populate=*`);
+
 // Export the CreateNewResume function as part of the default export.
 export default {
   CreateNewResume,
   GetUserResumes,
   UpdateResumeDetails,
   GetResumeById,
+  DeleteResumeById,
 };

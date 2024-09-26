@@ -50,7 +50,11 @@ const Dashboard = () => {
         {/* Map the resume list to see the list of existing resumes */}
         {resumeList.length > 0 &&
           resumeList.map((resume, index) => (
-            <ResumeCardItem resume={resume} key={index} />
+            <ResumeCardItem
+              resume={resume}
+              refreshData={GetResumesList}
+              key={index}
+            />
           ))}
       </div>
     </div>

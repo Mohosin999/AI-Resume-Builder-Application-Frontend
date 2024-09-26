@@ -1,15 +1,26 @@
-import React from "react";
-import { MoreVertical, Notebook } from "lucide-react";
+import React, { useState } from "react";
+import { Loader2Icon, MoreVertical, Notebook } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-// Dropdown menu related
+import { toast } from "sonner";
+import GlobalApi from "../../../../service/GlobalApi";
+// Dropdown menu
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+// Alert dialog
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 /**
  * Resume Card Item
@@ -17,18 +28,33 @@ import {
  * @param {Object} resume - Resume will be an object.
  * @returns {JSX.Element}
  */
-const ResumeCardItem = ({ resume }) => {
+const ResumeCardItem = ({ resume, refreshData }) => {
+  const [openAlert, setOpenAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   // Get the theme color
   const themeColor = resume?.attributes?.themeColor;
 
   const navigation = useNavigate();
 
   /**
-   * Function to handle event after menu click
+   * Function to handle delete functionality
    */
-  // const handleMenuClick=(url)=>{
-  //   navigation(url)
-  // }
+  const handleDelete = () => {
+    setLoading(true);
+
+    GlobalApi.DeleteResumeById(resume.id).then(
+      (res) => {
+        toast("Resume Deleted!");
+        refreshData();
+        setLoading(false);
+        setOpenAlert(false);
+      },
+      (error) => {
+        setLoading(false);
+      }
+    );
+  };
 
   return (
     <Link to={`/dashboard/resume/${resume.id}/edit`}>
@@ -49,7 +75,11 @@ const ResumeCardItem = ({ resume }) => {
 
       {/* Title */}
       <h1 className="text-center my-1">{resume.attributes.title}</h1>
-      {/* Dropdown menu */}
+      {/*
+       * ======================================
+       *            Dropdown menu
+       * ======================================
+       */}
       <DropdownMenu>
         {/* Trigger button */}
         <DropdownMenuTrigger>
@@ -62,11 +92,46 @@ const ResumeCardItem = ({ resume }) => {
           >
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem>View</DropdownMenuItem>
-          <DropdownMenuItem>Download</DropdownMenuItem>
-          <DropdownMenuItem>Delete</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => navigation(`/my-resume/${resume.id}/view`)}
+          >
+            View
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => navigation(`/my-resume/${resume.id}/view`)}
+          >
+            Download
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setOpenAlert(true)}>
+            Delete
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {/*
+       * ======================================
+       *            Alert Dialog
+       * ======================================
+       */}
+      <AlertDialog open={openAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setOpenAlert(false)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete} disabled={loading}>
+              {loading ? <Loader2Icon className="animate-spin" /> : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Link>
   );
 };
