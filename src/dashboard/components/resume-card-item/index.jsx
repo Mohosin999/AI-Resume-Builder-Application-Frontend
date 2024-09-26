@@ -1,6 +1,15 @@
 import React from "react";
-import { Notebook } from "lucide-react";
-import { Link } from "react-router-dom";
+import { MoreVertical, Notebook } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+// Dropdown menu related
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 /**
  * Resume Card Item
@@ -11,6 +20,15 @@ import { Link } from "react-router-dom";
 const ResumeCardItem = ({ resume }) => {
   // Get the theme color
   const themeColor = resume?.attributes?.themeColor;
+
+  const navigation = useNavigate();
+
+  /**
+   * Function to handle event after menu click
+   */
+  // const handleMenuClick=(url)=>{
+  //   navigation(url)
+  // }
 
   return (
     <Link to={`/dashboard/resume/${resume.id}/edit`}>
@@ -31,6 +49,24 @@ const ResumeCardItem = ({ resume }) => {
 
       {/* Title */}
       <h1 className="text-center my-1">{resume.attributes.title}</h1>
+      {/* Dropdown menu */}
+      <DropdownMenu>
+        {/* Trigger button */}
+        <DropdownMenuTrigger>
+          <MoreVertical className="h-4 w-4 cursor-pointer" />
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent>
+          <DropdownMenuItem
+            onClick={() => navigation(`/dashboard/resume/${resume.id}/edit`)}
+          >
+            Edit
+          </DropdownMenuItem>
+          <DropdownMenuItem>View</DropdownMenuItem>
+          <DropdownMenuItem>Download</DropdownMenuItem>
+          <DropdownMenuItem>Delete</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </Link>
   );
 };
