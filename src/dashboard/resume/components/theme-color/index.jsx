@@ -12,7 +12,7 @@ import GlobalApi from "../../../../../service/GlobalApi";
 import { toast } from "sonner";
 
 const ThemeColor = () => {
-  const [selectedColor, setSelectedColor] = useState();
+  const [selectedColor, setSelectedColor] = useState(null);
 
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
