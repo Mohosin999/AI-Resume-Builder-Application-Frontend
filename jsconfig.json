@@ -1,10 +1,27 @@
+// {
+//   "files": [],
+//   "references": [
+//     {
+//       "path": "./jsconfig.app.json"
+//     },
+//     {
+//       "path": "./jsconfig.node.json"
+//     }
+//   ],
+//   "compilerOptions": {
+//     "baseUrl": ".",
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   }
+// }
+
 {
   "compilerOptions": {
-    // ...
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
-    // ...
-  }
+  },
+  "include": ["src/**/*"]
 }
