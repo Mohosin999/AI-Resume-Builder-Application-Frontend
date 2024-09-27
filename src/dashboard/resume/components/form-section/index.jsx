@@ -36,7 +36,7 @@ const FormSection = () => {
             </Button>
           </Link>
           {/* Theme color component */}
-          {/* <ThemeColor /> */}
+          <ThemeColor />
         </div>
 
         {/* Previous & Next buttons */}
