@@ -3,8 +3,10 @@ import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/header";
 import { Toaster } from "./components/ui/sonner";
+import { useState } from "react";
 
 function App() {
+  const [isTrue, setIsTrue] = useState();
   /**
    * The isLoaded is a boolean value that indicates whether the user
    * data has been fully loaded or not.
