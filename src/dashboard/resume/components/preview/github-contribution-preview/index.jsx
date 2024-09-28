@@ -29,7 +29,7 @@ const GithubContributionPreview = ({ resumeInfo }) => {
                   className="font-bold text-sm"
                   style={{ color: resumeInfo?.attributes?.themeColor }}
                 >
-                  {item?.projectsName}
+                  {item?.repositoryName}
                 </h2>
 
                 {/* Work summary */}

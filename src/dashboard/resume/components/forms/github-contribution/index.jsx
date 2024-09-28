@@ -16,7 +16,7 @@ const GithubContribution = ({
   // States
   const [contributionList, setContributionList] = useState([
     {
-      projectsName: "",
+      repositoryName: "",
       workSummary: "",
     },
   ]);
@@ -30,8 +30,8 @@ const GithubContribution = ({
 
   // Load existing experience data within form fields
   useEffect(() => {
-    if (resumeInfo?.attributes?.projects?.length) {
-      setContributionList(resumeInfo?.attributes?.projects);
+    if (resumeInfo?.attributes?.githubContribution?.length) {
+      setContributionList(resumeInfo?.attributes?.githubContribution);
     }
   }, [resumeInfo]);
 
@@ -70,7 +70,7 @@ const GithubContribution = ({
     setContributionList([
       ...contributionList,
       {
-        projectsName: "",
+        repositoryName: "",
         workSummary: "",
       },
     ]);
@@ -106,7 +106,7 @@ const GithubContribution = ({
     setLoading(true);
     const data = {
       data: {
-        projects: contributionList,
+        githubContribution: contributionList,
       },
     };
 
@@ -158,7 +158,7 @@ const GithubContribution = ({
               // Clear the github contribution list
               setContributionList([
                 {
-                  projectsName: "",
+                  repositoryName: "",
                   workSummary: "",
                 },
               ]);
@@ -215,16 +215,17 @@ const GithubContribution = ({
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <label className="text-xs">Project Name</label>
+                    <label className="text-xs">Repository Name</label>
                     <Input
-                      name="projectsName"
-                      value={item?.projectsName}
+                      name="repositoryName"
+                      value={item?.repositoryName}
                       onChange={(event) => handleChange(index, event)}
                     />
                   </div>
 
                   {/* Work Summary */}
                   <div>
+                    <label className="text-xs">Work Summary</label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}
