@@ -13,12 +13,22 @@
 
   #print-area {
     display: block;
+    box-shadow: none !important; /* Remove shadow */
+    margin: 0 !important; /* Remove margins */
+    padding: 0 !important; /* Remove padding */
+  }
+
+  /* Optionally target specific child elements inside ResumePreview if needed */
+  #print-area * {
+    box-shadow: none !important; /* Ensure no shadow on child elements */
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   body {
     margin: 0;
     padding: 0;
-    box-sizing: none;
+    box-sizing: border-box;
   }
 }
 
