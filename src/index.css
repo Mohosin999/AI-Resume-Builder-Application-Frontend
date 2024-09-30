@@ -18,11 +18,9 @@
     padding: 0 !important; /* Remove padding */
   }
 
-  /* Optionally target specific child elements inside ResumePreview if needed */
-  #print-area * {
-    box-shadow: none !important; /* Ensure no shadow on child elements */
-    margin: 0 !important;
-    padding: 0 !important;
+  /* This may also help if shadows persist elsewhere */
+  * {
+    box-shadow: none !important;
   }
 
   body {
