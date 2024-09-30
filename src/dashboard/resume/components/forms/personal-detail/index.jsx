@@ -7,7 +7,6 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
 import { Label } from "../../../../../components/ui/label";
 import { Button } from "../../../../../components/ui/button";
-import useSkillsGap from "../../../../../hooks/useSkillsGap";
 
 const PersonalDetail = ({ setEnableNext }) => {
   // States
@@ -16,9 +15,6 @@ const PersonalDetail = ({ setEnableNext }) => {
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
-  const { collectUserData, createSkillGapPrompt } = useSkillsGap();
-  const userData = collectUserData();
-  console.log(createSkillGapPrompt(userData));
 
   // Get the resume id from url
   const params = useParams();
