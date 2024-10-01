@@ -7,6 +7,7 @@ import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
+import { Label } from "../../../../../components/ui/label";
 
 const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -176,7 +177,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your existing projects</p>
+        <p className="mt-2">Add your existing projects</p>
 
         {/*
          * ===============================================
@@ -186,7 +187,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         <div>
           {projectsList.map((item, index) => (
             <div key={index}>
-              <div className="border p-3 my-5 rounded-lg">
+              <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
                   <h2 className="font-semibold text-blue-700">Project Form</h2>
@@ -209,7 +210,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <label className="text-xs">Project Name</label>
+                    <Label className="text-sm">Project Name</Label>
                     <Input
                       name="projectsName"
                       value={item?.projectsName}
@@ -219,6 +220,7 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
                   {/* Work Summary */}
                   <div>
+                    <Label className="text-sm">Add Your Project Details</Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}

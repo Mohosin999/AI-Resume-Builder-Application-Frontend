@@ -7,6 +7,7 @@ import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
+import { Label } from "../../../../../components/ui/label";
 
 const GithubContribution = ({
   setEnableNext,
@@ -180,7 +181,7 @@ const GithubContribution = ({
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your project where you contributed</p>
+        <p className="mt-1">Add your repository where you contributed</p>
 
         {/*
          * ===============================================
@@ -190,7 +191,7 @@ const GithubContribution = ({
         <div>
           {contributionList.map((item, index) => (
             <div key={index}>
-              <div className="border p-3 my-5 rounded-lg">
+              <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
                   <h2 className="font-semibold text-blue-700">
@@ -215,7 +216,7 @@ const GithubContribution = ({
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <label className="text-xs">Repository Name</label>
+                    <Label className="text-sm">Repository Name</Label>
                     <Input
                       name="repositoryName"
                       value={item?.repositoryName}
@@ -225,7 +226,9 @@ const GithubContribution = ({
 
                   {/* Work Summary */}
                   <div>
-                    <label className="text-xs">Work Summary</label>
+                    <Label className="text-sm">
+                      Add Your Contribution Details
+                    </Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}

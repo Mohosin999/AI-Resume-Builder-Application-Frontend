@@ -6,6 +6,8 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
+import { Label } from "../../../../../components/ui/label";
+import CustomParagraph from "../../../../../components/ui/customParagraph";
 
 const Achievements = ({
   setEnableNext,
@@ -108,14 +110,20 @@ const Achievements = ({
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your achievements</p>
+        <CustomParagraph>
+          Add your all achievements. It is recommended to do this using bullet
+          points.
+        </CustomParagraph>
 
         {/* Rich Text Editor for achievements */}
         <div className="my-5">
-          <RichTextEditor
-            value={achievementList} // Bind string value
-            onRichTextEditorChange={handleRichTextEditor}
-          />
+          <Label className="text-sm">Add Your Achievements Details</Label>
+          <div>
+            <RichTextEditor
+              value={achievementList} // Bind string value
+              onRichTextEditorChange={handleRichTextEditor}
+            />
+          </div>
         </div>
 
         {/* Save Button */}

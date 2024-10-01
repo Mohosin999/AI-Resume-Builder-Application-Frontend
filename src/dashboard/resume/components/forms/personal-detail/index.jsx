@@ -99,9 +99,9 @@ const PersonalDetail = ({ setEnableNext }) => {
 
       {/* Form */}
       <form onSubmit={handleSave}>
-        <div className="grid grid-cols-2 mt-5 gap-3">
+        <div className="grid grid-cols-2 my-5 gap-3">
           {/* First Name */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <Label className="text-sm">First Name*</Label>
             <Input
               name="firstName"
@@ -111,8 +111,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             />
           </div>
           {/* Last Name */}
-          <div>
-            <label className="text-sm">Last Name*</label>
+          <div className="col-span-2 md:col-span-1">
+            <Label className="text-sm">Last Name*</Label>
             <Input
               name="lastName"
               required
@@ -122,7 +122,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Job Title */}
           <div className="col-span-2">
-            <label className="text-sm">Job Title*</label>
+            <Label className="text-sm">Job Title*</Label>
             <Input
               name="jobTitle"
               required
@@ -132,8 +132,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             />
           </div>
           {/* Email */}
-          <div>
-            <label className="text-sm">Email*</label>
+          <div className="col-span-2 md:col-span-1">
+            <Label className="text-sm">Email*</Label>
             <Input
               name="email"
               required
@@ -142,8 +142,8 @@ const PersonalDetail = ({ setEnableNext }) => {
             />
           </div>
           {/* Social Link */}
-          <div>
-            <label className="text-sm">Social Link*</label>
+          <div className="col-span-2 md:col-span-1">
+            <Label className="text-sm">Social Link*</Label>
             <Input
               name="socialLink"
               placeholder="E. g. twitter.com/mohosinh99"
@@ -154,7 +154,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Address */}
           <div className="col-span-2">
-            <label className="text-sm">Address*</label>
+            <Label className="text-sm">Address*</Label>
             <Input
               name="address"
               required

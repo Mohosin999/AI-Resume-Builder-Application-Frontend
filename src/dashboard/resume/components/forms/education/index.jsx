@@ -7,6 +7,8 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { toast } from "sonner";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
+import { Label } from "../../../../../components/ui/label";
 
 const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -157,7 +159,7 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your educational details</p>
+        <CustomParagraph>Add your educational details</CustomParagraph>
 
         {/*
          * ===============================================
@@ -167,10 +169,10 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         <div>
           {educationalList.map((item, index) => (
             <div key={index}>
-              <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
+              <div className="grid grid-cols-2 gap-3 my-5 rounded-lg">
                 {/* University Name */}
                 <div className="col-span-2">
-                  <label>University Name</label>
+                  <Label className="text-sm">University Name</Label>
                   <Input
                     name="universityName"
                     onChange={(event) => handleChange(event, index)}
@@ -178,8 +180,8 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                   />
                 </div>
                 {/* Degree */}
-                <div>
-                  <label>Degree</label>
+                <div className="col-span-2 md:col-span-1">
+                  <Label className="text-sm">Degree</Label>
                   <Input
                     name="degree"
                     onChange={(event) => handleChange(event, index)}
@@ -187,8 +189,8 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                   />
                 </div>
                 {/* Major */}
-                <div>
-                  <label>Major</label>
+                <div className="col-span-2 md:col-span-1">
+                  <Label className="text-sm">Major</Label>
                   <Input
                     name="major"
                     onChange={(event) => handleChange(event, index)}
@@ -196,8 +198,8 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                   />
                 </div>
                 {/* Start Date */}
-                <div>
-                  <label>Start Date</label>
+                <div className="col-span-2 md:col-span-1">
+                  <Label className="text-sm">Start Date</Label>
                   <Input
                     name="startDate"
                     type="date"
@@ -206,22 +208,13 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                   />
                 </div>
                 {/* End Date */}
-                <div>
-                  <label>End Date</label>
+                <div className="col-span-2 md:col-span-1">
+                  <Label className="text-sm">End Date</Label>
                   <Input
                     name="endDate"
                     type="date"
                     onChange={(event) => handleChange(event, index)}
                     defaultValue={item?.endDate}
-                  />
-                </div>
-                {/* Description */}
-                <div className="col-span-2">
-                  <label>Description</label>
-                  <Textarea
-                    name="description"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.description}
                   />
                 </div>
               </div>

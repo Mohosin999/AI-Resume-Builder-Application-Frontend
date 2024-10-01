@@ -7,6 +7,7 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { Button } from "../../../../../components/ui/button";
 import { Textarea } from "../../../../../components/ui/textarea";
+import { Label } from "../../../../../components/ui/label";
 
 // Prompt to create summary from AI
 const PROMPT =
@@ -110,7 +111,7 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>
+        <p className="mt-1">
           If you want to create a professional resume, skip the summary section
           and focus more on the experience and projects section.
         </p>
@@ -123,7 +124,7 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         <form onSubmit={handleSave} className="mt-7">
           {/* Label and AI Button */}
           <div className="flex justify-between items-end">
-            <label>Add Summery</label>
+            <Label className="text-sm">Add Summary</Label>
             <Button
               variant="outline"
               onClick={() => GenerateSummeryFromAI()}
