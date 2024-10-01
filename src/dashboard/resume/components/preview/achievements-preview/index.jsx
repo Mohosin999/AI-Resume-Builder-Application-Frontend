@@ -1,7 +1,6 @@
 import React from "react";
 
 const AchievementsPreview = ({ resumeInfo }) => {
-  console.log("AchievementsPreview", resumeInfo);
   return (
     <>
       {resumeInfo?.attributes?.achievements?.length > 0 && (
