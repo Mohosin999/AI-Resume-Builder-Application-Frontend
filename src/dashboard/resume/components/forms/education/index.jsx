@@ -261,9 +261,9 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-2">
           {/* Add and Remove Experience Buttons */}
-          <div className="flex gap-2">
+          <div>
             <Button
               variant="outline"
               onClick={handleAddEducation}

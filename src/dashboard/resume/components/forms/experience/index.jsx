@@ -8,6 +8,7 @@ import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 import { Label } from "../../../../../components/ui/label";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 
 const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -192,7 +193,7 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p className="mt-2">Add your previous work experience</p>
+        <CustomParagraph>Add your work experience here.</CustomParagraph>
 
         {/*
          * ===============================================
@@ -304,9 +305,9 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-2">
           {/* Add and Remove Experience Buttons */}
-          <div className="flex gap-2">
+          <div>
             <Button
               variant="outline"
               onClick={handleAddExperience}

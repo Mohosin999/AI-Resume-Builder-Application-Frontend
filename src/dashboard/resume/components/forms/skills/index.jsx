@@ -9,6 +9,8 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
+import { Label } from "../../../../../components/ui/label";
 
 const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -127,6 +129,7 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         {/* Heading */}
         <div className="flex justify-between">
           <h2 className="font-bold text-lg">Skills</h2>
+          {/* Skip Button */}
           <Button
             size="sm"
             variant="outline"
@@ -156,7 +159,7 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p>Add your skills</p>
+        <CustomParagraph>Add your skills here.</CustomParagraph>
 
         {/*
          * ===============================================
@@ -165,29 +168,28 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          */}
         <div>
           {skillsList?.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between border rounded-lg p-3 mb-2"
-            >
+            <div key={index} className="rounded-lg mb-2 my-5">
               <div>
-                <label className="text-xs">Name</label>
-                <Input
-                  onChange={(e) => handleChange(index, "name", e.target.value)}
-                  className="w-full"
-                  defaultValue={item?.name}
-                />
+                <Label className="text-sm">Name</Label>
+                <div className="flex justify-between gap-2">
+                  <Input
+                    onChange={(e) =>
+                      handleChange(index, "name", e.target.value)
+                    }
+                    className="w-full"
+                    defaultValue={item?.name}
+                  />
+                  {/* Remove Button */}
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleRemoveSkills(index)}
+                    className="text-primary"
+                  >
+                    - Remove
+                  </Button>
+                </div>
               </div>
-
-              {/* Rating */}
-              {/* Remove Button */}
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleRemoveSkills(index)}
-                className="text-primary"
-              >
-                - Remove
-              </Button>
             </div>
           ))}
         </div>
@@ -197,7 +199,7 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-2">
           {/* Add and Remove Experience Buttons */}
           <div className="flex gap-2">
             <Button

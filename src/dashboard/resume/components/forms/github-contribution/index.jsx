@@ -8,6 +8,7 @@ import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 import { Label } from "../../../../../components/ui/label";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 
 const GithubContribution = ({
   setEnableNext,
@@ -181,7 +182,9 @@ const GithubContribution = ({
           </Button>
         </div>
         {/* Sub Heading */}
-        <p className="mt-1">Add your repository where you contributed</p>
+        <CustomParagraph>
+          Add your repository where you contributed.
+        </CustomParagraph>
 
         {/*
          * ===============================================
@@ -248,9 +251,9 @@ const GithubContribution = ({
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-2">
           {/* Add and Remove Experience Buttons */}
-          <div className="flex gap-2">
+          <div>
             <Button
               variant="outline"
               onClick={handleAddProjects}

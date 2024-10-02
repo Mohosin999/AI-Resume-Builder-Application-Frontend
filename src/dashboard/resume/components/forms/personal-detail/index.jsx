@@ -7,6 +7,7 @@ import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
 import { Label } from "../../../../../components/ui/label";
 import { Button } from "../../../../../components/ui/button";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 
 const PersonalDetail = ({ setEnableNext }) => {
   // States
@@ -95,7 +96,9 @@ const PersonalDetail = ({ setEnableNext }) => {
     <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
       {/* Heading */}
       <h2 className="font-bold text-lg">Personal Detail</h2>
-      <p>Get started with the basic information</p>
+      <CustomParagraph>
+        You must provide your personal information here to go ahead.
+      </CustomParagraph>
 
       {/* Form */}
       <form onSubmit={handleSave}>

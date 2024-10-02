@@ -8,6 +8,7 @@ import GlobalApi from "../../../../../../service/GlobalApi";
 import { Button } from "../../../../../components/ui/button";
 import { Textarea } from "../../../../../components/ui/textarea";
 import { Label } from "../../../../../components/ui/label";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 
 // Prompt to create summary from AI
 const PROMPT =
@@ -111,10 +112,10 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </Button>
         </div>
         {/* Sub Heading */}
-        <p className="mt-1">
+        <CustomParagraph>
           If you want to create a professional resume, skip the summary section
           and focus more on the experience and projects section.
-        </p>
+        </CustomParagraph>
 
         {/*
          * =====================================================
