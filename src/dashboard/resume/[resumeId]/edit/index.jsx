@@ -25,7 +25,7 @@ const EditResume = () => {
 
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 p-5 md:p-10 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 p-4 md:p-10 gap-10">
         {/* Form Section */}
         <FormSection />
 

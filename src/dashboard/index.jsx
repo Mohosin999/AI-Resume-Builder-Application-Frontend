@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import GlobalApi from "../../service/GlobalApi";
 import AddResume from "./components/add-resume";
 import ResumeCardItem from "./components/resume-card-item";
+import CustomParagraph from "../components/ui/CustomParagraph";
 
 const Dashboard = () => {
   // States
@@ -33,12 +34,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-10 md:px-20 lg:px-32">
+    <div className="p-4 md:px-20 lg:px-32">
       {/* Heading and Sub-heading */}
-      <h2 className="font-bold text-3xl">My Resume</h2>
-      <p>
+      <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
+        My All Resumes
+      </h2>
+      <CustomParagraph className="text-center">
         Start building an AI-powered resume for your upcoming job opportunity.
-      </p>
+      </CustomParagraph>
 
       {/*
        * This section handles adding a new resume and displaying the list of
