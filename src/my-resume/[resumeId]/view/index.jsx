@@ -8,7 +8,8 @@ import GlobalApi from "../../../../service/GlobalApi";
 import { RWebShare } from "react-web-share";
 import useSkillsGap from "../../../hooks/useCalculateResumeScore";
 import { AIChatSession } from "../../../../service/AIModal";
-import { Loader2Icon, XIcon } from "lucide-react"; // Lucide XIcon for close button
+import { Loader2Icon, XIcon } from "lucide-react";
+import CustomParagraph from "../../../components/ui/CustomParagraph";
 
 const ViewResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -61,16 +62,16 @@ const ViewResume = () => {
         <Header />
 
         <div className="my-10 mx-10 md:mx-20 lg:mx-36">
-          <h2 className="font-medium text-2xl text-center">
-            Congrats! your resume is ready
+          <h2 className="font-medium text-xl md:text-2xl text-center">
+            Congratulations! your resume is ready now
           </h2>
-          <p className="text-center text-gray-500">
+          <CustomParagraph className="text-center text-gray-500">
             Now you are ready to download your resume and you can share it with
             your friends
-          </p>
+          </CustomParagraph>
 
           {/* Buttons */}
-          <div className="flex justify-between px-44 my-10">
+          <div className="flex flex-col lg:flex-row gap-2 justify-between lg:px-44 my-10">
             <Button onClick={handleDownload}>Download</Button>
 
             <Button onClick={calculateResumeScoreFromAi}>
