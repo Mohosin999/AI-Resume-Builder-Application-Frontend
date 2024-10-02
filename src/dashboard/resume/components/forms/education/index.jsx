@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Input } from "../../../../../components/ui/input";
-import { Textarea } from "../../../../../components/ui/textarea";
 import { Button } from "../../../../../components/ui/button";
 import { LoaderCircle } from "lucide-react";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
@@ -87,8 +86,20 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   /**
    * Function to handle removing new education
    */
-  const handleRemoveEducation = () => {
-    setEducationalList((prev) => prev.slice(0, -1));
+  const handleRemoveEducation = (indexToRemove) => {
+    const newEntries = educationalList.filter(
+      (_, index) => index !== indexToRemove
+    );
+    setEducationalList(newEntries);
+
+    // Update resumeInfo context
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        education: newEntries,
+      },
+    });
   };
 
   /**
@@ -169,53 +180,76 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         <div>
           {educationalList.map((item, index) => (
             <div key={index}>
-              <div className="grid grid-cols-2 gap-3 my-5 rounded-lg">
-                {/* University Name */}
-                <div className="col-span-2">
-                  <Label className="text-sm">University Name</Label>
-                  <Input
-                    name="universityName"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.universityName}
-                  />
+              <div className="my-5 rounded-lg">
+                {/* Form Heading and Remove Button */}
+                <div className="flex justify-between items-center">
+                  <h2 className="font-semibold text-blue-700">
+                    Education Form
+                  </h2>
+                  {/* Remove Button */}
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleRemoveEducation(index)}
+                    className="text-primary"
+                  >
+                    - Remove
+                  </Button>
                 </div>
-                {/* Degree */}
-                <div className="col-span-2 md:col-span-1">
-                  <Label className="text-sm">Degree</Label>
-                  <Input
-                    name="degree"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.degree}
-                  />
-                </div>
-                {/* Major */}
-                <div className="col-span-2 md:col-span-1">
-                  <Label className="text-sm">Major</Label>
-                  <Input
-                    name="major"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.major}
-                  />
-                </div>
-                {/* Start Date */}
-                <div className="col-span-2 md:col-span-1">
-                  <Label className="text-sm">Start Date</Label>
-                  <Input
-                    name="startDate"
-                    type="date"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.startDate}
-                  />
-                </div>
-                {/* End Date */}
-                <div className="col-span-2 md:col-span-1">
-                  <Label className="text-sm">End Date</Label>
-                  <Input
-                    name="endDate"
-                    type="date"
-                    onChange={(event) => handleChange(event, index)}
-                    defaultValue={item?.endDate}
-                  />
+
+                {/*
+                 * ========================================
+                 *           Information Fields
+                 * ========================================
+                 */}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* University Name */}
+                  <div className="col-span-2">
+                    <Label className="text-sm">University Name</Label>
+                    <Input
+                      name="universityName"
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue={item?.universityName}
+                    />
+                  </div>
+                  {/* Degree */}
+                  <div className="col-span-2 md:col-span-1">
+                    <Label className="text-sm">Degree</Label>
+                    <Input
+                      name="degree"
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue={item?.degree}
+                    />
+                  </div>
+                  {/* Major */}
+                  <div className="col-span-2 md:col-span-1">
+                    <Label className="text-sm">Major</Label>
+                    <Input
+                      name="major"
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue={item?.major}
+                    />
+                  </div>
+                  {/* Start Date */}
+                  <div className="col-span-2 md:col-span-1">
+                    <Label className="text-sm">Start Date</Label>
+                    <Input
+                      name="startDate"
+                      type="date"
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue={item?.startDate}
+                    />
+                  </div>
+                  {/* End Date */}
+                  <div className="col-span-2 md:col-span-1">
+                    <Label className="text-sm">End Date</Label>
+                    <Input
+                      name="endDate"
+                      type="date"
+                      onChange={(event) => handleChange(event, index)}
+                      defaultValue={item?.endDate}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -236,13 +270,6 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
               className="text-primary"
             >
               + Add More Education
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleRemoveEducation}
-              className="text-primary"
-            >
-              - Remove
             </Button>
           </div>
 

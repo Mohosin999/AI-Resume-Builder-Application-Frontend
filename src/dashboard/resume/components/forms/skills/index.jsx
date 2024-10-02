@@ -78,8 +78,18 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   /**
    * Function to handle removing new skills
    */
-  const handleRemoveSkills = () => {
-    setSkillsList((prev) => prev.slice(0, -1));
+  const handleRemoveSkills = (indexToRemove) => {
+    const newEntries = skillsList.filter((_, index) => index !== indexToRemove);
+    setSkillsList(newEntries);
+
+    // Update resumeInfo context
+    setResumeInfo({
+      ...resumeInfo,
+      attributes: {
+        ...resumeInfo.attributes,
+        skills: newEntries,
+      },
+    });
   };
 
   /**
@@ -169,11 +179,15 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
               </div>
 
               {/* Rating */}
-              <Rating
-                style={{ maxWidth: 120 }}
-                value={item.rating}
-                onChange={(value) => handleChange(index, "rating", value)}
-              />
+              {/* Remove Button */}
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => handleRemoveSkills(index)}
+                className="text-primary"
+              >
+                - Remove
+              </Button>
             </div>
           ))}
         </div>
@@ -192,13 +206,6 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
               className="text-primary"
             >
               + Add More Skills
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleRemoveSkills}
-              className="text-primary"
-            >
-              - Remove
             </Button>
           </div>
 
