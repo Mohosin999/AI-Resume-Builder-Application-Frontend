@@ -4,7 +4,7 @@ import { UserButton, useUser } from "@clerk/clerk-react";
 import { Button } from "../ui/button";
 
 function Header() {
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
 
   return (
     <div className="p-3 px-5 flex justify-between shadow-md">
@@ -24,7 +24,7 @@ function Header() {
        * Otherwise, show Get Started button to create account.
        */}
       {isSignedIn ? (
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-3 items-center">
           <Link to={"/dashboard"}>
             <Button variant="outline">Dashboard</Button>
           </Link>

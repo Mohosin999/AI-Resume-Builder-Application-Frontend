@@ -61,7 +61,7 @@ const ViewResume = () => {
       <div id="no-print">
         <Header />
 
-        <div className="my-10 mx-4 md:mx-20 lg:mx-36">
+        <div className="mt-5 md:mt-8 mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36">
           <h2 className="font-medium text-xl md:text-2xl text-center">
             Congratulations! your resume is ready
           </h2>
@@ -71,17 +71,10 @@ const ViewResume = () => {
           </CustomParagraph>
 
           {/* Buttons */}
-          <div className="flex flex-col md:flex-row gap-2 justify-between lg:px-44 my-10">
+          <div className="flex flex-col md:flex-row gap-2 justify-between lg:px-44 mt-4 md:my-10">
+            {/* Download button */}
             <Button onClick={handleDownload}>Download</Button>
-
-            <Button onClick={calculateResumeScoreFromAi}>
-              {loading ? (
-                <Loader2Icon className="animate-spin" />
-              ) : (
-                "Calculate Resume Score"
-              )}
-            </Button>
-
+            {/* Share button */}
             <RWebShare
               data={{
                 text: "This is my resume, Open the link to see it.",
@@ -94,12 +87,20 @@ const ViewResume = () => {
             >
               <Button>Share</Button>
             </RWebShare>
+            {/* Calculate resume score button  */}
+            <Button onClick={calculateResumeScoreFromAi}>
+              {loading ? (
+                <Loader2Icon className="animate-spin" />
+              ) : (
+                "Calculate Resume Score"
+              )}
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Resume Preview */}
-      <div className="my-10 mx-4 md:mx-20 lg:mx-36" id="print-area">
+      <div className="mt-3 md:my-10 mx-4 md:mx-20 lg:mx-36" id="print-area">
         <ResumePreview />
       </div>
 

@@ -10,7 +10,6 @@ import GithubContribution from "../forms/github-contribution";
 import Achievements from "../forms/achievements";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
-import ViewResume from "../../../../my-resume/[resumeId]/view";
 import ThemeColor from "../theme-color";
 
 const FormSection = () => {
@@ -20,7 +19,7 @@ const FormSection = () => {
   const { resumeId } = useParams();
 
   return (
-    <div>
+    <div className="mt-3 md:mt-0">
       {/*
        * ==========================================================
        *                 Form's above buttons
@@ -28,7 +27,7 @@ const FormSection = () => {
        */}
       <div className="flex items-center justify-between">
         {/* Icon Buttons */}
-        <div className="flex gap-5">
+        <div className="flex gap-2">
           {/* Home Button */}
           <Link to={"/dashboard"}>
             <Button size="sm">

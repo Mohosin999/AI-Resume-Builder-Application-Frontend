@@ -34,7 +34,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-4 md:px-20 lg:px-32">
+    <div className="p-4 mt-1 md:mt-4 md:px-20 lg:px-32">
       {/* Heading and Sub-heading */}
       <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
         My All Resumes
