@@ -8,6 +8,8 @@ import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/customParagraph";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 const Achievements = ({
   setEnableNext,
@@ -82,13 +84,13 @@ const Achievements = ({
 
   return (
     <div>
-      <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+      <FormWrapper>
         {/* Heading and Skip Button */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Achievements</h2>
           <Button
             size="sm"
-            variant="outline"
+            variant="ghost"
             onClick={() => {
               // Clear the achievement list (as a string)
               setAchievementList("");
@@ -128,11 +130,12 @@ const Achievements = ({
 
         {/* Save Button */}
         <div className="flex justify-end">
-          <Button disabled={loading} onClick={() => handleSave()}>
+          {/* <Button disabled={loading} onClick={() => handleSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button>
+          </Button> */}
+          <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
-      </div>
+      </FormWrapper>
     </div>
   );
 };

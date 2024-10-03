@@ -9,6 +9,8 @@ import { Button } from "../../../../../components/ui/button";
 import { Textarea } from "../../../../../components/ui/textarea";
 import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 // Prompt to create summary from AI
 const PROMPT =
@@ -86,13 +88,13 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   return (
     <div>
-      <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+      <FormWrapper>
         {/* Heading and Skip Button */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Summary</h2>
           <Button
             size="sm"
-            variant="outline"
+            variant="ghost"
             onClick={() => {
               // Clear the summary and update the resumeInfo to reflect the change
               setSummary(""); // Clear the summary state
@@ -124,8 +126,8 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          */}
         <form onSubmit={handleSave} className="mt-7">
           {/* Label and AI Button */}
-          <div className="flex justify-between items-end">
-            <Label className="text-sm">Add Summary</Label>
+          <div className="flex justify-end items-end">
+            {/* <Label className="text-sm">Add Summary</Label> */}
             <Button
               variant="outline"
               onClick={() => GenerateSummeryFromAI()}
@@ -137,9 +139,10 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
             </Button>
           </div>
 
+          <Label className="text-sm">Add Summary</Label>
           {/* Textarea */}
           <Textarea
-            className="mt-5"
+            className=""
             value={resumeInfo?.attributes?.summary}
             // onChange={(e) => setSummary(e.target.value)}
             onChange={(e) => {
@@ -149,14 +152,19 @@ const Summary = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           />
 
           {/* Save button */}
-          <div className="mt-2 flex justify-end">
-            <Button type="submit" size="sm" disabled={loading}>
+          <div className="mt-5 flex justify-end">
+            {/* <Button
+              type="submit"
+              disabled={loading}
+              size="sm"
+              className="w-full md:w-16"
+            >
               {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-            </Button>
+            </Button> */}
+            <CustomSaveButton type={"submit"} loading={loading} />
           </div>
         </form>
-      </div>
-
+      </FormWrapper>
       {/*
        * =====================================================
        *                  AI Suggestions

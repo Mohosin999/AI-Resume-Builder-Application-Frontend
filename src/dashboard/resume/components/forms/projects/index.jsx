@@ -9,6 +9,8 @@ import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -145,13 +147,13 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   return (
     <div>
-      <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+      <FormWrapper>
         {/* Heading and Skip Button */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Projects</h2>
           <Button
             size="sm"
-            variant="outline"
+            variant="ghost"
             onClick={() => {
               // Clear the project list
               setProjectsList([
@@ -241,13 +243,14 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between mt-2">
+        <div className="flex flex-col md:flex-row justify-between gap-2 mt-2">
           {/* Add and Remove Experience Buttons */}
           <div>
             <Button
               variant="outline"
+              size="sm"
               onClick={handleAddProjects}
-              className="text-primary"
+              className="text-primary w-full"
             >
               {" "}
               + Add More Projects
@@ -255,11 +258,12 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
           </div>
 
           {/* Button to Save Experience */}
-          <Button disabled={loading} onClick={() => handleSave()}>
+          {/* <Button disabled={loading} onClick={() => handleSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button>
+          </Button> */}
+          <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
-      </div>
+      </FormWrapper>{" "}
     </div>
   );
 };

@@ -8,6 +8,8 @@ import GlobalApi from "../../../../../../service/GlobalApi";
 import { toast } from "sonner";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import { Label } from "../../../../../components/ui/label";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -133,13 +135,13 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   return (
     <div>
-      <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+      <FormWrapper>
         {/* Heading */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Education</h2>
           <Button
             size="sm"
-            variant="outline"
+            variant="ghost"
             onClick={() => {
               // Clear the educational list
               setEducationalList([
@@ -261,24 +263,26 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between mt-2">
+        <div className="flex flex-col md:flex-row justify-between gap-2 mt-2">
           {/* Add and Remove Experience Buttons */}
           <div>
             <Button
               variant="outline"
+              size="sm"
               onClick={handleAddEducation}
-              className="text-primary"
+              className="text-primary w-full"
             >
               + Add More Education
             </Button>
           </div>
 
           {/* Button to Save Experience */}
-          <Button disabled={loading} onClick={() => handleSave()}>
+          {/* <Button disabled={loading} onClick={() => handleSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button>
+          </Button> */}
+          <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
-      </div>
+      </FormWrapper>
     </div>
   );
 };

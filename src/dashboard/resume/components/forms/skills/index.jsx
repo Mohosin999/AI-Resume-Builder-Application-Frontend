@@ -11,6 +11,8 @@ import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import { Label } from "../../../../../components/ui/label";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
   // States
@@ -125,14 +127,14 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
 
   return (
     <div>
-      <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+      <FormWrapper>
         {/* Heading */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Skills</h2>
           {/* Skip Button */}
           <Button
             size="sm"
-            variant="outline"
+            variant="ghost"
             onClick={() => {
               // Clear the educational list
               setSkillsList([
@@ -171,7 +173,7 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
             <div key={index} className="rounded-lg mb-2 my-5">
               <div>
                 <Label className="text-sm">Name</Label>
-                <div className="flex justify-between gap-2">
+                <div className="flex justify-between items-center gap-2">
                   <Input
                     onChange={(e) =>
                       handleChange(index, "name", e.target.value)
@@ -199,24 +201,26 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
          *                    Buttons
          * ===============================================
          */}
-        <div className="flex justify-between mt-2">
+        <div className="flex flex-col md:flex-row justify-between gap-2 mt-5">
           {/* Add and Remove Experience Buttons */}
           <div className="flex gap-2">
             <Button
               variant="outline"
+              size="sm"
               onClick={handleAddSkills}
-              className="text-primary"
+              className="text-primary w-full"
             >
               + Add More Skills
             </Button>
           </div>
 
           {/* Button to Save Experience */}
-          <Button disabled={loading} onClick={() => handleSave()}>
+          {/* <Button disabled={loading} onClick={() => handleSave()}>
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button>
+          </Button> */}
+          <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
-      </div>
+      </FormWrapper>
     </div>
   );
 };

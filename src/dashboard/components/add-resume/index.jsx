@@ -213,10 +213,18 @@ const AddResume = () => {
 
             {/* Dialog buttons */}
             <div className="flex justify-end gap-5 mt-4">
-              <Button onClick={() => setOpenDialog(false)} variant="ghost">
+              <Button
+                onClick={() => setOpenDialog(false)}
+                variant="outline"
+                size="sm"
+              >
                 Cancel
               </Button>
-              <Button onClick={handleCreate} disabled={!resumeTitle || loading}>
+              <Button
+                onClick={handleCreate}
+                disabled={!resumeTitle || loading}
+                size="sm"
+              >
                 {loading ? <Loader2 className="animate-spin" /> : "Create"}
               </Button>
             </div>

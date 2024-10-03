@@ -8,6 +8,8 @@ import { Input } from "../../../../../components/ui/input";
 import { Label } from "../../../../../components/ui/label";
 import { Button } from "../../../../../components/ui/button";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
+import FormWrapper from "../../../../../components/form-wrapper";
+import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
 const PersonalDetail = ({ setEnableNext }) => {
   // States
@@ -93,7 +95,7 @@ const PersonalDetail = ({ setEnableNext }) => {
    */
 
   return (
-    <div className="p-5 rounded-lg shadow-lg border-t-primary border-t-4 mt-10">
+    <FormWrapper>
       {/* Heading */}
       <h2 className="font-bold text-lg">Personal Detail</h2>
       <CustomParagraph>
@@ -170,12 +172,18 @@ const PersonalDetail = ({ setEnableNext }) => {
 
         {/* Save Button */}
         <div className="mt-3 flex justify-end">
-          <Button type="submit" disabled={loading}>
+          {/* <Button
+            type="submit"
+            disabled={loading}
+            size="sm"
+            className="w-full md:w-16"
+          >
             {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button>
+          </Button> */}
+          <CustomSaveButton type={"submit"} loading={loading} />
         </div>
       </form>
-    </div>
+    </FormWrapper>
   );
 };
 
