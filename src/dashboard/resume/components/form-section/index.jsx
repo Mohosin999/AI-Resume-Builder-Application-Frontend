@@ -29,7 +29,7 @@ const FormSection = () => {
         {/* Icon Buttons */}
         <div className="flex gap-2">
           {/* Home Button */}
-          <Link to={"/dashboard"}>
+          <Link to={"/"}>
             <Button size="sm">
               <Home />
             </Button>

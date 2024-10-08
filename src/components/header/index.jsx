@@ -7,7 +7,7 @@ function Header() {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="p-3 px-5 flex justify-between shadow-md">
+    <div className="p-3 px-5 flex justify-between items-center shadow-md">
       {/* Click on header logo and go to dashboard */}
       <Link to={"/"}>
         <img
