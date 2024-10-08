@@ -9,7 +9,7 @@ const CustomSaveButton = ({ loading, type = "button", handleSave = null }) => {
       disabled={loading}
       onClick={handleSave ? handleSave : undefined}
       size="sm"
-      className="w-full md:w-16"
+      className="w-full md:w-auto"
     >
       {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
     </Button>

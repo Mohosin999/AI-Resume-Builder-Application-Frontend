@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className="p-3 px-5 flex justify-between shadow-md">
       {/* Click on header logo and go to dashboard */}
-      <Link to={"/dashboard"}>
+      <Link to={"/"}>
         <img
           src="/logo.svg"
           className="cursor-pointer"
