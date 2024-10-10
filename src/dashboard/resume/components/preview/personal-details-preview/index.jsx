@@ -67,12 +67,6 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
           {resumeInfo?.attributes?.address}
         </h2>
       </div>
-
-      {/* Horizontal line */}
-      {/* <hr
-        className="border-[1.5px] my-2"
-        style={{ borderColor: resumeInfo?.attributes?.themeColor }}
-      /> */}
     </div>
   );
 };

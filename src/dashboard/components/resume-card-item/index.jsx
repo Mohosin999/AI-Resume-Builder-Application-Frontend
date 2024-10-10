@@ -57,7 +57,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
   };
 
   return (
-    <Link to={`/dashboard/resume/${resume.id}/edit`}>
+    <div>
       {/*
        * =======================================================
        * Notebook Square box
@@ -66,47 +66,60 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        * and you can also edit it.
        * =======================================================
        */}
-      <div
-        className="p-14 flex items-center justify-center h-[280px] border rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
-        style={{ backgroundColor: themeColor }}
-      >
-        <Notebook />
+      <Link to={`/dashboard/resume/${resume.id}/edit`}>
+        {/* <div
+          className="p-14 flex items-center justify-center h-[280px] border rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
+          style={{ backgroundColor: themeColor }}
+        > */}
+        <div
+          className="p-14 py-24 border flex justify-center items-center bg-secondary rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+          style={{ backgroundColor: themeColor }}
+        >
+          <Notebook />
+        </div>
+      </Link>
+
+      {/* Resume title and drop down menu */}
+      <div className="flex items-start justify-between gap-1">
+        {/* Title */}
+        <h1 className="text-center my-1">{resume.attributes.title}</h1>
+        {/*
+         * ======================================
+         *            Dropdown menu
+         * ======================================
+         */}
+        <div className="mt-[7px]">
+          <DropdownMenu>
+            {/* Trigger button */}
+            <DropdownMenuTrigger>
+              <MoreVertical className="h-4 w-4 cursor-pointer" />
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent>
+              <DropdownMenuItem
+                onClick={() =>
+                  navigation(`/dashboard/resume/${resume.id}/edit`)
+                }
+              >
+                Edit
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => navigation(`/my-resume/${resume.id}/view`)}
+              >
+                View
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => navigation(`/my-resume/${resume.id}/view`)}
+              >
+                Download
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setOpenAlert(true)}>
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
-
-      {/* Title */}
-      <h1 className="text-center my-1">{resume.attributes.title}</h1>
-      {/*
-       * ======================================
-       *            Dropdown menu
-       * ======================================
-       */}
-      <DropdownMenu>
-        {/* Trigger button */}
-        <DropdownMenuTrigger>
-          <MoreVertical className="h-4 w-4 cursor-pointer" />
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent>
-          <DropdownMenuItem
-            onClick={() => navigation(`/dashboard/resume/${resume.id}/edit`)}
-          >
-            Edit
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => navigation(`/my-resume/${resume.id}/view`)}
-          >
-            View
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => navigation(`/my-resume/${resume.id}/view`)}
-          >
-            Download
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setOpenAlert(true)}>
-            Delete
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
 
       {/*
        * ======================================
@@ -132,7 +145,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </Link>
+    </div>
   );
 };
 

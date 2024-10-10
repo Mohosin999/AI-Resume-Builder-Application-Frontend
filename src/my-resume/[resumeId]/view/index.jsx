@@ -74,6 +74,7 @@ const ViewResume = () => {
           <div className="flex flex-col md:flex-row gap-2 justify-between lg:px-44 mt-4 md:my-10">
             {/* Download button */}
             <Button onClick={handleDownload}>Download</Button>
+
             {/* Share button */}
             <RWebShare
               data={{
@@ -87,6 +88,7 @@ const ViewResume = () => {
             >
               <Button>Share</Button>
             </RWebShare>
+
             {/* Calculate resume score button  */}
             <Button onClick={calculateResumeScoreFromAi}>
               {loading ? (

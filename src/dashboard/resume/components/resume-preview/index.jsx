@@ -8,38 +8,48 @@ import GithubContributionPreview from "../preview/github-contribution-preview";
 import AchievementsPreview from "../preview/achievements-preview";
 import EducationalPreview from "../preview/educational-preview";
 import SkillsPreview from "../preview/skills-preview";
+import Loader from "../../../../components/shared/loader";
 
 const ResumePreview = () => {
-  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+  const { resumeInfo } = useContext(ResumeInfoContext);
+
+  // Check if resumeInfo is not available (data is still loading)
+  const isLoading = !resumeInfo || !resumeInfo.attributes;
 
   return (
-    <div
-      className="shadow-lg h-full p-10 border-t-[20px]"
-      style={{ borderColor: resumeInfo?.attributes?.themeColor }}
-    >
-      {/* Personal Details */}
-      <PersonalDetailsPreview resumeInfo={resumeInfo} />
+    <div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div
+          className="shadow-lg h-full p-10 border-t-[20px]"
+          style={{ borderColor: resumeInfo?.attributes?.themeColor }}
+        >
+          {/* Personal Details */}
+          <PersonalDetailsPreview resumeInfo={resumeInfo} />
 
-      {/* Summery */}
-      <SummaryPreview resumeInfo={resumeInfo} />
+          {/* Summery */}
+          <SummaryPreview resumeInfo={resumeInfo} />
 
-      {/* Professional Experience */}
-      <ExperiencePreview resumeInfo={resumeInfo} />
+          {/* Professional Experience */}
+          <ExperiencePreview resumeInfo={resumeInfo} />
 
-      {/* Projects */}
-      <ProjectsPreview resumeInfo={resumeInfo} />
+          {/* Projects */}
+          <ProjectsPreview resumeInfo={resumeInfo} />
 
-      {/* Github Contribution */}
-      <GithubContributionPreview resumeInfo={resumeInfo} />
+          {/* Github Contribution */}
+          <GithubContributionPreview resumeInfo={resumeInfo} />
 
-      {/* Achievements */}
-      <AchievementsPreview resumeInfo={resumeInfo} />
+          {/* Achievements */}
+          <AchievementsPreview resumeInfo={resumeInfo} />
 
-      {/* Educational Details */}
-      <EducationalPreview resumeInfo={resumeInfo} />
+          {/* Educational Details */}
+          <EducationalPreview resumeInfo={resumeInfo} />
 
-      {/* Skills */}
-      <SkillsPreview resumeInfo={resumeInfo} />
+          {/* Skills */}
+          <SkillsPreview resumeInfo={resumeInfo} />
+        </div>
+      )}
     </div>
   );
 };
