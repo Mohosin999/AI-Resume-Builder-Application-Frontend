@@ -80,7 +80,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
       </Link>
 
       {/* Resume title and drop down menu */}
-      <div className="flex items-start justify-between gap-1">
+      <div className="flex items-start justify-between">
         {/* Title */}
         <h1 className="text-center my-1">{resume.attributes.title}</h1>
         {/*
