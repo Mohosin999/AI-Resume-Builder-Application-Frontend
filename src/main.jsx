@@ -68,6 +68,7 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
+import { LoaderCircle } from "lucide-react";
 
 // Lazy load your components
 const SignInPage = React.lazy(() => import("./auth/sign-in/index.jsx"));
@@ -87,6 +88,16 @@ const ViewResume = React.lazy(() =>
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 /**
+ * Fallback for Suspense - Use the logo as a loading indicator
+ */
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center h-screen">
+    <LoaderCircle className="animate-spin mr-1" />
+    <img src="/logo.svg" alt="Loading..." width="100" height="100" />
+  </div>
+);
+
+/**
  * Defining the application's routes using createBrowserRouter.
  * Routes map URLs to specific React components, allowing navigation within the app.
  */
@@ -97,7 +108,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingFallback />}>
             <Dashboard />
           </Suspense>
         ),
@@ -105,7 +116,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/resume/:resumeId/edit",
         element: (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingFallback />}>
             <EditResume />
           </Suspense>
         ),
@@ -115,7 +126,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
         <Home />
       </Suspense>
     ),
@@ -123,7 +134,7 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-in",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
         <SignInPage />
       </Suspense>
     ),
@@ -131,7 +142,7 @@ const router = createBrowserRouter([
   {
     path: "/my-resume/:resumeId/view",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
         <ViewResume />
       </Suspense>
     ),
