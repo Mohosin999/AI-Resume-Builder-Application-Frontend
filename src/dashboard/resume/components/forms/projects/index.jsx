@@ -95,6 +95,8 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         projects: newEntries,
       },
     });
+
+    setEnableNext(false);
   };
 
   /**
@@ -151,33 +153,6 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Projects</h2>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the project list
-              setProjectsList([
-                {
-                  projectsName: "",
-                  workSummary: "",
-                },
-              ]);
-
-              // Update resumeInfo with empty experience data
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  projects: [], // Clear projects in resumeInfo
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your existing project here.</CustomParagraph>

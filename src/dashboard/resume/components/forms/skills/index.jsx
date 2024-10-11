@@ -94,6 +94,8 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         skills: newEntries,
       },
     });
+
+    setEnableNext(false);
   };
 
   /**
@@ -132,33 +134,6 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Skills</h2>
           {/* Skip Button */}
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the educational list
-              setSkillsList([
-                {
-                  name: "",
-                  rating: 0,
-                },
-              ]);
-
-              // Update resumeInfo
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  skills: [],
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your skills here.</CustomParagraph>

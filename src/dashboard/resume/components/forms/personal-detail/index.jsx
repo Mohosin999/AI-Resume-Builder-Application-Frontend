@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -15,12 +15,41 @@ const PersonalDetail = ({ setEnableNext }) => {
   // States
   const [formData, setFormData] = useState();
   const [loading, setLoading] = useState(false);
+  // State to track input changes
+  const [inputChanged, setInputChanged] = useState(false);
 
   // Destructuring resume related information from context
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
   // Get the resume id from url
   const params = useParams();
+
+  // Effect to set the next button state based on resumeInfo
+  useEffect(() => {
+    if (
+      resumeInfo?.attributes?.firstName &&
+      resumeInfo?.attributes?.lastName &&
+      resumeInfo?.attributes?.jobTitle &&
+      resumeInfo?.attributes?.email &&
+      resumeInfo?.attributes?.socialLink &&
+      resumeInfo?.attributes?.address &&
+      !inputChanged
+    ) {
+      setEnableNext(true);
+    } else if (
+      resumeInfo?.attributes?.firstName &&
+      resumeInfo?.attributes?.lastName &&
+      resumeInfo?.attributes?.jobTitle &&
+      resumeInfo?.attributes?.email &&
+      resumeInfo?.attributes?.socialLink &&
+      resumeInfo?.attributes?.address &&
+      inputChanged
+    ) {
+      setEnableNext(false);
+    } else {
+      setEnableNext(false);
+    }
+  }, [resumeInfo, inputChanged]);
 
   /**
    * =========================================================
@@ -29,7 +58,7 @@ const PersonalDetail = ({ setEnableNext }) => {
    */
 
   /**
-   * Function to remove `http or https` and `www.` from a link
+   * Function to remove http or https and www. from a link
    */
   const extractDomain = (url) => {
     // Remove the protocol (http, https, etc.) and 'www.' prefix
@@ -41,6 +70,7 @@ const PersonalDetail = ({ setEnableNext }) => {
    * Function to handle the input changes in the resume form.
    */
   const handleInputChange = (e) => {
+    setInputChanged(true);
     // Next button will be disabled at the time of editing information
     setEnableNext(false);
 
@@ -172,14 +202,6 @@ const PersonalDetail = ({ setEnableNext }) => {
 
         {/* Save Button */}
         <div className="mt-3 flex justify-end">
-          {/* <Button
-            type="submit"
-            disabled={loading}
-            size="sm"
-            className="w-full md:w-16"
-          >
-            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button> */}
           <CustomSaveButton type={"submit"} loading={loading} />
         </div>
       </form>

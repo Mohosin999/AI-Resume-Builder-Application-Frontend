@@ -99,6 +99,8 @@ const GithubContribution = ({
         githubContribution: newEntries,
       },
     });
+
+    setEnableNext(false);
   };
 
   /**
@@ -155,33 +157,6 @@ const GithubContribution = ({
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">GitHub Contribution</h2>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the github contribution list
-              setContributionList([
-                {
-                  repositoryName: "",
-                  workSummary: "",
-                },
-              ]);
-
-              // Update resumeInfo with empty experience data
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  githubContribution: [], // Clear projects in resumeInfo
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>

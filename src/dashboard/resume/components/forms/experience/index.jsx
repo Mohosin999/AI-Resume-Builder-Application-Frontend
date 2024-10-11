@@ -12,7 +12,7 @@ import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 import FormWrapper from "../../../../../components/form-wrapper";
 
-const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+const Experience = ({ setEnableNext }) => {
   // States
   const [experienceList, setExperienceList] = useState([
     {
@@ -105,6 +105,8 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         experience: newEntries,
       },
     });
+
+    setEnableNext(false);
   };
 
   /**
@@ -161,38 +163,6 @@ const Experience = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Experience</h2>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the experience list
-              setExperienceList([
-                {
-                  companyName: "",
-                  title: "",
-                  city: "",
-                  state: "",
-                  startDate: "",
-                  endDate: "",
-                  workSummary: "",
-                },
-              ]);
-
-              // Update resumeInfo with empty experience data
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  experience: [], // Clear experience in resumeInfo
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your work experience here.</CustomParagraph>

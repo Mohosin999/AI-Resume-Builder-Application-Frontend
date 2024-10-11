@@ -88,28 +88,6 @@ const Achievements = ({
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Achievements</h2>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the achievement list (as a string)
-              setAchievementList("");
-
-              // Update resumeInfo with empty achievements
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  achievements: "", // Clear achievements in resumeInfo
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>

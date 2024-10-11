@@ -102,6 +102,8 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         education: newEntries,
       },
     });
+
+    setEnableNext(false);
   };
 
   /**
@@ -139,37 +141,6 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
         {/* Heading */}
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-lg">Education</h2>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Clear the educational list
-              setEducationalList([
-                {
-                  universityName: "",
-                  degree: "",
-                  major: "",
-                  startDate: "",
-                  endDate: "",
-                  description: "",
-                },
-              ]);
-
-              // Update resumeInfo with empty education data
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  education: [], // Clear education in resumeInfo
-                },
-              });
-
-              setActiveFormIndex(activeFormIndex + 1);
-              setEnableNext(true);
-            }}
-          >
-            Skip
-          </Button>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your educational details</CustomParagraph>
