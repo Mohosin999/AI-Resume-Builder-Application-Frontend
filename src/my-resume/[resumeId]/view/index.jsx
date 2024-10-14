@@ -10,6 +10,7 @@ import useSkillsGap from "../../../hooks/useCalculateResumeScore";
 import { AIChatSession } from "../../../../service/AIModal";
 import { Loader2Icon, XIcon } from "lucide-react";
 import CustomParagraph from "../../../components/ui/CustomParagraph";
+import Footer from "../../../components/footer";
 
 const ViewResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -105,6 +106,8 @@ const ViewResume = () => {
       <div className="mt-3 md:my-10 mx-4 md:mx-20 lg:mx-36" id="print-area">
         <ResumePreview />
       </div>
+
+      <Footer />
 
       {/* AI Result Modal */}
       {showModal && (

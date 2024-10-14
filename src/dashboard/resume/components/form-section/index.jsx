@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Home, LayoutGrid } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import PersonalDetail from "../forms/personal-detail";
 import Summary from "../forms/summary";
@@ -11,12 +11,43 @@ import Achievements from "../forms/achievements";
 import Education from "../forms/education";
 import Skills from "../forms/skills";
 import ThemeColor from "../theme-color";
+import Loader from "../../../../components/shared/loader";
 
 const FormSection = () => {
   // Define index to move next or previous portion
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   const [enableNext, setEnableNext] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const { resumeId } = useParams();
+
+  // Handle previous function
+  const handlePreviousClick = () => {
+    // Show loader
+    setLoading(true);
+
+    // Simulate async loading
+    setTimeout(() => {
+      setActiveFormIndex(activeFormIndex - 1);
+      setLoading(false); // Hide loader after the form is ready
+    }, 20); // Adjust the delay as necessary
+  };
+
+  // Handle next function
+  const handleNextClick = () => {
+    // Show loader
+    setLoading(true);
+
+    // Simulate async loading
+    setTimeout(() => {
+      setActiveFormIndex(activeFormIndex + 1);
+      setLoading(false); // Hide loader after the form is ready
+    }, 20); // Adjust the delay as necessary
+  };
+
+  if (loading) {
+    return <Loader />; // Show loader if loading
+  }
 
   return (
     <div className="mt-3 md:mt-0">
@@ -42,17 +73,13 @@ const FormSection = () => {
         <div className="flex gap-2">
           {/* If index is greater than 1, only then show the previous button */}
           {activeFormIndex > 1 && (
-            <Button
-              onClick={() => setActiveFormIndex(activeFormIndex - 1)}
-              className=""
-              size="sm"
-            >
+            <Button onClick={handlePreviousClick} className="" size="sm">
               <ArrowLeft />
             </Button>
           )}
 
           <Button
-            onClick={() => setActiveFormIndex(activeFormIndex + 1)}
+            onClick={handleNextClick}
             disabled={!enableNext}
             className="flex gap-2"
             size="sm"

@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/header";
 import { Toaster } from "./components/ui/sonner";
+import Footer from "./components/footer";
 
 function App() {
   /**
@@ -24,6 +25,7 @@ function App() {
       <Header />
       <Outlet />
       <Toaster />
+      <Footer />
     </>
   );
 }
