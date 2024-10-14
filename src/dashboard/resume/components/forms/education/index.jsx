@@ -182,7 +182,7 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                     <Input
                       name="universityName"
                       onChange={(event) => handleChange(event, index)}
-                      defaultValue={item?.universityName}
+                      value={item?.universityName}
                     />
                   </div>
                   {/* Degree */}
@@ -191,7 +191,7 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                     <Input
                       name="degree"
                       onChange={(event) => handleChange(event, index)}
-                      defaultValue={item?.degree}
+                      value={item?.degree}
                     />
                   </div>
                   {/* Major */}
@@ -200,7 +200,7 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                     <Input
                       name="major"
                       onChange={(event) => handleChange(event, index)}
-                      defaultValue={item?.major}
+                      value={item?.major}
                     />
                   </div>
                   {/* Start Date */}
@@ -208,19 +208,17 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
                     <Label className="text-sm">Start Date</Label>
                     <Input
                       name="startDate"
-                      type="date"
                       onChange={(event) => handleChange(event, index)}
-                      defaultValue={item?.startDate}
+                      value={item?.startDate}
                     />
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date</Label>
+                    <Label className="text-sm">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
-                      type="date"
                       onChange={(event) => handleChange(event, index)}
-                      defaultValue={item?.endDate}
+                      value={item?.endDate}
                     />
                   </div>
                 </div>

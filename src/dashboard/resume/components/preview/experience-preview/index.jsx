@@ -7,14 +7,14 @@ const ExperiencePreview = ({ resumeInfo }) => {
         <div className="my-6">
           {/* Heading */}
           <h1
-            className="font-bold text-sm text-center"
+            className="font-bold text-sm md:text-lg text-center"
             style={{ color: resumeInfo?.attributes?.themeColor }}
           >
             Experience
           </h1>
           {/* Horizontal line */}
           <hr
-            className="mt-1 mb-3"
+            className="my-1"
             style={{ borderColor: resumeInfo?.attributes?.themeColor }}
           />
 
@@ -23,10 +23,10 @@ const ExperiencePreview = ({ resumeInfo }) => {
             ?.slice() // Create a shallow copy of the array
             .reverse() // Reverse the order of the array
             .map((item, index) => (
-              <div key={index}>
+              <div className="my-2" key={index}>
                 {/* Company Name and Location */}
                 <h2
-                  className="font-bold text-sm flex justify-between items-center"
+                  className="font-bold text-sm md:text-base flex justify-between items-center"
                   style={{ color: resumeInfo?.attributes?.themeColor }}
                 >
                   {item?.companyName}
@@ -43,7 +43,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
                 </h2>
 
                 {/* Title */}
-                <h2 className="font-bold text-gray-600 text-xs flex justify-between items-center">
+                <h2 className="font-bold text-gray-600 text-xs md:text-sm flex justify-between items-center">
                   {item?.title}
                   {/* Start and end date or present situation */}
                   <span
@@ -62,7 +62,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
 
                 {/* Work summary */}
                 <div
-                  className="text-xs mt-1 leading-5"
+                  className="text-xs md:text-sm mt-1 leading-5"
                   dangerouslySetInnerHTML={{ __html: item?.workSummary }}
                 />
               </div>

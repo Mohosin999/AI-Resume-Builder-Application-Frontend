@@ -245,7 +245,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date</Label>
+                    <Label className="text-sm">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
                       value={item?.endDate}

@@ -63,7 +63,7 @@ const ViewResume = () => {
 
         <div className="mt-5 md:mt-8 mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36">
           <h2 className="font-medium text-xl md:text-2xl text-center">
-            Congratulations! your resume is ready
+            Congratulations! Your Resume is Ready Now.
           </h2>
           <CustomParagraph className="text-center text-gray-500">
             Now you are ready to download your resume and you can share it with
@@ -90,7 +90,7 @@ const ViewResume = () => {
             </RWebShare>
 
             {/* Calculate resume score button  */}
-            <Button onClick={calculateResumeScoreFromAi}>
+            <Button className="py-0" onClick={calculateResumeScoreFromAi}>
               {loading ? (
                 <Loader2Icon className="animate-spin" />
               ) : (
