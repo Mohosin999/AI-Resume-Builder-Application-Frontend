@@ -17,7 +17,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {resumeInfo?.attributes?.firstName} {resumeInfo?.attributes?.lastName}
       </h2>
       {/* Job title */}
-      <h2 className="font-medium text-sm text-center">
+      <h2 className="font-medium text-sm md:text-base text-center text-gray-600">
         {resumeInfo?.attributes?.jobTitle}
       </h2>
 
@@ -26,10 +26,10 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
        *            Email, Social Link and Address
        * =========================================================
        */}
-      <div className="flex justify-center items-center space-x-2">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center items-center space-x-2 text-gray-700">
         {/* Email */}
         <h2
-          className="font-normal text-xs"
+          className="font-normal text-xs md:text-sm"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}
@@ -39,12 +39,12 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {/* Bullet Point */}
         {resumeInfo?.attributes?.email &&
           resumeInfo?.attributes?.socialLink && (
-            <span className="text-xs font-bold">•</span>
+            <span className="text-xs font-bold hidden md:inline">•</span>
           )}
 
         {/* Social Link */}
         <h2
-          className="font-normal text-xs"
+          className="font-normal text-xs md:text-sm"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}
@@ -54,12 +54,12 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {/* Bullet Point */}
         {resumeInfo?.attributes?.socialLink &&
           resumeInfo?.attributes?.address && (
-            <span className="text-xs font-bold">•</span>
+            <span className="text-xs font-bold hidden md:inline">•</span>
           )}
 
         {/* Address */}
         <h2
-          className="font-normal text-xs text-center"
+          className="font-normal text-xs md:text-sm text-center"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}
