@@ -45,11 +45,11 @@ const ThemeColor = () => {
 
   // Colors List
   const colors = [
-    "#FF0000",
-    "#66CDAA",
+    "#000000",
+    "#2F4F4F",
     "#FFD700",
     "#FFA500",
-    "#FF1493",
+    "#66CDAA",
     "#FF4500",
     "#FF7F50",
     "#2E8B57",
