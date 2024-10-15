@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Input } from "../../../../../components/ui/input";
-// Rating Related
-import { Rating } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
 import { Button } from "../../../../../components/ui/button";
-import { FileSpreadsheet, LoaderCircle } from "lucide-react";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { useParams } from "react-router-dom";
@@ -14,7 +11,13 @@ import { Label } from "../../../../../components/ui/label";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
-const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+/**
+ * Skills component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
+const Skills = ({ setEnableNext }) => {
   // States
   const [skillsList, setSkillsList] = useState([
     {
@@ -198,6 +201,10 @@ const Skills = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
       </FormWrapper>
     </div>
   );
+};
+
+Skills.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Skills;

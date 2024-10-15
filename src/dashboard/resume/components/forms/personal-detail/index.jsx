@@ -1,16 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
 import { Label } from "../../../../../components/ui/label";
-import { Button } from "../../../../../components/ui/button";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
+/**
+ * PersonalDetail component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
 const PersonalDetail = ({ setEnableNext }) => {
   // States
   const [formData, setFormData] = useState();
@@ -140,6 +145,7 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Label className="text-sm">First Name*</Label>
             <Input
               name="firstName"
+              placeholder="Jhon"
               required
               value={resumeInfo?.attributes?.firstName}
               onChange={handleInputChange}
@@ -150,6 +156,7 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Label className="text-sm">Last Name*</Label>
             <Input
               name="lastName"
+              placeholder="Doe"
               required
               value={resumeInfo?.attributes?.lastName}
               onChange={handleInputChange}
@@ -160,10 +167,10 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Label className="text-sm">Job Title*</Label>
             <Input
               name="jobTitle"
+              placeholder="E. g. Frontend Developer"
               required
               onChange={handleInputChange}
               value={resumeInfo?.attributes?.jobTitle}
-              placeholder="E. g. Frontend Developer"
             />
           </div>
           {/* Email */}
@@ -171,6 +178,7 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Label className="text-sm">Email*</Label>
             <Input
               name="email"
+              placeholder="jhondoe@example.com"
               required
               value={resumeInfo?.attributes?.email}
               onChange={handleInputChange}
@@ -192,10 +200,10 @@ const PersonalDetail = ({ setEnableNext }) => {
             <Label className="text-sm">Address*</Label>
             <Input
               name="address"
+              placeholder="Division, Country"
               required
               onChange={handleInputChange}
               value={resumeInfo?.attributes?.address}
-              placeholder="Division, Country"
             />
           </div>
         </div>
@@ -207,6 +215,10 @@ const PersonalDetail = ({ setEnableNext }) => {
       </form>
     </FormWrapper>
   );
+};
+
+PersonalDetail.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default PersonalDetail;

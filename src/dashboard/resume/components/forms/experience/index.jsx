@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
@@ -12,6 +12,12 @@ import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 import FormWrapper from "../../../../../components/form-wrapper";
 
+/**
+ * Experience component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
 const Experience = ({ setEnableNext }) => {
   // States
   const [experienceList, setExperienceList] = useState([
@@ -301,6 +307,10 @@ const Experience = ({ setEnableNext }) => {
       </FormWrapper>
     </div>
   );
+};
+
+Experience.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Experience;

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Brain } from "lucide-react";
@@ -17,9 +18,9 @@ const PROMPT =
   "Job Title: {jobTitle}, Generate a JSON object for a resume summary tailored to different experience levels, based on the provided job title. The JSON should include 'experienceLevel' and 'summary' fields for each experience level (Fresher, Mid-Level, Experienced). Each summary should be within 4-5 lines.";
 
 /**
- * Summary Component
+ * Summary component.
  *
- * @param {Function} setEnableNext - It will be a function
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
  * @returns {JSX.Element}
  */
 const Summary = ({ setEnableNext }) => {
@@ -165,6 +166,10 @@ const Summary = ({ setEnableNext }) => {
       </div>
     </div>
   );
+};
+
+Summary.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Summary;

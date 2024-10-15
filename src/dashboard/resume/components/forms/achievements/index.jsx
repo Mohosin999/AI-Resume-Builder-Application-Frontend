@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
-import { Button } from "../../../../../components/ui/button";
 import GlobalApi from "../../../../../../service/GlobalApi";
 import RichTextEditor from "../../rich-text-editor";
 import { Label } from "../../../../../components/ui/label";
-import CustomParagraph from "../../../../../components/ui/customParagraph";
+import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
-const Achievements = ({
-  setEnableNext,
-  activeFormIndex,
-  setActiveFormIndex,
-}) => {
+/**
+ * Achievements component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
+const Achievements = ({ setEnableNext }) => {
   // Initialize achievementList as a string
   const [achievementList, setAchievementList] = useState("");
   const [loading, setLoading] = useState(false);
@@ -116,6 +117,10 @@ const Achievements = ({
       </FormWrapper>
     </div>
   );
+};
+
+Achievements.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Achievements;

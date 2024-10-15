@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Input } from "../../../../../components/ui/input";
 import { Button } from "../../../../../components/ui/button";
-import { LoaderCircle } from "lucide-react";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../../service/GlobalApi";
@@ -11,7 +11,13 @@ import { Label } from "../../../../../components/ui/label";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
-const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+/**
+ * Education component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
+const Education = ({ setEnableNext }) => {
   // States
   const [educationalList, setEducationalList] = useState([
     {
@@ -254,6 +260,10 @@ const Education = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
       </FormWrapper>
     </div>
   );
+};
+
+Education.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Education;

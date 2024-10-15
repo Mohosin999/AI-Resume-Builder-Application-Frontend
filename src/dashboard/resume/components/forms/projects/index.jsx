@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { ResumeInfoContext } from "../../../../../context/ResumeInfoContext";
 import { Input } from "../../../../../components/ui/input";
@@ -12,7 +12,13 @@ import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 
-const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
+/**
+ * Projects component.
+ *
+ * @param {Function} setEnableNext - Function to enable or disable the next button based on form completion.
+ * @returns {JSX.Element}
+ */
+const Projects = ({ setEnableNext }) => {
   // States
   const [projectsList, setProjectsList] = useState([
     {
@@ -241,6 +247,10 @@ const Projects = ({ setEnableNext, activeFormIndex, setActiveFormIndex }) => {
       </FormWrapper>{" "}
     </div>
   );
+};
+
+Projects.propTypes = {
+  setEnableNext: PropTypes.func.isRequired,
 };
 
 export default Projects;
