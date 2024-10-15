@@ -109,7 +109,9 @@ const ViewResume = () => {
         <ResumePreview />
       </div>
 
-      <Footer />
+      <div id="no-print">
+        <Footer />
+      </div>
 
       {/* AI Result Modal */}
       {showModal && (

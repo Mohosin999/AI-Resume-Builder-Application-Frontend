@@ -22,7 +22,7 @@ const ResumePreview = () => {
         <Loader />
       ) : (
         <div
-          className="shadow-lg h-full p-3 md:p-5 border-t-[10px] md:border-t-[14px]"
+          className="shadow-lg h-full py-5 px-10 border-t-[20px]"
           style={{ borderColor: resumeInfo?.attributes?.themeColor }}
         >
           {/* Personal Details */}
