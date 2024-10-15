@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * PersonalDetailsPreview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing personal details to be displayed.
+ * @returns {JSX.Element}
+ */
 const PersonalDetailsPreview = ({ resumeInfo }) => {
   return (
     <div>
@@ -69,6 +76,10 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
       </div>
     </div>
   );
+};
+
+PersonalDetailsPreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default PersonalDetailsPreview;

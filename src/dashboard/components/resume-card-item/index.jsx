@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Loader2Icon, MoreVertical, Notebook } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -23,9 +24,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 /**
- * Resume Card Item
+ * ResumeCardItem component that displays an individual resume card and handles data refresh functionality.
  *
- * @param {Object} resume - Resume will be an object.
+ * @param {Object} resume - The resume data to be displayed in the card.
+ * @param {Function} refreshData - Function to refresh the resume data when necessary.
  * @returns {JSX.Element}
  */
 const ResumeCardItem = ({ resume, refreshData }) => {
@@ -67,10 +69,6 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        * =======================================================
        */}
       <Link to={`/dashboard/resume/${resume.id}/edit`}>
-        {/* <div
-          className="p-14 flex items-center justify-center h-[280px] border rounded-lg hover:scale-105 transition-all hover:shadow-md shadow-primary"
-          style={{ backgroundColor: themeColor }}
-        > */}
         <div
           className="p-14 py-24 border flex justify-center items-center bg-secondary rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
           style={{ backgroundColor: themeColor }}
@@ -147,6 +145,11 @@ const ResumeCardItem = ({ resume, refreshData }) => {
       </AlertDialog>
     </div>
   );
+};
+
+ResumeCardItem.propTypes = {
+  resume: PropTypes.object.isRequired,
+  refreshData: PropTypes.func.isRequired,
 };
 
 export default ResumeCardItem;

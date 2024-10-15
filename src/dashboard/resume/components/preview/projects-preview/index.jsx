@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * ProjectsPreview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing project details to be displayed.
+ * @returns {JSX.Element}
+ */
 const ProjectsPreview = ({ resumeInfo }) => {
   return (
     <>
@@ -43,6 +50,10 @@ const ProjectsPreview = ({ resumeInfo }) => {
       )}
     </>
   );
+};
+
+ProjectsPreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default ProjectsPreview;

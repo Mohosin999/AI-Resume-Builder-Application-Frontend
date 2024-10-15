@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * SummaryPreview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing summary details to be displayed.
+ * @returns {JSX.Element}
+ */
 const SummaryPreview = ({ resumeInfo }) => {
   return (
     <>
@@ -26,6 +33,10 @@ const SummaryPreview = ({ resumeInfo }) => {
       )}
     </>
   );
+};
+
+SummaryPreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default SummaryPreview;

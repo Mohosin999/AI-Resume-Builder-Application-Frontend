@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * Github Contribution Preview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing github contribution details to be displayed.
+ * @returns {JSX.Element}
+ */
 const GithubContributionPreview = ({ resumeInfo }) => {
   return (
     <>
@@ -43,6 +50,10 @@ const GithubContributionPreview = ({ resumeInfo }) => {
       )}
     </>
   );
+};
+
+GithubContributionPreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default GithubContributionPreview;

@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * AchievementsPreview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing achievement details to be displayed.
+ * @returns {JSX.Element}
+ */
 const AchievementsPreview = ({ resumeInfo }) => {
   return (
     <>
@@ -33,6 +40,10 @@ const AchievementsPreview = ({ resumeInfo }) => {
       )}
     </>
   );
+};
+
+AchievementsPreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default AchievementsPreview;

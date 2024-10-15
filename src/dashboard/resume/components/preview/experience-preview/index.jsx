@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * ExperiencePreview component.
+ *
+ * @param {Object} resumeInfo - The resume information containing experience details to be displayed.
+ * @returns {JSX.Element}
+ */
 const ExperiencePreview = ({ resumeInfo }) => {
   return (
     <>
@@ -71,6 +78,10 @@ const ExperiencePreview = ({ resumeInfo }) => {
       )}
     </>
   );
+};
+
+ExperiencePreview.propTypes = {
+  resumeInfo: PropTypes.object.isRequired,
 };
 
 export default ExperiencePreview;

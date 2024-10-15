@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // import styles for snow theme
 
+/**
+ * RichTextEditor component that provides a rich text editor interface.
+ *
+ * @param {Function} onRichTextEditorChange - Callback function triggered when the editor content changes.
+ * @param {string} value - The current content of the editor.
+ * @returns {JSX.Element}
+ */
 const RichTextEditor = ({ onRichTextEditorChange, value }) => {
   const [content, setContent] = useState(value);
 
@@ -61,6 +69,11 @@ const RichTextEditor = ({ onRichTextEditorChange, value }) => {
       </style>
     </div>
   );
+};
+
+RichTextEditor.propTypes = {
+  onRichTextEditorChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default RichTextEditor;

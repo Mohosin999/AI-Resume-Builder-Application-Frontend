@@ -20,10 +20,12 @@ const ViewResume = () => {
 
   const { resumeId } = useParams();
 
+  // Call the `getResumeInfo` function for the first time
   useEffect(() => {
     getResumeInfo();
   }, []);
 
+  // Function to get resume information
   const getResumeInfo = () => {
     GlobalApi.GetResumeById(resumeId).then((res) => {
       setResumeInfo(res?.data?.data);

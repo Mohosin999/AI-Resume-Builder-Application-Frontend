@@ -1,3 +1,11 @@
+/**
+ * Custom hook to calculate the resume score and handle related functionality.
+ *
+ * @param {Object} resumeInfo - The information used to calculate the resume score.
+ * @returns {Object} - An object containing helper functions:
+ *   @returns {Function} collectUserData - Function to gather user data needed for the score calculation.
+ *   @returns {Function} createResumeScorePrompt - Function to create a prompt for generating a resume score.
+ */
 const useCalculateResumeScore = (resumeInfo) => {
   /**
    * Function to collect user's data.
