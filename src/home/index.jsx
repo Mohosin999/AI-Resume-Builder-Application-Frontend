@@ -35,7 +35,7 @@ const Home = () => {
         </h1>
 
         {/* Sub-heading */}
-        <p className="mt-4 mb-6 text-base md:text-lg text-gray-600 font-semibold">
+        <p className="mt-4 mb-6 text-base md:text-lg text-gray-600">
           Create your resume with maintaining professionalism and efficiency.
           Our AI helps you ensure your resume stands out by providing feedback
           on how professional it is, giving you a clear score to improve.
