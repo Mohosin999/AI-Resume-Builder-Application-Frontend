@@ -11,6 +11,8 @@ import { AIChatSession } from "../../../../service/AIModal";
 import { Loader2Icon, XIcon } from "lucide-react";
 import CustomParagraph from "../../../components/ui/CustomParagraph";
 import Footer from "../../../components/footer";
+import AnimatedHeading from "../../../components/shared/animated-heading";
+import Wrapper from "../../../components/wrapper";
 
 const ViewResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -64,44 +66,51 @@ const ViewResume = () => {
       <div id="no-print">
         <Header />
 
-        <div className="mt-5 md:mt-8 mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36">
-          <h2 className="font-medium text-xl md:text-2xl text-center">
-            Congratulations! Your Resume is Ready Now.
-          </h2>
-          <CustomParagraph className="text-center text-gray-500">
-            Now you are ready to download your resume and you can share it with
-            your friends
-          </CustomParagraph>
+        <Wrapper>
+          <div className="mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36">
+            {/* <div className="mt-5 md:mt-8 mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36"> */}
+            <AnimatedHeading
+              text="Congratulations! Your Resume is Ready"
+              className="text-center !text-2xl md:!text-4xl"
+            />
+            {/* <h2 className="font-medium text-xl md:text-2xl text-center">
+            Your Resume is Ready Now.
+          </h2> */}
+            <CustomParagraph className="text-center text-gray-500">
+              Now you are ready to download your resume and you can share it
+              with your friends
+            </CustomParagraph>
 
-          {/* Buttons */}
-          <div className="flex flex-col md:flex-row gap-2 justify-between lg:px-44 mt-4 md:my-10">
-            {/* Download button */}
-            <Button onClick={handleDownload}>Download</Button>
+            {/* Buttons */}
+            <div className="flex flex-col md:flex-row gap-2 justify-between lg:px-44 mt-4 md:my-10">
+              {/* Download button */}
+              <Button onClick={handleDownload}>Download</Button>
 
-            {/* Share button */}
-            <RWebShare
-              data={{
-                text: "This is my resume, Open the link to see it.",
-                url: `${
-                  import.meta.env.VITE_BASE_URL
-                }/my-resume/${resumeId}/view`,
-                title: `${resumeInfo?.attributes?.firstName} ${resumeInfo?.attributes?.lastName} Resume`,
-              }}
-              onClick={() => console.log("shared successfully!")}
-            >
-              <Button>Share</Button>
-            </RWebShare>
+              {/* Share button */}
+              <RWebShare
+                data={{
+                  text: "This is my resume, Open the link to see it.",
+                  url: `${
+                    import.meta.env.VITE_BASE_URL
+                  }/my-resume/${resumeId}/view`,
+                  title: `${resumeInfo?.attributes?.firstName} ${resumeInfo?.attributes?.lastName} Resume`,
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                <Button>Share</Button>
+              </RWebShare>
 
-            {/* Calculate resume score button  */}
-            <Button className="py-0" onClick={calculateResumeScoreFromAi}>
-              {loading ? (
-                <Loader2Icon className="animate-spin" />
-              ) : (
-                "Calculate Resume Score"
-              )}
-            </Button>
+              {/* Calculate resume score button  */}
+              <Button className="py-0" onClick={calculateResumeScoreFromAi}>
+                {loading ? (
+                  <Loader2Icon className="animate-spin" />
+                ) : (
+                  "Calculate Resume Score"
+                )}
+              </Button>
+            </div>
           </div>
-        </div>
+        </Wrapper>
       </div>
 
       {/* Resume Preview */}

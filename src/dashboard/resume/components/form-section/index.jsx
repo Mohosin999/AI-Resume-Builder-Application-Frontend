@@ -42,7 +42,7 @@ const FormSection = () => {
     setTimeout(() => {
       setActiveFormIndex(activeFormIndex + 1);
       setLoading(false); // Hide loader after the form is ready
-    }, 20); // Adjust the delay as necessary
+    }, 10); // Adjust the delay as necessary
   };
 
   if (loading) {
@@ -50,7 +50,8 @@ const FormSection = () => {
   }
 
   return (
-    <div className="mt-3 md:mt-0">
+    <div className="">
+      {/* <div className="mt-3 md:mt-0"> */}
       {/*
        * ==========================================================
        *                 Form's above buttons

@@ -142,7 +142,7 @@ const PersonalDetail = ({ setEnableNext }) => {
         <div className="grid grid-cols-2 my-5 gap-3">
           {/* First Name */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm">First Name*</Label>
+            <Label className="text-base">First Name*</Label>
             <Input
               name="firstName"
               placeholder="Jhon"

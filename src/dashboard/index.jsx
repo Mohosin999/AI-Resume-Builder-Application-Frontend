@@ -86,6 +86,7 @@ import AddResume from "./components/add-resume";
 import ResumeCardItem from "./components/resume-card-item";
 import CustomParagraph from "../components/ui/CustomParagraph";
 import Loader from "../components/shared/loader";
+import Wrapper from "../components/wrapper";
 // import SkeletonLoader from "../components/shared/skeleton-loader"; // Assume this is your skeleton loader component
 
 const Dashboard = () => {
@@ -120,38 +121,41 @@ const Dashboard = () => {
   }, [userEmail, GetResumesList]);
 
   return (
-    <div className="p-4 mt-2 md:mt-6 md:px-20 lg:px-32">
-      {/* Heading and Sub-heading */}
-      <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
-        My All Resumes
-      </h2>
-      <CustomParagraph className="text-center">
-        Start building an AI-powered resume for your upcoming job opportunity.
-      </CustomParagraph>
+    <Wrapper>
+      <div className="px-4 md:px-20 lg:px-32">
+        {/* <div className="p-4 mt-2 md:mt-6 md:px-20 lg:px-32"> */}
+        {/* Heading and Sub-heading */}
+        <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
+          My All Resumes
+        </h2>
+        <CustomParagraph className="text-center">
+          Start building an AI-powered resume for your upcoming job opportunity.
+        </CustomParagraph>
 
-      {/* Resume List */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10">
-        <AddResume />
+        {/* Resume List */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10">
+          <AddResume />
 
-        {loading ? (
-          <div className="flex justify-center items-center h-72">
-            <Loader />
-          </div>
-        ) : resumeList.length > 0 ? (
-          resumeList.map((resume) => (
-            <ResumeCardItem
-              resume={resume}
-              refreshData={GetResumesList}
-              key={resume.id} // Use unique key instead of index
-            />
-          ))
-        ) : (
-          <div className="col-span-full text-center text-gray-500 text-xl md:text-2xl">
-            No resumes found.
-          </div>
-        )}
+          {loading ? (
+            <div className="flex justify-center items-center h-72">
+              <Loader />
+            </div>
+          ) : resumeList.length > 0 ? (
+            resumeList.map((resume) => (
+              <ResumeCardItem
+                resume={resume}
+                refreshData={GetResumesList}
+                key={resume.id} // Use unique key instead of index
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-gray-500 text-xl md:text-2xl">
+              No resumes found.
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

@@ -80,7 +80,9 @@ const ResumeCardItem = ({ resume, refreshData }) => {
       {/* Resume title and drop down menu */}
       <div className="flex items-start justify-between">
         {/* Title */}
-        <h1 className="text-center my-1">{resume.attributes.title}</h1>
+        <h1 className="text-base text-center my-1">
+          {resume.attributes.title}
+        </h1>
         {/*
          * ======================================
          *            Dropdown menu

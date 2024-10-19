@@ -4,6 +4,7 @@ import FormSection from "../../components/form-section";
 import ResumePreview from "../../components/resume-preview";
 import { ResumeInfoContext } from "../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../service/GlobalApi";
+import Wrapper from "../../../../components/wrapper";
 
 const EditResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -24,13 +25,15 @@ const EditResume = () => {
 
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 p-4 md:p-10 gap-10">
-        {/* Form Section */}
-        <FormSection />
+      <Wrapper>
+        <div className="grid grid-cols-1 lg:grid-cols-2 px-4 md:px-10 gap-10">
+          {/* Form Section */}
+          <FormSection />
 
-        {/* Preview Section */}
-        <ResumePreview />
-      </div>
+          {/* Preview Section */}
+          <ResumePreview />
+        </div>
+      </Wrapper>
     </ResumeInfoContext.Provider>
   );
 };
