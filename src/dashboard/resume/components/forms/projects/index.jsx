@@ -11,6 +11,7 @@ import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
+import AnimatedTitle from "../../../../../components/shared/animated-title";
 
 /**
  * Projects component.
@@ -174,13 +175,13 @@ const Projects = ({ setEnableNext }) => {
               <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">Project Form</h2>
+                  <AnimatedTitle title="Project Form" />
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveProjects(index)}
-                    className="text-primary"
+                    className="text-red-500"
                   >
                     - Remove
                   </Button>
@@ -194,7 +195,7 @@ const Projects = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-sm">Project Name</Label>
+                    <Label className="text-base">Project Name</Label>
                     <Input
                       name="projectsName"
                       value={item?.projectsName}
@@ -204,7 +205,9 @@ const Projects = ({ setEnableNext }) => {
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-sm">Add Your Project Details</Label>
+                    <Label className="text-base">
+                      Add Your Project Details
+                    </Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}

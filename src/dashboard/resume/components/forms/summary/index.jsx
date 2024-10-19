@@ -112,7 +112,7 @@ const Summary = ({ setEnableNext }) => {
             </Button>
           </div>
 
-          <Label className="text-sm">Add Summary</Label>
+          <Label className="text-base">Add Summary</Label>
           {/* Textarea */}
           <Textarea
             className=""

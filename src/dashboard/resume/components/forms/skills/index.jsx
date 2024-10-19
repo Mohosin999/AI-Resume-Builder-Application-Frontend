@@ -150,7 +150,7 @@ const Skills = ({ setEnableNext }) => {
           {skillsList?.map((item, index) => (
             <div key={index} className="rounded-lg mb-2 my-5">
               <div>
-                <Label className="text-sm">Name</Label>
+                <Label className="text-base">Skill's Name</Label>
                 <div className="flex justify-between items-center gap-2">
                   <Input
                     onChange={(e) =>
@@ -164,7 +164,7 @@ const Skills = ({ setEnableNext }) => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveSkills(index)}
-                    className="text-primary"
+                    className="text-red-500"
                   >
                     - Remove
                   </Button>

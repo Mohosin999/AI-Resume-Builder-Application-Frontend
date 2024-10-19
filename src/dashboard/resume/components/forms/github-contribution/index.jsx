@@ -11,6 +11,7 @@ import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
+import AnimatedTitle from "../../../../../components/shared/animated-title";
 
 /**
  * Github Contribution component.
@@ -176,15 +177,13 @@ const GithubContribution = ({ setEnableNext }) => {
               <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">
-                    GitHub Contribution Form
-                  </h2>
+                  <AnimatedTitle title="GitHub Contribution Form" />
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveProjects(index)}
-                    className="text-primary"
+                    className="text-red-500"
                   >
                     - Remove
                   </Button>
@@ -198,7 +197,7 @@ const GithubContribution = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-sm">Repository Name</Label>
+                    <Label className="text-base">Repository Name</Label>
                     <Input
                       name="repositoryName"
                       value={item?.repositoryName}
@@ -208,7 +207,7 @@ const GithubContribution = ({ setEnableNext }) => {
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-sm">
+                    <Label className="text-base">
                       Add Your Contribution Details
                     </Label>
                     <RichTextEditor

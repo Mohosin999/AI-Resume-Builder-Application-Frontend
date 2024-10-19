@@ -11,6 +11,7 @@ import { Label } from "../../../../../components/ui/label";
 import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
 import FormWrapper from "../../../../../components/form-wrapper";
+import AnimatedTitle from "../../../../../components/shared/animated-title";
 
 /**
  * Experience component.
@@ -184,15 +185,13 @@ const Experience = ({ setEnableNext }) => {
               <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">
-                    Experience Form
-                  </h2>
+                  <AnimatedTitle title="Experience Form" />
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveExperience(index)}
-                    className="text-primary"
+                    className="text-red-500"
                   >
                     - Remove
                   </Button>
@@ -206,7 +205,7 @@ const Experience = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* Company Name */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Company Name</Label>
+                    <Label className="text-base">Company Name</Label>
                     <Input
                       name="companyName"
                       value={item?.companyName}
@@ -215,7 +214,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* Title of the Position */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Position Title</Label>
+                    <Label className="text-base">Position Title</Label>
                     <Input
                       name="title"
                       value={item?.title}
@@ -224,7 +223,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* City */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">City</Label>
+                    <Label className="text-base">City</Label>
                     <Input
                       name="city"
                       value={item?.city}
@@ -233,7 +232,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* State */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">State</Label>
+                    <Label className="text-base">State</Label>
                     <Input
                       name="state"
                       value={item?.state}
@@ -242,7 +241,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Start Date</Label>
+                    <Label className="text-base">Start Date</Label>
                     <Input
                       name="startDate"
                       value={item?.startDate}
@@ -251,7 +250,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date / Ongoing</Label>
+                    <Label className="text-base">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
                       value={item?.endDate}
@@ -261,7 +260,7 @@ const Experience = ({ setEnableNext }) => {
                   {/* Work Summary */}
                   <div className="col-span-2">
                     {/* Label */}
-                    <Label className="text-sm">
+                    <Label className="text-base">
                       Add Your Experience Details
                     </Label>
                     {/* Text Editor */}

@@ -10,6 +10,7 @@ import CustomParagraph from "../../../../../components/ui/CustomParagraph";
 import { Label } from "../../../../../components/ui/label";
 import FormWrapper from "../../../../../components/form-wrapper";
 import CustomSaveButton from "../../../../../components/shared/custom-save-button";
+import AnimatedTitle from "../../../../../components/shared/animated-title";
 
 /**
  * Education component.
@@ -162,15 +163,13 @@ const Education = ({ setEnableNext }) => {
               <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <h2 className="font-semibold text-blue-700">
-                    Education Form
-                  </h2>
+                  <AnimatedTitle title="Education Form" />
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveEducation(index)}
-                    className="text-primary"
+                    className="text-red-500"
                   >
                     - Remove
                   </Button>
@@ -184,7 +183,7 @@ const Education = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* University Name */}
                   <div className="col-span-2">
-                    <Label className="text-sm">University Name</Label>
+                    <Label className="text-base">University Name</Label>
                     <Input
                       name="universityName"
                       onChange={(event) => handleChange(event, index)}
@@ -193,7 +192,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Degree */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Degree</Label>
+                    <Label className="text-base">Degree</Label>
                     <Input
                       name="degree"
                       onChange={(event) => handleChange(event, index)}
@@ -202,7 +201,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Major */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Major</Label>
+                    <Label className="text-base">Major</Label>
                     <Input
                       name="major"
                       onChange={(event) => handleChange(event, index)}
@@ -211,7 +210,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Start Date</Label>
+                    <Label className="text-base">Start Date</Label>
                     <Input
                       name="startDate"
                       onChange={(event) => handleChange(event, index)}
@@ -220,7 +219,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date / Ongoing</Label>
+                    <Label className="text-base">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
                       onChange={(event) => handleChange(event, index)}
