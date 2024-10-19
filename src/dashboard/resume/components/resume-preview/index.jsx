@@ -19,7 +19,7 @@ const ResumePreview = () => {
   return (
     <div>
       {isLoading ? (
-        <Loader />
+        <Loader height={"h-0"} className="my-20" />
       ) : (
         <div
           className="shadow-lg h-full py-5 px-10 border-t-[20px]"
