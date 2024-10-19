@@ -98,7 +98,7 @@ const Achievements = ({ setEnableNext }) => {
 
         {/* Rich Text Editor for achievements */}
         <div className="my-5">
-          <Label className="text-base">Add Your Achievements Details</Label>
+          <Label className="text-sm">Achievements Details</Label>
           <div>
             <RichTextEditor
               value={achievementList} // Bind string value

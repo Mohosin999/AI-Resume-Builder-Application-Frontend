@@ -205,7 +205,7 @@ const Experience = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* Company Name */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Company Name</Label>
+                    <Label className="text-sm">Company Name</Label>
                     <Input
                       name="companyName"
                       value={item?.companyName}
@@ -214,7 +214,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* Title of the Position */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Position Title</Label>
+                    <Label className="text-sm">Position Title</Label>
                     <Input
                       name="title"
                       value={item?.title}
@@ -223,7 +223,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* City */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">City</Label>
+                    <Label className="text-sm">City</Label>
                     <Input
                       name="city"
                       value={item?.city}
@@ -232,7 +232,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* State */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">State</Label>
+                    <Label className="text-sm">State</Label>
                     <Input
                       name="state"
                       value={item?.state}
@@ -241,7 +241,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Start Date</Label>
+                    <Label className="text-sm">Start Date</Label>
                     <Input
                       name="startDate"
                       value={item?.startDate}
@@ -250,7 +250,7 @@ const Experience = ({ setEnableNext }) => {
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">End Date / Ongoing</Label>
+                    <Label className="text-sm">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
                       value={item?.endDate}
@@ -260,9 +260,7 @@ const Experience = ({ setEnableNext }) => {
                   {/* Work Summary */}
                   <div className="col-span-2">
                     {/* Label */}
-                    <Label className="text-base">
-                      Add Your Experience Details
-                    </Label>
+                    <Label className="text-sm">Experience Details</Label>
                     {/* Text Editor */}
                     <RichTextEditor
                       value={item?.workSummary}

@@ -177,7 +177,7 @@ const GithubContribution = ({ setEnableNext }) => {
               <div className="my-5 rounded-lg">
                 {/* Form Heading and Remove Button */}
                 <div className="flex justify-between items-center">
-                  <AnimatedTitle title="GitHub Contribution Form" />
+                  <AnimatedTitle title="Contribution Form" />
                   {/* Remove Button */}
                   <Button
                     size="sm"
@@ -197,7 +197,7 @@ const GithubContribution = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-base">Repository Name</Label>
+                    <Label className="text-sm">Name</Label>
                     <Input
                       name="repositoryName"
                       value={item?.repositoryName}
@@ -207,9 +207,7 @@ const GithubContribution = ({ setEnableNext }) => {
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-base">
-                      Add Your Contribution Details
-                    </Label>
+                    <Label className="text-sm">Details</Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}

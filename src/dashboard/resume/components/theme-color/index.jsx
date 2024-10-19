@@ -43,28 +43,52 @@ const ThemeColor = () => {
     });
   };
 
-  // Colors List
   const colors = [
     "#000000",
     "#2F4F4F",
+    "#4B0082",
+    "#5F9EA0",
+    "#B8860B", // dark tones
+    "#6A5ACD",
+    "#8B008B",
+    "#556B2F",
+    "#2E8B57",
+    "#FF6347", // rich colors
     "#FFD700",
     "#FFA500",
     "#66CDAA",
     "#FF4500",
-    "#FF7F50",
+    "#FF7F50", // vibrant tones
     "#2E8B57",
     "#3CB371",
     "#008B8B",
     "#808000",
-    "#20B2AA",
+    "#20B2AA", // earthy tones
     "#00CED1",
-    "#33A1FF",
-    "#00BFFF",
+    "#4682B4",
     "#1E90FF",
+    "#00BFFF",
+    "#1E90FF", // blues
     "#7B68EE",
     "#DAA520",
     "#FF5733",
     "#D2691E",
+    "#B22222", // warm tones
+    "#F08080",
+    "#E9967A",
+    "#FF69B4",
+    "#C71585",
+    "#DB7093", // pinks
+    "#FFB6C1",
+    "#FF1493",
+    "#BA55D3",
+    "#9400D3",
+    "#9370DB", // purples
+    "#8A2BE2",
+    "#D8BFD8",
+    "#FFFAF0",
+    "#F5DEB3",
+    "#DCDCDC", // neutrals
   ];
 
   return (

@@ -41,7 +41,7 @@ const AnimatedTitle = ({ title, className }) => {
     const updateXValue = () => {
       if (window.innerWidth < 640) {
         // For mobile screens (width < 640px), reduce the animation distance
-        setXValue("50%"); // Adjust this percentage as per your requirement
+        setXValue("30%"); // Adjust this percentage as per your requirement
       } else {
         // For larger screens
         setXValue("100%");

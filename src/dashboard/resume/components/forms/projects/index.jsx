@@ -195,7 +195,7 @@ const Projects = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-base">Project Name</Label>
+                    <Label className="text-sm">Name</Label>
                     <Input
                       name="projectsName"
                       value={item?.projectsName}
@@ -205,9 +205,7 @@ const Projects = ({ setEnableNext }) => {
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-base">
-                      Add Your Project Details
-                    </Label>
+                    <Label className="text-sm">Details</Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}

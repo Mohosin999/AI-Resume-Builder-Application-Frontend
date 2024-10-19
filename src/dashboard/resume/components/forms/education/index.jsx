@@ -183,7 +183,7 @@ const Education = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* University Name */}
                   <div className="col-span-2">
-                    <Label className="text-base">University Name</Label>
+                    <Label className="text-sm">University Name</Label>
                     <Input
                       name="universityName"
                       onChange={(event) => handleChange(event, index)}
@@ -192,7 +192,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Degree */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Degree</Label>
+                    <Label className="text-sm">Degree</Label>
                     <Input
                       name="degree"
                       onChange={(event) => handleChange(event, index)}
@@ -201,7 +201,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Major */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Major</Label>
+                    <Label className="text-sm">Major</Label>
                     <Input
                       name="major"
                       onChange={(event) => handleChange(event, index)}
@@ -210,7 +210,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">Start Date</Label>
+                    <Label className="text-sm">Start Date</Label>
                     <Input
                       name="startDate"
                       onChange={(event) => handleChange(event, index)}
@@ -219,7 +219,7 @@ const Education = ({ setEnableNext }) => {
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-base">End Date / Ongoing</Label>
+                    <Label className="text-sm">End Date / Ongoing</Label>
                     <Input
                       name="endDate"
                       onChange={(event) => handleChange(event, index)}
