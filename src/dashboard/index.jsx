@@ -79,87 +79,6 @@
 
 // export default Dashboard;
 
-// import React, { useEffect, useState, useCallback, useMemo } from "react";
-// import { useUser } from "@clerk/clerk-react";
-// import GlobalApi from "../../service/GlobalApi";
-// import AddResume from "./components/add-resume";
-// import ResumeCardItem from "./components/resume-card-item";
-// import CustomParagraph from "../components/ui/CustomParagraph";
-// import Loader from "../components/shared/loader";
-// import Wrapper from "../components/wrapper";
-
-// const Dashboard = () => {
-//   // States
-//   const [resumeList, setResumeList] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   // Destructuring user from useUser hook
-//   const { user } = useUser();
-
-//   // Memoize user email to avoid unnecessary re-renders
-//   const userEmail = useMemo(
-//     () => user?.primaryEmailAddress?.emailAddress,
-//     [user]
-//   );
-
-//   // UseCallback to memoize the fetching function
-//   const GetResumesList = useCallback(() => {
-//     if (!userEmail) return; // Avoid API call if email is not available
-//     setLoading(true);
-//     GlobalApi.GetUserResumes(userEmail).then((res) => {
-//       setResumeList(res?.data?.data || []); // Ensure fallback to an empty array
-//       setLoading(false);
-//     });
-//   }, [userEmail]);
-
-//   // Effect to fetch resumes when the user information is available
-//   useEffect(() => {
-//     if (userEmail) {
-//       GetResumesList();
-//     }
-//   }, [userEmail, GetResumesList]);
-
-//   return (
-//     <Wrapper>
-//       <div className="px-4 md:px-20 lg:px-32">
-//         {/* <div className="p-4 mt-2 md:mt-6 md:px-20 lg:px-32"> */}
-//         {/* Heading and Sub-heading */}
-//         <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
-//           My All Resumes
-//         </h2>
-//         <CustomParagraph className="text-center">
-//           Start building an AI-powered resume for your upcoming job opportunity.
-//         </CustomParagraph>
-
-//         {/* Resume List */}
-//         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10">
-//           <AddResume />
-
-//           {loading ? (
-//             <div className="flex justify-center items-center h-72">
-//               <Loader />
-//             </div>
-//           ) : resumeList.length > 0 ? (
-//             resumeList.map((resume) => (
-//               <ResumeCardItem
-//                 resume={resume}
-//                 refreshData={GetResumesList}
-//                 key={resume.id} // Use unique key instead of index
-//               />
-//             ))
-//           ) : (
-//             <div className="col-span-full text-center text-gray-500 text-xl md:text-2xl">
-//               No resumes found.
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </Wrapper>
-//   );
-// };
-
-// export default React.memo(Dashboard); // Memoize Dashboard to avoid unnecessary re-renders
-
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { useUser } from "@clerk/clerk-react";
 import GlobalApi from "../../service/GlobalApi";
@@ -170,61 +89,51 @@ import Loader from "../components/shared/loader";
 import Wrapper from "../components/wrapper";
 
 const Dashboard = () => {
+  // States
   const [resumeList, setResumeList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Error state
+  const [showLoader, setShowLoader] = useState(true);
 
+  // Destructuring user from useUser hook
   const { user } = useUser();
+
+  // Memoize user email to avoid unnecessary re-renders
   const userEmail = useMemo(
     () => user?.primaryEmailAddress?.emailAddress,
     [user]
   );
 
-  // Function to fetch resumes with a 5-second timeout
-  const GetResumesList = useCallback(async () => {
-    if (!userEmail) return;
-
+  // UseCallback to memoize the fetching function
+  const GetResumesList = useCallback(() => {
+    if (!userEmail) return; // Avoid API call if email is not available
     setLoading(true);
-    setError(null); // Clear any previous errors
-
-    const controller = new AbortController(); // To abort the fetch request
-    const timeout = setTimeout(() => {
-      controller.abort(); // Abort the fetch after 5 seconds
-    }, 5000);
-
-    try {
-      // Fetch resumes from API with timeout handling
-      const res = await GlobalApi.GetUserResumes(userEmail, {
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeout); // Clear timeout if fetch is successful
-
-      if (res?.data?.data?.length > 0) {
-        setResumeList(res.data.data); // Set fetched resumes
-      } else {
-        setResumeList([]); // If no resumes found, set empty list
-      }
-    } catch (error) {
-      if (error.name === "AbortError") {
-        setError("Request timed out. Please try again."); // Handle timeout
-      } else {
-        setError("Failed to fetch resumes. Please try again."); // Handle other errors
-      }
-    } finally {
+    GlobalApi.GetUserResumes(userEmail).then((res) => {
+      setResumeList(res?.data?.data || []); // Ensure fallback to an empty array
       setLoading(false);
-    }
+    });
   }, [userEmail]);
 
+  // Effect to fetch resumes when the user information is available
   useEffect(() => {
     if (userEmail) {
       GetResumesList();
     }
   }, [userEmail, GetResumesList]);
 
+  // Set up a timer to toggle between loader and message every 10 seconds
+  useEffect(() => {
+    const toggleLoaderMessage = setInterval(() => {
+      setShowLoader((prev) => !prev);
+    }, 10000); // 10 seconds
+
+    return () => clearInterval(toggleLoaderMessage);
+  }, []);
+
   return (
     <Wrapper>
       <div className="px-4 md:px-20 lg:px-32">
+        {/* <div className="p-4 mt-2 md:mt-6 md:px-20 lg:px-32"> */}
+        {/* Heading and Sub-heading */}
         <h2 className="font-bold text-gray-800 text-center text-xl md:text-2xl">
           My All Resumes
         </h2>
@@ -232,23 +141,31 @@ const Dashboard = () => {
           Start building an AI-powered resume for your upcoming job opportunity.
         </CustomParagraph>
 
+        {/* Resume List */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-10">
           <AddResume />
 
           {loading ? (
-            <div className="flex justify-center items-center h-72">
-              <Loader />
-            </div>
-          ) : error ? (
-            <div className="col-span-full text-center text-red-500 text-xl md:text-2xl">
-              {error}
-            </div>
+            // <div className="flex justify-center items-center h-72">
+            //   <Loader />
+            // </div>
+            showLoader ? (
+              <div className="flex justify-center items-center h-72">
+                <Loader />
+              </div>
+            ) : (
+              <div className="flex justify-center items-center h-72">
+                <p className="text-gray-500 text-lg md:text-xl">
+                  Wait a moment, please...
+                </p>
+              </div>
+            )
           ) : resumeList.length > 0 ? (
             resumeList.map((resume) => (
               <ResumeCardItem
                 resume={resume}
                 refreshData={GetResumesList}
-                key={resume.id}
+                key={resume.id} // Use unique key instead of index
               />
             ))
           ) : (
