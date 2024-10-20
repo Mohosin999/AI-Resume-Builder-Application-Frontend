@@ -53,7 +53,7 @@ const useCalculateResumeScore = (resumeInfo) => {
     * 41% - 60%: Intermediate Resume
     * 61% - 80%: Advanced Resume
     * 81% - 100%: Professional Resume
-* **suggestions:** Provide suggestions within 3 or 4 options to improve the resume. Never suggest to add summary section. Give suggestions only how to make the resume more professional. Never show 0% if any section is filled.
+* **suggestions:** Provide suggestions within 3 or 4 options to improve the resume. Never suggest to add summary section. Give suggestions only how to make the resume more professional. Read all resume's information and compare it how much professional is it according to world wide professional's resume. Never show 0% if any section is filled.
 `;
 
     // Prompt for skills

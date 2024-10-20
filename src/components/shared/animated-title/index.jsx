@@ -60,7 +60,7 @@ const AnimatedTitle = ({ title, className }) => {
 
   return (
     <motion.h2
-      className={`text-lg font-bold text-blue-700 ${className}`}
+      className={`text-base font-bold text-blue-700 ${className}`}
       animate={{
         x: ["0%", xValue, "0%"], // Use dynamic xValue here
       }}

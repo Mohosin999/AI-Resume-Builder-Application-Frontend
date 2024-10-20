@@ -87,7 +87,6 @@ import ResumeCardItem from "./components/resume-card-item";
 import CustomParagraph from "../components/ui/CustomParagraph";
 import Loader from "../components/shared/loader";
 import Wrapper from "../components/wrapper";
-// import SkeletonLoader from "../components/shared/skeleton-loader"; // Assume this is your skeleton loader component
 
 const Dashboard = () => {
   // States
