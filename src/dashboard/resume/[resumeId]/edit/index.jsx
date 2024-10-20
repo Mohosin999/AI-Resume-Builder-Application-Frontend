@@ -5,6 +5,7 @@ import ResumePreview from "../../components/resume-preview";
 import { ResumeInfoContext } from "../../../../context/ResumeInfoContext";
 import GlobalApi from "../../../../../service/GlobalApi";
 import Wrapper from "../../../../components/wrapper";
+import GoToTopButton from "../../../../components/shared/go-to-top-button";
 
 const EditResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -33,6 +34,9 @@ const EditResume = () => {
           {/* Preview Section */}
           <ResumePreview />
         </div>
+
+        {/* Go to top button */}
+        <GoToTopButton />
       </Wrapper>
     </ResumeInfoContext.Provider>
   );

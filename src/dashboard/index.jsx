@@ -87,6 +87,7 @@ import ResumeCardItem from "./components/resume-card-item";
 import CustomParagraph from "../components/ui/CustomParagraph";
 import Loader from "../components/shared/loader";
 import Wrapper from "../components/wrapper";
+import GoToTopButton from "../components/shared/go-to-top-button";
 
 const Dashboard = () => {
   // States
@@ -175,6 +176,9 @@ const Dashboard = () => {
           )}
         </div>
       </div>
+
+      {/* Go to top button */}
+      <GoToTopButton />
     </Wrapper>
   );
 };

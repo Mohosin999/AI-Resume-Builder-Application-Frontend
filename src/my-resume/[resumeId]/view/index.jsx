@@ -200,6 +200,7 @@ import CustomParagraph from "../../../components/ui/CustomParagraph";
 import Footer from "../../../components/footer";
 import AnimatedHeading from "../../../components/shared/animated-heading";
 import Wrapper from "../../../components/wrapper";
+import GoToTopButton from "../../../components/shared/go-to-top-button";
 
 const ViewResume = () => {
   const [resumeInfo, setResumeInfo] = useState();
@@ -298,6 +299,9 @@ const ViewResume = () => {
               </Button>
             </div>
           </div>
+
+          {/* Go to top button */}
+          <GoToTopButton />
         </Wrapper>
       </div>
 
