@@ -105,7 +105,7 @@ const Home = () => {
         </div>
 
         {/* Interesting Section: Key Features */}
-        <div className="w-full bg-gray-100 py-10 md:py-16 mt-10">
+        <div className="w-full bg-gray-200 py-10 md:py-16 mt-10">
           <div className="w-[90%] md:w-[80%] lg:w-[70%] mx-auto text-center">
             <h2 className="text-2xl md:text-4xl font-bold text-primary mb-8">
               Why Use Our AI Resume Builder?

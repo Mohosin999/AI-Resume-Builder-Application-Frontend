@@ -286,7 +286,10 @@ const ViewResume = () => {
               </RWebShare>
 
               {/* Calculate resume score button  */}
-              <Button className="py-0" onClick={calculateResumeScoreFromAi}>
+              <Button
+                className="py-0 md:w-48"
+                onClick={calculateResumeScoreFromAi}
+              >
                 {loading ? (
                   <Loader2Icon className="animate-spin" />
                 ) : (

@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import { Button } from "../ui/button";
+// import ThemeSwitcher from "../theme-switcher";
 
 function Header() {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="p-3 px-5 flex justify-between items-center shadow-sm md:shadow-md">
+    <div className="p-3 px-5 flex justify-between items-center shadow-md ">
       {/* Click on header logo and go to dashboard */}
       <Link to={"/"}>
         <img
@@ -25,6 +26,8 @@ function Header() {
        */}
       {isSignedIn ? (
         <div className="flex gap-3 items-center">
+          {/* <ThemeSwitcher /> */}
+          {/* Dashboard */}
           <Link to={"/dashboard"}>
             <Button variant="outline">Dashboard</Button>
           </Link>
