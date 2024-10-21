@@ -58,6 +58,11 @@ const RichTextEditor = ({ onRichTextEditorChange, value }) => {
         formats={formats}
         onChange={handleChange}
         theme="snow"
+        style={{
+          backgroundColor: "var(--popover-bg)",
+          borderColor: "var(--popover-border)",
+          color: "#9ca3af",
+        }}
       />
       {/* Additional styles for the editor content */}
       <style>

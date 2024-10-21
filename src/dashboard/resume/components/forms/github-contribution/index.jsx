@@ -159,7 +159,9 @@ const GithubContribution = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">GitHub Contribution</h2>
+          <h2 className="font-bold text-primary text-lg">
+            GitHub Contribution
+          </h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>
@@ -183,7 +185,7 @@ const GithubContribution = ({ setEnableNext }) => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveProjects(index)}
-                    className="text-red-500"
+                    className="bg-red-500 border-red-500 text-[#FAFAFA]"
                   >
                     - Remove
                   </Button>
@@ -197,17 +199,19 @@ const GithubContribution = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-sm">Name</Label>
+                    <Label className="text-sm text-primary">Name</Label>
                     <Input
                       name="repositoryName"
                       value={item?.repositoryName}
+                      placeholder="Repository Name Where You Contributed"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-sm">Details</Label>
+                    <Label className="text-sm text-primary">Details</Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}
@@ -234,7 +238,7 @@ const GithubContribution = ({ setEnableNext }) => {
               variant="outline"
               size="sm"
               onClick={handleAddProjects}
-              className="text-primary w-full"
+              className="bg-secondary border-secondary text-[#FAFAFA] w-full"
             >
               {" "}
               + Add More Projects

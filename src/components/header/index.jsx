@@ -29,9 +29,7 @@ function Header() {
           {/* <ThemeSwitcher /> */}
           {/* Dashboard */}
           <Link to={"/dashboard"}>
-            <Button variant="outline" size="sm">
-              Dashboard
-            </Button>
+            <Button size="sm">Dashboard</Button>
           </Link>
           {/* User profile button */}
           <UserButton />

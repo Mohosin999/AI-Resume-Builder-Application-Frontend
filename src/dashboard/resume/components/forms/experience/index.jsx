@@ -169,7 +169,7 @@ const Experience = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Experience</h2>
+          <h2 className="font-bold text-primary text-lg">Experience</h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your work experience here.</CustomParagraph>
@@ -191,7 +191,7 @@ const Experience = ({ setEnableNext }) => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveExperience(index)}
-                    className="text-red-500"
+                    className="bg-red-500 border-red-500 text-[#FAFAFA]"
                   >
                     - Remove
                   </Button>
@@ -205,62 +205,80 @@ const Experience = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* Company Name */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Company Name</Label>
+                    <Label className="text-sm text-primary">Company Name</Label>
                     <Input
                       name="companyName"
                       value={item?.companyName}
+                      placeholder="E. g. Toptal"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Title of the Position */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Position Title</Label>
+                    <Label className="text-sm text-primary">
+                      Position Title
+                    </Label>
                     <Input
                       name="title"
                       value={item?.title}
+                      placeholder="E. g. Frontend Developer"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* City */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">City</Label>
+                    <Label className="text-sm text-primary">City</Label>
                     <Input
                       name="city"
                       value={item?.city}
+                      placeholder="City Name"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* State */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">State</Label>
+                    <Label className="text-sm text-primary">State</Label>
                     <Input
                       name="state"
                       value={item?.state}
+                      placeholder="E. g. USA"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Start Date</Label>
+                    <Label className="text-sm text-primary">Start Date</Label>
                     <Input
                       name="startDate"
                       value={item?.startDate}
+                      placeholder="Date When You Got the Job"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date / Ongoing</Label>
+                    <Label className="text-sm text-primary">
+                      End Date / Ongoing
+                    </Label>
                     <Input
                       name="endDate"
                       value={item?.endDate}
+                      placeholder="End Date or Ongoing"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Work Summary */}
                   <div className="col-span-2">
                     {/* Label */}
-                    <Label className="text-sm">Experience Details</Label>
+                    <Label className="text-sm text-primary">
+                      Experience Details
+                    </Label>
                     {/* Text Editor */}
                     <RichTextEditor
                       value={item?.workSummary}
@@ -287,18 +305,13 @@ const Experience = ({ setEnableNext }) => {
               variant="outline"
               size="sm"
               onClick={handleAddExperience}
-              className="text-primary w-full"
+              className="bg-secondary border-secondary text-[#FAFAFA] w-full"
             >
               {" "}
               + Add More Experience
             </Button>
           </div>
 
-          {/* Button to Save Experience */}
-          {/* <Button disabled={loading} onClick={() => handleSave()} size="sm"
-              className="w-full md:w-16">
-            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button> */}
           <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
       </FormWrapper>

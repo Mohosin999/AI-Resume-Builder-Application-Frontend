@@ -119,7 +119,7 @@ const Home = () => {
                   viewport={{ once: true }}
                   className="p-6 bg-card rounded-lg shadow-sm lg:shadow-md"
                 >
-                  <h3 className="text-lg md:text-xl font-semibold text-[#FFFFFF] mb-3">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-200 mb-3">
                     {feature}
                   </h3>
                   <CustomParagraph className="!text-sm md:!text-base">
@@ -153,9 +153,7 @@ const Home = () => {
                   ultrices posuere cubilia curae; Duis consequat, metus ac
                   aliquam luctus.
                 </CustomParagraph>
-                <h4 className="mt-4 text-[#FFFFFF] font-semibold">
-                  - John Doe
-                </h4>
+                <h4 className="mt-4 text-gray-300 font-semibold">- John Doe</h4>
               </motion.div>
 
               <motion.div
@@ -170,7 +168,7 @@ const Home = () => {
                   ultrices posuere cubilia curae; Duis consequat, metus ac
                   aliquam luctus.
                 </CustomParagraph>
-                <h4 className="mt-4 text-[#FFFFFF] font-semibold">
+                <h4 className="mt-4 text-gray-200 font-semibold">
                   - Jane Smith
                 </h4>
               </motion.div>

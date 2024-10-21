@@ -88,7 +88,7 @@ const Achievements = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Achievements</h2>
+          <h2 className="font-bold text-primary text-lg">Achievements</h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>
@@ -98,7 +98,7 @@ const Achievements = ({ setEnableNext }) => {
 
         {/* Rich Text Editor for achievements */}
         <div className="my-5">
-          <Label className="text-sm">Achievements Details</Label>
+          <Label className="text-sm text-primary">Achievements Details</Label>
           <div>
             <RichTextEditor
               value={achievementList} // Bind string value

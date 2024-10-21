@@ -70,7 +70,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        */}
       <Link to={`/dashboard/resume/${resume.id}/edit`}>
         <div
-          className="p-14 py-24 border flex justify-center items-center bg-gray-100 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+          className="p-14 py-24 flex justify-center items-center bg-gray-100 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
           style={{ backgroundColor: themeColor }}
         >
           <Notebook />
@@ -95,7 +95,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
               <MoreVertical className="h-4 w-4 cursor-pointer" />
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent>
+            <DropdownMenuContent className="bg-card border-card text-gray-400 shadow-sm md:shadow-md">
               <DropdownMenuItem
                 onClick={() =>
                   navigation(`/dashboard/resume/${resume.id}/edit`)
@@ -127,10 +127,12 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        * ======================================
        */}
       <AlertDialog open={openAlert}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-card border-primary">
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle className="text-primary">
+              Are you absolutely sure?
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-[#72839E]">
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </AlertDialogDescription>
@@ -139,7 +141,11 @@ const ResumeCardItem = ({ resume, refreshData }) => {
             <AlertDialogCancel onClick={() => setOpenAlert(false)}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete} disabled={loading}>
+            <AlertDialogAction
+              onClick={handleDelete}
+              disabled={loading}
+              className="bg-red-500 border-red-500 text-[#FAFAFA]"
+            >
               {loading ? <Loader2Icon className="animate-spin" /> : "Delete"}
             </AlertDialogAction>
           </AlertDialogFooter>

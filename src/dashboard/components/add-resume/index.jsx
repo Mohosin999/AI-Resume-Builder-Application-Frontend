@@ -55,7 +55,7 @@ const AddResume = () => {
       {/* Plus Square to trigger dialog */}
       <div
         onClick={() => setOpenDialog(true)}
-        className="p-14 py-24 border flex justify-center items-center bg-gray-400 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+        className="p-14 py-24 flex justify-center items-center bg-gray-400 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
       >
         <PlusSquare />
       </div>
@@ -68,17 +68,17 @@ const AddResume = () => {
         >
           <div
             ref={dialogRef}
-            className="bg-white rounded-md p-6 w-full max-w-[90%] sm:max-w-[600px] shadow-lg"
+            className="bg-card border border-primary rounded-md p-6 w-full max-w-[90%] sm:max-w-[600px] shadow-lg"
           >
-            <h2 className="text-lg md:text-xl font-semibold">
+            <h2 className="text-lg text-primary md:text-xl font-semibold">
               Create New Resume
             </h2>
             <CustomParagraph>Add a title for your new resume</CustomParagraph>
             <Input
               value={resumeTitle}
               onChange={(e) => setResumeTitle(e.target.value)}
-              className="my-2"
-              placeholder="Ex. Frontend Developer"
+              className="bg-popover border-popover text-gray-400 my-2"
+              placeholder="E. g. Frontend Developer"
             />
 
             {/* Dialog buttons */}

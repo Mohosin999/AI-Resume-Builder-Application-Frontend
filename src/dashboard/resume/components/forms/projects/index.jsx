@@ -159,7 +159,7 @@ const Projects = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Projects</h2>
+          <h2 className="font-bold text-primary text-lg">Projects</h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your existing project here.</CustomParagraph>
@@ -181,7 +181,7 @@ const Projects = ({ setEnableNext }) => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveProjects(index)}
-                    className="text-red-500"
+                    className="bg-red-500 border-red-500 text-[#FAFAFA]"
                   >
                     - Remove
                   </Button>
@@ -195,17 +195,19 @@ const Projects = ({ setEnableNext }) => {
                 <div className="grid grid-cols-1 gap-3">
                   {/* Company Name */}
                   <div>
-                    <Label className="text-sm">Name</Label>
+                    <Label className="text-sm text-primary">Name</Label>
                     <Input
                       name="projectsName"
                       value={item?.projectsName}
+                      placeholder="Enter Your Project's Name"
                       onChange={(event) => handleChange(index, event)}
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
 
                   {/* Work Summary */}
                   <div>
-                    <Label className="text-sm">Details</Label>
+                    <Label className="text-sm text-primary">Details</Label>
                     <RichTextEditor
                       index={index}
                       value={item?.workSummary}
@@ -232,7 +234,7 @@ const Projects = ({ setEnableNext }) => {
               variant="outline"
               size="sm"
               onClick={handleAddProjects}
-              className="text-primary w-full"
+              className="bg-secondary border-secondary text-[#FAFAFA] w-full"
             >
               {" "}
               + Add More Projects

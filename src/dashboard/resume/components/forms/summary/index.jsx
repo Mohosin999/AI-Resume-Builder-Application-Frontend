@@ -111,7 +111,7 @@ const Summary = ({ setEnableNext }) => {
             </Button>
           </div>
 
-          <Label className="text-sm text-[#FFFFFF]">Add Summary</Label>
+          <Label className="text-sm text-primary">Add Summary</Label>
           {/* Textarea */}
           <Textarea
             className="bg-popover border-popover text-gray-400"

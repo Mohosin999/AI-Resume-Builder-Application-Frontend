@@ -94,12 +94,14 @@ const ThemeColor = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="flex gap-2" size="sm">
+        <Button className="flex gap-2 bg-secondary border-secondary" size="sm">
           <LayoutGrid /> Theme
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
-        <h2 className="mb-2 text-sm font-bold">Select Theme Color</h2>
+      <PopoverContent className="border-primary bg-card shadow-lg">
+        <h2 className="mb-2 text-sm font-bold text-primary">
+          Select Theme Color
+        </h2>
 
         <div className="grid grid-cols-5 gap-3">
           {colors.map((item, index) => (

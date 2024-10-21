@@ -135,7 +135,7 @@ const Skills = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Skills</h2>
+          <h2 className="font-bold text-primary text-lg">Skills</h2>
           {/* Skip Button */}
         </div>
         {/* Sub Heading */}
@@ -150,21 +150,22 @@ const Skills = ({ setEnableNext }) => {
           {skillsList?.map((item, index) => (
             <div key={index} className="rounded-lg mb-2 my-5">
               <div>
-                <Label className="text-sm">Name</Label>
+                <Label className="text-sm text-primary">Name</Label>
                 <div className="flex justify-between items-center gap-2">
                   <Input
                     onChange={(e) =>
                       handleChange(index, "name", e.target.value)
                     }
-                    className="w-full"
-                    defaultValue={item?.name}
+                    value={item?.name}
+                    placeholder="E. g. JavaScript / React.js / Express.js"
+                    className="bg-popover border-popover text-gray-400 w-full"
                   />
                   {/* Remove Button */}
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveSkills(index)}
-                    className="text-red-500"
+                    className="bg-red-500 border-red-500 text-[#FAFAFA]"
                   >
                     - Remove
                   </Button>
@@ -186,16 +187,12 @@ const Skills = ({ setEnableNext }) => {
               variant="outline"
               size="sm"
               onClick={handleAddSkills}
-              className="text-primary w-full"
+              className="bg-secondary border-secondary text-[#FAFAFA] w-full"
             >
               + Add More Skills
             </Button>
           </div>
 
-          {/* Button to Save Experience */}
-          {/* <Button disabled={loading} onClick={() => handleSave()}>
-            {loading ? <LoaderCircle className="animate-spin" /> : "Save"}
-          </Button> */}
           <CustomSaveButton loading={loading} handleSave={handleSave} />
         </div>
       </FormWrapper>

@@ -147,7 +147,7 @@ const Education = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Education</h2>
+          <h2 className="font-bold text-primary text-lg">Education</h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>Add your educational details</CustomParagraph>
@@ -169,7 +169,7 @@ const Education = ({ setEnableNext }) => {
                     size="sm"
                     variant="outline"
                     onClick={() => handleRemoveEducation(index)}
-                    className="text-red-500"
+                    className="bg-red-500 border-red-500 text-[#FAFAFA]"
                   >
                     - Remove
                   </Button>
@@ -183,47 +183,61 @@ const Education = ({ setEnableNext }) => {
                 <div className="grid grid-cols-2 gap-3">
                   {/* University Name */}
                   <div className="col-span-2">
-                    <Label className="text-sm">University Name</Label>
+                    <Label className="text-sm text-primary">
+                      University Name
+                    </Label>
                     <Input
                       name="universityName"
                       onChange={(event) => handleChange(event, index)}
                       value={item?.universityName}
+                      placeholder="Enter Your Institution Name"
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Degree */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Degree</Label>
+                    <Label className="text-sm text-primary">Degree</Label>
                     <Input
                       name="degree"
                       onChange={(event) => handleChange(event, index)}
                       value={item?.degree}
+                      placeholder="E. g. Honors / Masters"
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Major */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Major</Label>
+                    <Label className="text-sm text-primary">Major</Label>
                     <Input
                       name="major"
                       onChange={(event) => handleChange(event, index)}
                       value={item?.major}
+                      placeholder="E. g. CSE / EEE / Science"
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* Start Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">Start Date</Label>
+                    <Label className="text-sm text-primary">Start Date</Label>
                     <Input
                       name="startDate"
                       onChange={(event) => handleChange(event, index)}
                       value={item?.startDate}
+                      placeholder="Start Date"
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                   {/* End Date */}
                   <div className="col-span-2 md:col-span-1">
-                    <Label className="text-sm">End Date / Ongoing</Label>
+                    <Label className="text-sm text-primary">
+                      End Date / Ongoing
+                    </Label>
                     <Input
                       name="endDate"
                       onChange={(event) => handleChange(event, index)}
                       value={item?.endDate}
+                      placeholder="End Date or Ongoing"
+                      className="bg-popover border-popover text-gray-400"
                     />
                   </div>
                 </div>
@@ -244,7 +258,7 @@ const Education = ({ setEnableNext }) => {
               variant="outline"
               size="sm"
               onClick={handleAddEducation}
-              className="text-primary w-full"
+              className="bg-secondary border-secondary text-[#FAFAFA] w-full"
             >
               + Add More Education
             </Button>

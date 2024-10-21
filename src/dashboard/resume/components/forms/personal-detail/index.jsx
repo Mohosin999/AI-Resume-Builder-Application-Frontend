@@ -142,7 +142,7 @@ const PersonalDetail = ({ setEnableNext }) => {
         <div className="grid grid-cols-2 my-5 gap-3">
           {/* First Name */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm text-[#FFFFFF]">First Name*</Label>
+            <Label className="text-sm text-primary">First Name*</Label>
             <Input
               name="firstName"
               placeholder="Jhon"
@@ -154,7 +154,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Last Name */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm text-[#FFFFFF]">Last Name*</Label>
+            <Label className="text-sm text-primary">Last Name*</Label>
             <Input
               name="lastName"
               placeholder="Doe"
@@ -166,7 +166,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Job Title */}
           <div className="col-span-2">
-            <Label className="text-sm text-[#FFFFFF]">Job Title*</Label>
+            <Label className="text-sm text-primary">Job Title*</Label>
             <Input
               name="jobTitle"
               placeholder="E. g. Frontend Developer"
@@ -178,7 +178,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Email */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm text-[#FFFFFF]">Email*</Label>
+            <Label className="text-sm text-primary">Email*</Label>
             <Input
               name="email"
               placeholder="jhondoe@example.com"
@@ -190,7 +190,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Social Link */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm text-[#FFFFFF]">Social Link*</Label>
+            <Label className="text-sm text-primary">Social Link*</Label>
             <Input
               name="socialLink"
               placeholder="E. g. twitter.com/mohosinh99"
@@ -202,7 +202,7 @@ const PersonalDetail = ({ setEnableNext }) => {
           </div>
           {/* Address */}
           <div className="col-span-2">
-            <Label className="text-sm text-[#FFFFFF]">Address*</Label>
+            <Label className="text-sm text-primary">Address*</Label>
             <Input
               name="address"
               placeholder="Division, Country"
