@@ -93,7 +93,6 @@ const Dashboard = () => {
   // States
   const [resumeList, setResumeList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showLoader, setShowLoader] = useState(true);
 
   // Destructuring user from useUser hook
   const { user } = useUser();
@@ -121,15 +120,6 @@ const Dashboard = () => {
     }
   }, [userEmail, GetResumesList]);
 
-  // Set up a timer to toggle between loader and message every 10 seconds
-  useEffect(() => {
-    const toggleLoaderMessage = setInterval(() => {
-      setShowLoader((prev) => !prev);
-    }, 10000); // 10 seconds
-
-    return () => clearInterval(toggleLoaderMessage);
-  }, []);
-
   return (
     <Wrapper>
       <div className="px-4 md:px-20 lg:px-32">
@@ -147,20 +137,9 @@ const Dashboard = () => {
           <AddResume />
 
           {loading ? (
-            // <div className="flex justify-center items-center h-72">
-            //   <Loader />
-            // </div>
-            showLoader ? (
-              <div className="flex justify-center items-center h-72">
-                <Loader />
-              </div>
-            ) : (
-              <div className="flex justify-center items-center h-72">
-                <p className="text-gray-500 text-lg md:text-xl">
-                  Wait a moment, please...
-                </p>
-              </div>
-            )
+            <div className="flex justify-center items-center h-72">
+              <Loader />
+            </div>
           ) : resumeList.length > 0 ? (
             resumeList.map((resume) => (
               <ResumeCardItem
