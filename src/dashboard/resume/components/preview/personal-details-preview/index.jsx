@@ -24,7 +24,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {resumeInfo?.attributes?.firstName} {resumeInfo?.attributes?.lastName}
       </h2>
       {/* Job title */}
-      <h2 className="font-medium text-base text-center text-gray-600">
+      <h2 className="font-medium text-sm md:text-base text-center text-gray-600">
         {resumeInfo?.attributes?.jobTitle}
       </h2>
 
@@ -36,7 +36,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
       <div className="flex flex-wrap justify-center items-center space-x-2 text-gray-700">
         {/* Email */}
         <h2
-          className="font-normal text-sm"
+          className="font-normal text-xs md:text-sm"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}
@@ -51,7 +51,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
 
         {/* Social Link */}
         <h2
-          className="font-normal text-sm"
+          className="font-normal text-xs md:text-sm"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}
@@ -66,7 +66,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
 
         {/* Address */}
         <h2
-          className="font-normal text-sm text-center"
+          className="font-normal text-xs md:text-sm text-center"
           style={{
             color: resumeInfo?.attributes?.themeColor,
           }}

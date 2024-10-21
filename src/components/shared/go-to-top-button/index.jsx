@@ -32,7 +32,7 @@ const GoToTopButton = () => {
     showGoToTop && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-4 right-4 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all md:bottom-8 md:right-8"
+        className="fixed bottom-4 right-4 bg-secondary text-[#FFFFFF] p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all md:bottom-8 md:right-8"
       >
         <ArrowUp className="w-4 h-4" />
       </button>

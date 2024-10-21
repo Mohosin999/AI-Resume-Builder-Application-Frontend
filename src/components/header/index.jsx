@@ -8,7 +8,7 @@ function Header() {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="p-3 px-5 flex justify-between items-center shadow-md ">
+    <div className="bg-[#14202D] p-3 px-5 flex justify-between items-center shadow-md ">
       {/* Click on header logo and go to dashboard */}
       <Link to={"/"}>
         <img
@@ -25,11 +25,13 @@ function Header() {
        * Otherwise, show Get Started button to create account.
        */}
       {isSignedIn ? (
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-5 items-center">
           {/* <ThemeSwitcher /> */}
           {/* Dashboard */}
           <Link to={"/dashboard"}>
-            <Button variant="outline">Dashboard</Button>
+            <Button variant="outline" size="sm">
+              Dashboard
+            </Button>
           </Link>
           {/* User profile button */}
           <UserButton />

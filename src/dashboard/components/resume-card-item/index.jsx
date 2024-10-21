@@ -70,7 +70,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        */}
       <Link to={`/dashboard/resume/${resume.id}/edit`}>
         <div
-          className="p-14 py-24 border flex justify-center items-center bg-secondary rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+          className="p-14 py-24 border flex justify-center items-center bg-gray-100 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
           style={{ backgroundColor: themeColor }}
         >
           <Notebook />
@@ -80,7 +80,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
       {/* Resume title and drop down menu */}
       <div className="flex items-start justify-between">
         {/* Title */}
-        <h1 className="text-base text-center my-1">
+        <h1 className="text-sm md:text-base text-[#72839E] text-center my-1">
           {resume.attributes.title}
         </h1>
         {/*
@@ -88,7 +88,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
          *            Dropdown menu
          * ======================================
          */}
-        <div className="mt-[7px]">
+        <div className="mt-[7px] text-primary">
           <DropdownMenu>
             {/* Trigger button */}
             <DropdownMenuTrigger>

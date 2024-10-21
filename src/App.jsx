@@ -22,10 +22,12 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Outlet />
-      <Toaster />
-      <Footer />
+      <div className="bg-popover">
+        <Header />
+        <Outlet />
+        <Toaster />
+        <Footer />
+      </div>
     </>
   );
 }

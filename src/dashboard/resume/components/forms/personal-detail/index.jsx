@@ -132,7 +132,7 @@ const PersonalDetail = ({ setEnableNext }) => {
   return (
     <FormWrapper>
       {/* Heading */}
-      <h2 className="font-bold text-lg">Personal Detail</h2>
+      <h2 className="font-bold text-primary text-lg">Personal Detail</h2>
       <CustomParagraph>
         You must provide your personal information here to go ahead.
       </CustomParagraph>
@@ -142,68 +142,74 @@ const PersonalDetail = ({ setEnableNext }) => {
         <div className="grid grid-cols-2 my-5 gap-3">
           {/* First Name */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm">First Name*</Label>
+            <Label className="text-sm text-[#FFFFFF]">First Name*</Label>
             <Input
               name="firstName"
               placeholder="Jhon"
               required
               value={resumeInfo?.attributes?.firstName}
               onChange={handleInputChange}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
           {/* Last Name */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm">Last Name*</Label>
+            <Label className="text-sm text-[#FFFFFF]">Last Name*</Label>
             <Input
               name="lastName"
               placeholder="Doe"
               required
               value={resumeInfo?.attributes?.lastName}
               onChange={handleInputChange}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
           {/* Job Title */}
           <div className="col-span-2">
-            <Label className="text-sm">Job Title*</Label>
+            <Label className="text-sm text-[#FFFFFF]">Job Title*</Label>
             <Input
               name="jobTitle"
               placeholder="E. g. Frontend Developer"
               required
               onChange={handleInputChange}
               value={resumeInfo?.attributes?.jobTitle}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
           {/* Email */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm">Email*</Label>
+            <Label className="text-sm text-[#FFFFFF]">Email*</Label>
             <Input
               name="email"
               placeholder="jhondoe@example.com"
               required
               value={resumeInfo?.attributes?.email}
               onChange={handleInputChange}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
           {/* Social Link */}
           <div className="col-span-2 md:col-span-1">
-            <Label className="text-sm">Social Link*</Label>
+            <Label className="text-sm text-[#FFFFFF]">Social Link*</Label>
             <Input
               name="socialLink"
               placeholder="E. g. twitter.com/mohosinh99"
               required
               value={resumeInfo?.attributes?.socialLink}
               onChange={handleInputChange}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
           {/* Address */}
           <div className="col-span-2">
-            <Label className="text-sm">Address*</Label>
+            <Label className="text-sm text-[#FFFFFF]">Address*</Label>
             <Input
               name="address"
               placeholder="Division, Country"
               required
               onChange={handleInputChange}
               value={resumeInfo?.attributes?.address}
+              className="bg-popover border-popover text-gray-400"
             />
           </div>
         </div>

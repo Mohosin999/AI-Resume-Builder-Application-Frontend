@@ -36,7 +36,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="bg-popover">
       <Header />
 
       <Wrapper>
@@ -51,9 +51,11 @@ const Home = () => {
 
           {/* Buttons */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+            {/* Get Started Button */}
             <Button onClick={handleGetStarted} className="w-full md:w-auto">
               Get Started <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            {/* GitHub Repo Button */}
             <a
               href="https://github.com/Mohosin999/AI-Resume-Builder-Application-Frontend"
               target="_blank"
@@ -67,7 +69,7 @@ const Home = () => {
 
           {/* Social Links */}
           <div className="mt-6 md:mt-12">
-            <h3 className="mt-5 text-xl text-gray-700 font-semibold">
+            <h3 className="mt-5 text-xl text-[#72839E] font-semibold">
               Connect With Me
             </h3>
 
@@ -96,10 +98,10 @@ const Home = () => {
         </div>
 
         {/* Key Features Section */}
-        <div className="w-full bg-gray-600 py-10 md:py-16 mt-10">
+        <div className="w-full py-10 md:pt-16 md:pb-6">
           <div className="w-[90%] md:w-[80%] lg:w-[70%] mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-8">
-              Why Use Our AI Resume Builder?
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-8">
+              Why Our Resume Builder?
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
@@ -115,12 +117,12 @@ const Home = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="p-6 bg-white rounded-lg shadow-sm lg:shadow-md"
+                  className="p-6 bg-card rounded-lg shadow-sm lg:shadow-md"
                 >
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+                  <h3 className="text-lg md:text-xl font-semibold text-[#FFFFFF] mb-3">
                     {feature}
                   </h3>
-                  <CustomParagraph className="">
+                  <CustomParagraph className="!text-sm md:!text-base">
                     Vestibulum ante ipsum primis in faucibus orci luctus et
                     ultrices posuere cubilia curae; Duis consequat, metus ac
                     aliquam luctus.
@@ -132,41 +134,45 @@ const Home = () => {
         </div>
 
         {/* Testimonials Section */}
-        <div className="w-full pt-10 md:py-16">
+        <div className="w-full md:pt-16 md:pb-6">
           <div className="w-[90%] md:w-[80%] lg:w-[70%] mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-8">
               What Our Users Are Saying
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
               <motion.div
-                className="bg-gray-50 p-6 rounded-lg shadow-sm lg:shadow-md"
+                className="bg-card p-6 rounded-lg shadow-sm lg:shadow-md"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
               >
-                <CustomParagraph className="italic">
+                <CustomParagraph className="italic !text-sm md:!text-base">
                   Vestibulum ante ipsum primis in faucibus orci luctus et
                   ultrices posuere cubilia curae; Duis consequat, metus ac
                   aliquam luctus.
                 </CustomParagraph>
-                <h4 className="mt-4 font-semibold">- John Doe</h4>
+                <h4 className="mt-4 text-[#FFFFFF] font-semibold">
+                  - John Doe
+                </h4>
               </motion.div>
 
               <motion.div
-                className="bg-gray-50 p-6 rounded-lg shadow-sm lg:shadow-md"
+                className="bg-card p-6 rounded-lg shadow-sm lg:shadow-md"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
               >
-                <CustomParagraph className="italic">
+                <CustomParagraph className="italic !text-sm md:!text-base">
                   Vestibulum ante ipsum primis in faucibus orci luctus et
                   ultrices posuere cubilia curae; Duis consequat, metus ac
                   aliquam luctus.
                 </CustomParagraph>
-                <h4 className="mt-4 font-semibold">- Jane Smith</h4>
+                <h4 className="mt-4 text-[#FFFFFF] font-semibold">
+                  - Jane Smith
+                </h4>
               </motion.div>
             </div>
           </div>

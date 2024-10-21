@@ -89,7 +89,7 @@ const Summary = ({ setEnableNext }) => {
       <FormWrapper>
         {/* Heading and Skip Button */}
         <div className="flex justify-between items-center">
-          <h2 className="font-bold text-lg">Summary</h2>
+          <h2 className="font-bold text-lg text-primary">Summary</h2>
         </div>
         {/* Sub Heading */}
         <CustomParagraph>
@@ -102,20 +102,19 @@ const Summary = ({ setEnableNext }) => {
           {/* Label and AI Button */}
           <div className="flex justify-end items-end">
             <Button
-              variant="outline"
               onClick={() => GenerateSummeryFromAI()}
               type="button"
               size="sm"
-              className="border-primary text-primary flex gap-2"
+              className="flex gap-2"
             >
               <Brain className="h-4 w-4" /> Generate from AI
             </Button>
           </div>
 
-          <Label className="text-sm">Add Summary</Label>
+          <Label className="text-sm text-[#FFFFFF]">Add Summary</Label>
           {/* Textarea */}
           <Textarea
-            className=""
+            className="bg-popover border-popover text-gray-400"
             value={summary} // Use summary state here
             onChange={(e) => {
               setEnableNext(false); // Disable the next button when typing
@@ -129,17 +128,24 @@ const Summary = ({ setEnableNext }) => {
           </div>
         </form>
       </FormWrapper>
-      {/* AI Suggestions */}
+
+      {/*
+       * ======================================
+       *             AI Suggestions
+       * ======================================
+       */}
       <div>
         {/* Show the title after generated suggestions */}
         {aiGeneratedSummeryList && (
-          <h2 className="font-bold text-lg p-5 mt-2">Suggestions</h2>
+          <h2 className="font-bold text-primary text-lg p-5 mt-2">
+            Suggestions
+          </h2>
         )}
         {/* Map and Display the Result */}
         {aiGeneratedSummeryList?.map((item, index) => (
           <div
             key={index}
-            className="p-5 mb-4 last:mb-0 bg-cyan-100 rounded-lg shadow-md bg-white border border-gray-200 cursor-pointer"
+            className="p-5 mb-4 last:mb-0 rounded-lg shadow-md bg-card border border-card cursor-pointer"
             onClick={() => {
               // Disable the next button when an AI suggestion is clicked
               setEnableNext(false);
@@ -157,10 +163,11 @@ const Summary = ({ setEnableNext }) => {
               });
             }}
           >
-            <h3 className="font-bold text-primary text-lg mb-2">
+            <h3 className="font-bold text-primary text-base mb-2">
               Experience - {item?.experienceLevel}
             </h3>
-            <p className="text-base text-gray-700">{item?.summary}</p>
+            {/* <p className="text-base text-gray-700">{item?.summary}</p> */}
+            <CustomParagraph>{item?.summary}</CustomParagraph>
           </div>
         ))}
       </div>

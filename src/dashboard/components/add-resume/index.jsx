@@ -55,7 +55,7 @@ const AddResume = () => {
       {/* Plus Square to trigger dialog */}
       <div
         onClick={() => setOpenDialog(true)}
-        className="p-14 py-24 border flex justify-center items-center bg-secondary rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
+        className="p-14 py-24 border flex justify-center items-center bg-gray-400 rounded-lg h-[270px] hover:scale-105 transition-all hover:shadow-md cursor-pointer"
       >
         <PlusSquare />
       </div>
