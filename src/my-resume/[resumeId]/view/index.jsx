@@ -71,7 +71,7 @@ const ViewResume = () => {
               {/* <div className="mt-5 md:mt-8 mb-8 md:mb-10 mx-4 md:mx-20 lg:mx-36"> */}
               <AnimatedHeading
                 text="Congratulations! Your Resume is Ready"
-                className="text-center !text-2xl md:!text-3xl"
+                className="text-center"
               />
               {/* <h2 className="font-medium text-xl md:text-2xl text-center">
             Your Resume is Ready Now.
@@ -133,7 +133,7 @@ const ViewResume = () => {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div
-            className="bg-white p-6 rounded-lg shadow-lg w-full h-auto max-w-[90%] mx-auto relative"
+            className="bg-card border border-primary p-6 rounded-lg shadow-lg w-full h-auto max-w-[90%] mx-auto relative"
             onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking inside
           >
             {/* Close Button */}
@@ -149,13 +149,13 @@ const ViewResume = () => {
             {aiGeneratedResumeScore ? (
               <div>
                 <div className="text-center">
-                  <h1 className="text-xl text-gray-700 font-bold">
+                  <h1 className="text-xl text-primary font-bold">
                     Your Resume Score -{" "}
-                    <span className="text-primary">
+                    <span className="text-gray-300">
                       {aiGeneratedResumeScore.resume_rating}
                     </span>
                   </h1>
-                  <p className="text-lg text-primary font-bold animate-pulse">
+                  <p className="text-lg text-secondary font-bold animate-pulse">
                     {aiGeneratedResumeScore.resume_type}
                   </p>
                 </div>
@@ -169,7 +169,10 @@ const ViewResume = () => {
                   <ul className="text-sm md:text-base list-disc mt-4">
                     {aiGeneratedResumeScore?.suggestions?.map(
                       (element, index) => (
-                        <li key={index} className="leading-6 md:leading-7">
+                        <li
+                          key={index}
+                          className="leading-6 md:leading-7 text-gray-400"
+                        >
                           {element}
                         </li>
                       )
@@ -178,7 +181,9 @@ const ViewResume = () => {
                 )}
               </div>
             ) : (
-              <p className="text-center">Loading AI response...</p>
+              <p className="text-center text-gray-400">
+                Loading AI response...
+              </p>
             )}
           </div>
 

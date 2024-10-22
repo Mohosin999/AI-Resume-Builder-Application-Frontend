@@ -15,7 +15,7 @@ const AchievementsPreview = ({ resumeInfo }) => {
           {/* Heading */}
           <h1
             className="font-bold text-sm md:text-lg text-center"
-            style={{ color: resumeInfo?.attributes?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor || "#f5f5f5" }}
           >
             Achievements
           </h1>
@@ -30,7 +30,7 @@ const AchievementsPreview = ({ resumeInfo }) => {
           <div>
             {/* Achievement summary */}
             <div
-              className="text-xs md:text-sm my-2 leading-5"
+              className="text-xs text-gray-400 md:text-sm my-2 leading-5"
               dangerouslySetInnerHTML={{
                 __html: resumeInfo?.attributes?.achievements,
               }}

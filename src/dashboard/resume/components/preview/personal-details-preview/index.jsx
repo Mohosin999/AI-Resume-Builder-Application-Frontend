@@ -18,13 +18,13 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
       <h2
         className="font-bold text-xl text-center"
         style={{
-          color: resumeInfo?.attributes?.themeColor,
+          color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
         }}
       >
         {resumeInfo?.attributes?.firstName} {resumeInfo?.attributes?.lastName}
       </h2>
       {/* Job title */}
-      <h2 className="font-medium text-sm md:text-base text-center text-gray-600">
+      <h2 className="font-medium text-sm md:text-base text-center text-gray-400">
         {resumeInfo?.attributes?.jobTitle}
       </h2>
 
@@ -38,7 +38,7 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         <h2
           className="font-normal text-xs md:text-sm"
           style={{
-            color: resumeInfo?.attributes?.themeColor,
+            color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
           }}
         >
           {resumeInfo?.attributes?.email}
@@ -46,14 +46,14 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {/* Bullet Point */}
         {resumeInfo?.attributes?.email &&
           resumeInfo?.attributes?.socialLink && (
-            <span className="text-xs font-bold">•</span>
+            <span className="text-xs font-bold text-gray-300">•</span>
           )}
 
         {/* Social Link */}
         <h2
           className="font-normal text-xs md:text-sm"
           style={{
-            color: resumeInfo?.attributes?.themeColor,
+            color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
           }}
         >
           {resumeInfo?.attributes?.socialLink}
@@ -61,14 +61,14 @@ const PersonalDetailsPreview = ({ resumeInfo }) => {
         {/* Bullet Point */}
         {resumeInfo?.attributes?.socialLink &&
           resumeInfo?.attributes?.address && (
-            <span className="text-xs font-bold">•</span>
+            <span className="text-xs font-bold text-gray-300">•</span>
           )}
 
         {/* Address */}
         <h2
           className="font-normal text-xs md:text-sm text-center"
           style={{
-            color: resumeInfo?.attributes?.themeColor,
+            color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
           }}
         >
           {resumeInfo?.attributes?.address}

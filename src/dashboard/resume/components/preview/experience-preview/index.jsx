@@ -15,7 +15,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
           {/* Heading */}
           <h1
             className="font-bold text-sm md:text-lg text-center"
-            style={{ color: resumeInfo?.attributes?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor || "#f5f5f5" }}
           >
             Experience
           </h1>
@@ -34,7 +34,9 @@ const ExperiencePreview = ({ resumeInfo }) => {
                 {/* Company Name and Location */}
                 <h2
                   className="font-bold text-sm md:text-base flex justify-between items-center"
-                  style={{ color: resumeInfo?.attributes?.themeColor }}
+                  style={{
+                    color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
+                  }}
                 >
                   {item?.companyName}
                   {/* City and State */}
@@ -50,7 +52,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
                 </h2>
 
                 {/* Title */}
-                <h2 className="font-bold text-gray-600 text-xs md:text-sm flex justify-between items-center">
+                <h2 className="font-bold text-gray-400 text-xs md:text-sm flex justify-between items-center">
                   {item?.title}
                   {/* Start and end date or present situation */}
                   <span
@@ -69,7 +71,7 @@ const ExperiencePreview = ({ resumeInfo }) => {
 
                 {/* Work summary */}
                 <div
-                  className="text-xs md:text-sm mt-1 leading-5"
+                  className="text-xs text-gray-400 md:text-sm mt-1 leading-5"
                   dangerouslySetInnerHTML={{ __html: item?.workSummary }}
                 />
               </div>

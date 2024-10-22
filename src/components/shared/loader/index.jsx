@@ -11,7 +11,7 @@ import { LoaderCircle } from "lucide-react";
  */
 const Loader = ({ height = "h-screen", className }) => (
   <div className={`flex items-center justify-center ${height} ${className}`}>
-    <LoaderCircle className="animate-spin mr-1" />
+    <LoaderCircle className="animate-spin mr-1 text-gray-100" />
     <img src="/logo.svg" alt="Loading..." width="100" height="100" />
   </div>
 );

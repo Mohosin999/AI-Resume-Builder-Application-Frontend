@@ -15,7 +15,7 @@ const SkillsPreview = ({ resumeInfo }) => {
           {/* Heading */}
           <h1
             className="font-bold text-sm md:text-lg text-center"
-            style={{ color: resumeInfo?.attributes?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor || "#f5f5f5" }}
           >
             Skills
           </h1>
@@ -30,11 +30,13 @@ const SkillsPreview = ({ resumeInfo }) => {
             {resumeInfo?.attributes?.skills?.map((item, index) => (
               <div key={index} className="flex items-center">
                 {/* Skill name */}
-                <h2 className="text-xs md:text-sm">{item?.name}</h2>
+                <h2 className="text-xs md:text-sm text-gray-400">
+                  {item?.name}
+                </h2>
 
                 {/* Dot separator (only add dot if not the last item) */}
                 {index < resumeInfo.attributes.skills.length - 1 && (
-                  <span className="mx-2">•</span>
+                  <span className="mx-2 text-gray-300">•</span>
                 )}
               </div>
             ))}

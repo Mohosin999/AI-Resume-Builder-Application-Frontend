@@ -68,7 +68,7 @@ const AddResume = () => {
         >
           <div
             ref={dialogRef}
-            className="bg-card border border-primary rounded-md p-6 w-full max-w-[90%] sm:max-w-[600px] shadow-lg"
+            className="bg-card border border-primary rounded-md p-6 w-full max-w-[90%] md:max-w-[40%] shadow-lg"
           >
             <h2 className="text-lg text-primary md:text-xl font-semibold">
               Create New Resume

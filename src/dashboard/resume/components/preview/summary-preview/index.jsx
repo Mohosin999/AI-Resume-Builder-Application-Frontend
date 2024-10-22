@@ -15,7 +15,7 @@ const SummaryPreview = ({ resumeInfo }) => {
           {/* Heading */}
           <h1
             className="font-bold text-sm md:text-lg text-center"
-            style={{ color: resumeInfo?.attributes?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor || "#f5f5f5" }}
           >
             Summary
           </h1>
@@ -26,7 +26,7 @@ const SummaryPreview = ({ resumeInfo }) => {
           />
 
           {/* Summary Details */}
-          <p className="text-xs md:text-sm my-2 text-gray-700 leading-5">
+          <p className="text-xs md:text-sm my-2 text-gray-400 leading-5">
             {resumeInfo?.attributes?.summary}
           </p>
         </div>

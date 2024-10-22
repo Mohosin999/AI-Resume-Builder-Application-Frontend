@@ -157,7 +157,7 @@ const Skills = ({ setEnableNext }) => {
                       handleChange(index, "name", e.target.value)
                     }
                     value={item?.name}
-                    placeholder="E. g. JavaScript / React.js / Express.js"
+                    placeholder="E. g. JavaScript / React.js"
                     className="bg-popover border-popover text-gray-400 w-full"
                   />
                   {/* Remove Button */}

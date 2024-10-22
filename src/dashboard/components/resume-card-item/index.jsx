@@ -127,7 +127,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
        * ======================================
        */}
       <AlertDialog open={openAlert}>
-        <AlertDialogContent className="bg-card border-primary">
+        <AlertDialogContent className="bg-card border-primary max-w-[90%] md:max-w-[40%]">
           <AlertDialogHeader>
             <AlertDialogTitle className="text-primary">
               Are you absolutely sure?

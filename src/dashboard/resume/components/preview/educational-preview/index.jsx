@@ -15,7 +15,7 @@ const EducationalPreview = ({ resumeInfo }) => {
           {/* Heading */}
           <h1
             className="font-bold text-sm md:text-lg text-center"
-            style={{ color: resumeInfo?.attributes?.themeColor }}
+            style={{ color: resumeInfo?.attributes?.themeColor || "#f5f5f5" }}
           >
             Education
           </h1>
@@ -31,15 +31,20 @@ const EducationalPreview = ({ resumeInfo }) => {
               {/* University name */}
               <h2
                 className="font-bold text-sm md:text-base"
-                style={{ color: resumeInfo?.attributes?.themeColor }}
+                style={{
+                  color: resumeInfo?.attributes?.themeColor || "#f5f5f5",
+                }}
               >
                 {item?.universityName}
               </h2>
 
               {/* Degree name */}
-              <h2 className="text-xs md:text-sm flex justify-between">
+              <h2 className="text-xs md:text-sm text-gray-400 flex justify-between">
                 {item?.degree} in {item?.major}
-                <span>
+                <span
+                  className="text-xs"
+                  style={{ color: resumeInfo?.attributes?.themeColor }}
+                >
                   {item?.startDate} - {item?.endDate}
                 </span>
               </h2>
