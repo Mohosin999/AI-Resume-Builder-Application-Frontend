@@ -42,7 +42,7 @@ const FormSection = () => {
     setTimeout(() => {
       setActiveFormIndex(activeFormIndex + 1);
       setLoading(false); // Hide loader after the form is ready
-    }, 10); // Adjust the delay as necessary
+    }, 5); // Adjust the delay as necessary
   };
 
   if (loading) {

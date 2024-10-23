@@ -62,7 +62,7 @@ const ViewResume = () => {
 
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <div className="bg-[#131a25]">
+      <div className="bg-[#131a25] min-h-screen pb-10 md:pb-20">
         <div id="no-print">
           <Header />
 
@@ -120,13 +120,14 @@ const ViewResume = () => {
         </div>
 
         {/* Resume Preview */}
-        <div className="mt-3 md:my-10 mx-4 md:mx-20 lg:mx-36" id="print-area">
+        <div className="mt-3 mx-4 md:mx-20 lg:mx-36" id="print-area">
           <ResumePreview />
         </div>
+      </div>
 
-        <div id="no-print">
-          <Footer />
-        </div>
+      {/* Footer Section */}
+      <div id="no-print">
+        <Footer />
       </div>
 
       {/* AI Result Modal */}

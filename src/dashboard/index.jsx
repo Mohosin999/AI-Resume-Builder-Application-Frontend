@@ -42,7 +42,7 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
-      <div className="px-4 md:px-20 lg:px-32">
+      <div className="px-4 md:px-20 pb-10 md:pb-20 lg:px-32 min-h-screen">
         <AnimatedHeading
           text="My All Resumes"
           className="text-center !text-2xl md:!text-3xl"

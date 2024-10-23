@@ -95,7 +95,7 @@ const ResumeCardItem = ({ resume, refreshData }) => {
               <MoreVertical className="h-4 w-4 cursor-pointer" />
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="bg-card border-card text-gray-400 shadow-sm md:shadow-md">
+            <DropdownMenuContent className="bg-card border-primary text-gray-400 shadow-sm md:shadow-md">
               <DropdownMenuItem
                 onClick={() =>
                   navigation(`/dashboard/resume/${resume.id}/edit`)
