@@ -15,10 +15,10 @@ The AI provides a "Resume Score" to indicate professionalism and offers suggesti
 
 ## 💻 Technologies & Tools Used
 
-- **Frontend:** React.js, Context API, React Router DOM, Tailwind CSS, Framer Motion
-- **Backend:** Strapi
-- **AI Integration:** Google Gemini AI
-- **Authentication:** Clerk
+- `**Frontend:**` React.js, Context API, React Router DOM, Tailwind CSS, Framer Motion
+- `**Backend:**` Strapi
+- `**AI Integration:**` Google Gemini AI
+- `**Authentication:**` Clerk
 - **Text Editor:** React Quill
 - **Others:** React Web Share, PropTypes, Axios
 
