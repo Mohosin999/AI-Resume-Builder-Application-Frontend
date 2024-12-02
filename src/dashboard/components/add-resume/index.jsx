@@ -19,6 +19,8 @@ const AddResume = () => {
   const dialogRef = useRef(null);
 
   const handleCreate = async () => {
+    console.log("function called -> ");
+
     setLoading(true);
     const uuid = uuidv4();
     const data = {
