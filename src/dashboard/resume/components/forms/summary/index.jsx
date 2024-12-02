@@ -142,7 +142,7 @@ const Summary = ({ setEnableNext }) => {
           </h2>
         )}
         {/* Map and Display the Result */}
-        {aiGeneratedSummeryList?.map((item, index) => (
+        {aiGeneratedSummeryList[0]?.map((item, index) => (
           <div
             key={index}
             className="p-5 mb-4 last:mb-0 rounded-lg shadow-md bg-card border border-card cursor-pointer"
