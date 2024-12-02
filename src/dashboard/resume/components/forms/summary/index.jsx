@@ -142,34 +142,35 @@ const Summary = ({ setEnableNext }) => {
           </h2>
         )}
         {/* Map and Display the Result */}
-        {aiGeneratedSummeryList[0]?.map((item, index) => (
-          <div
-            key={index}
-            className="p-5 mb-4 last:mb-0 rounded-lg shadow-md bg-card border border-card cursor-pointer"
-            onClick={() => {
-              // Disable the next button when an AI suggestion is clicked
-              setEnableNext(false);
+        {Array.isArray(aiGeneratedSummeryList?.[0]) &&
+          aiGeneratedSummeryList[0].map((item, index) => (
+            <div
+              key={index}
+              className="p-5 mb-4 last:mb-0 rounded-lg shadow-md bg-card border border-card cursor-pointer"
+              onClick={() => {
+                // Disable the next button when an AI suggestion is clicked
+                setEnableNext(false);
 
-              // Update the summary with the selected suggestion
-              setSummary(item?.summary);
+                // Update the summary with the selected suggestion
+                setSummary(item?.summary);
 
-              // Update the resumeInfo immediately so it's reflected in the preview
-              setResumeInfo({
-                ...resumeInfo,
-                attributes: {
-                  ...resumeInfo?.attributes,
-                  summary: item?.summary, // Update the summary field
-                },
-              });
-            }}
-          >
-            <h3 className="font-bold text-primary text-base mb-2">
-              Experience - {item?.experienceLevel}
-            </h3>
-            {/* <p className="text-base text-gray-700">{item?.summary}</p> */}
-            <CustomParagraph>{item?.summary}</CustomParagraph>
-          </div>
-        ))}
+                // Update the resumeInfo immediately so it's reflected in the preview
+                setResumeInfo({
+                  ...resumeInfo,
+                  attributes: {
+                    ...resumeInfo?.attributes,
+                    summary: item?.summary, // Update the summary field
+                  },
+                });
+              }}
+            >
+              <h3 className="font-bold text-primary text-base mb-2">
+                Experience - {item?.experienceLevel}
+              </h3>
+              {/* <p className="text-base text-gray-700">{item?.summary}</p> */}
+              <CustomParagraph>{item?.summary}</CustomParagraph>
+            </div>
+          ))}
       </div>
     </div>
   );
